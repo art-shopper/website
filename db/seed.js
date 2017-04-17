@@ -1,16 +1,16 @@
 'use strict'
 
 const db = require('APP/db')
-    , {User, Thing, Favorite, Promise} = db
+    , {User, Product, Promise} = db
     , {mapValues} = require('lodash')
 
 function seedEverything() {
   const seeded = {
     users: users(),
-    things: things(),
+    products: products(),
   }
 
-  seeded.favorites = favorites(seeded)
+  // seeded.favorites = favorites(seeded)
 
   return Promise.props(seeded)
 }
@@ -18,54 +18,57 @@ function seedEverything() {
 const users = seed(User, {
   god: {
     email: 'god@example.com',
-    name: 'So many names',
+    first_name: 'So many names',
+    last_name: 'So many names',
     password: '1234',
+    is_admin: true
   },
   barack: {
-    name: 'Barack Obama',
+    first_name: 'Barack',
+    last_name: 'Obama',
     email: 'barack@example.gov',
     password: '1234'
   },
 })
 
-const things = seed(Thing, {
-  surfing: {name: 'surfing'},
-  smiting: {name: 'smiting'},
-  puppies: {name: 'puppies'},
+const products = seed(Product, {
+  surfing: {title: 'surfing', description: "stuff"},
+  smiting: {title: 'smiting', description: "stuff"},
+  puppies: {title: 'puppies', description: "stuff"},
 })
 
-const favorites = seed(Favorite,
-  // We're specifying a function here, rather than just a rows object.
-  // Using a function lets us receive the previously-seeded rows (the seed
-  // function does this wiring for us).
-  //
-  // This lets us reference previously-created rows in order to create the join
-  // rows. We can reference them by the names we used above (which is why we used
-  // Objects above, rather than just arrays).
-  ({users, things}) => ({
-    // The easiest way to seed associations seems to be to just create rows
-    // in the join table.
-    'obama loves surfing': {
-      user_id: users.barack.id,    // users.barack is an instance of the User model
-                                   // that we created in the user seed above.
-                                   // The seed function wires the promises so that it'll
-                                   // have been created already.
-      thing_id: things.surfing.id  // Same thing for things.
-    },
-    'god is into smiting': {
-      user_id: users.god.id,
-      thing_id: things.smiting.id
-    },
-    'obama loves puppies': {
-      user_id: users.barack.id,
-      thing_id: things.puppies.id
-    },
-    'god loves puppies': {
-      user_id: users.god.id,
-      thing_id: things.puppies.id
-    },
-  })
-)
+// const favorites = seed(Favorite,
+//   // We're specifying a function here, rather than just a rows object.
+//   // Using a function lets us receive the previously-seeded rows (the seed
+//   // function does this wiring for us).
+//   //
+//   // This lets us reference previously-created rows in order to create the join
+//   // rows. We can reference them by the names we used above (which is why we used
+//   // Objects above, rather than just arrays).
+//   ({users, products}) => ({
+//     // The easiest way to seed associations seems to be to just create rows
+//     // in the join table.
+//     'obama loves surfing': {
+//       user_id: users.barack.id,    // users.barack is an instance of the User model
+//                                    // that we created in the user seed above.
+//                                    // The seed function wires the promises so that it'll
+//                                    // have been created already.
+//       thing_id: products.surfing.id  // Same thing for products.
+//     },
+//     'god is into smiting': {
+//       user_id: users.god.id,
+//       thing_id: products.smiting.id
+//     },
+//     'obama loves puppies': {
+//       user_id: users.barack.id,
+//       thing_id: products.puppies.id
+//     },
+//     'god loves puppies': {
+//       user_id: users.god.id,
+//       thing_id: products.puppies.id
+//     },
+//   })
+// )
 
 if (module === require.main) {
   db.didSync
@@ -135,4 +138,4 @@ function seed(Model, rows) {
   }
 }
 
-module.exports = Object.assign(seed, {users, things, favorites})
+module.exports = Object.assign(seed, {users, products})
