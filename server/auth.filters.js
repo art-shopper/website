@@ -1,19 +1,23 @@
 const mustBeLoggedIn = (req, res, next) => {
   if (!req.user) {
-    return res.status(401).send('You must be logged in')
+    return res.status(401).send('You must be logged in');
   }
-  next()
+  next();
 }
 
 const selfOnly = action => (req, res, next) => {
   if (req.params.id !== req.user.id) {
-    return res.status(403).send(`You can only ${action} yourself.`)
+    return res.status(403).send(`You can only ${action} yourself.`);
   }
-  next()
+  next();
 }
 
+// NEED TO TEST
 const forbidden = message => (req, res) => {
-  res.status(403).send(message)
+  if(!req.user.is_admin) { 
+    return res.status(403).send(message);
+  }
+  next();
 }
 
 // Feel free to add more filters here (suggested: something that keeps out non-admins)
