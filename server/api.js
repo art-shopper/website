@@ -7,9 +7,9 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/orders', require('./orders'))
-  .use('/orderItems', require('./order_items'))
-  .use('/reviews', require('./reviews'))
-  .use('/products', require('./products'))
+  // .use('/orderItems', require('./order_items'))
+  // .use('/reviews', require('./reviews'))
+  // .use('/products', require('./products'))
 
 
 // No routes matched? 404.

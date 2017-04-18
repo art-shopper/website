@@ -6,8 +6,8 @@ const User = db.model('users')
 const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters')
 
 module.exports = require('express').Router()
-  .params('id', 
-    (req, res, next, id) => User.findById(id)
+  .param('id', (req, res, next, id) => {
+    User.findById(id)
     .then(user => {
       if(!user) {
         res.sendStatus(404);
@@ -16,7 +16,8 @@ module.exports = require('express').Router()
         next();
       }
     })
-    .catch(next))
+    .catch(next)
+  }) 
   .get('/',
     // The forbidden middleware will fail *all* requests to list users.
     // Remove it if you want to allow anyone to list all users on the site.
@@ -38,7 +39,7 @@ module.exports = require('express').Router()
   .put('/:id',
     selfOnly,
     (req, res, next) => 
-      req.foundUser.updateAttributes(req.body))
+      req.foundUser.updateAttributes(req.body)
       .spread((count, rows) => res.status(count ? 200 : 400).send())
       .catch(next))
   .delete('/:id',
