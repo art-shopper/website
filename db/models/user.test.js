@@ -22,7 +22,7 @@ describe('User', () => {
         .then(result => expect(result).to.be.false))
   })
 
-  describe.only('class methods', () => {
+  describe('class methods', () => {
     let user1, user2, user3;
     beforeEach('Create a user', () => {
       return Promise.all([
