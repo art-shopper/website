@@ -6,6 +6,11 @@ api
   .get('/heartbeat', (req, res) => res.send({ok: true}))
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
+  .use('/orders', require('./orders'))
+  .use('/orderItems', require('./order_items'))
+  .use('/reviews', require('./reviews'))
+  .use('/products', require('./products'))
+
 
 // No routes matched? 404.
 api.use((req, res) => res.status(404).end())
