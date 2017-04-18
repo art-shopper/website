@@ -37,13 +37,20 @@ module.exports = db => db.define('users', {
           (err, result) =>
             err ? reject(err) : resolve(result))
         )
+    },
+    getOrdersWithOffset(offset) {
+      return this.getOrders({limit: 1, offset});
+    },
+    getReviewsWithOffset(offset) {
+      return this.getReviews({limit: 1, offset});
     }
   }
 })
 
-module.exports.associations = (User, {OAuth, Order}) => {
+module.exports.associations = (User, {OAuth, Order, Review}) => {
   User.hasOne(OAuth)
   User.hasMany(Order)
+  User.hasMany(Review)
 }
 
 function setEmailAndPassword(user) {
