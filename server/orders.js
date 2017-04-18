@@ -1,6 +1,7 @@
 'use strict'
 
 const db = require('APP/db')
+
 const Order = db.model('orders')
 const OrderItem = db.model('order_items')
 

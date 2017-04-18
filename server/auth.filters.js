@@ -14,6 +14,7 @@ const selfOnly = action => (req, res, next) => {
 
 // NEED TO TEST
 const forbidden = message => (req, res) => {
+
   if (!req.user.is_admin) {
     return res.status(403).send(message);
   }
