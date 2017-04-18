@@ -8,7 +8,7 @@ api
   .use('/users', require('./users'))
   .use('/orders', require('./orders'))
   // .use('/orderItems', require('./order_items'))
-  // .use('/reviews', require('./reviews'))
+  .use('/reviews', require('./reviews'))
   // .use('/products', require('./products'))
 
 
