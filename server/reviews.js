@@ -19,14 +19,14 @@ module.exports = require('express').Router()
       .then(review => res.json(review))
       .catch(next))
 // add a new review
-  .post('/add/:productId', mustBeLoggedIn,
+  .post('/add/:productId',
     (req, res, next) =>
       Review.create({
         title: req.body.title,
         text: req.body.text,
         rating: req.body.rating,
-        user_id: req.user.id,
-        product_id: req.params.id
+        // user_id: req.user.id,
+        // product_id: req.params.id
       })
       .then((createdReview) => res.status(201).json(createdReview))
       .catch(next))
