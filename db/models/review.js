@@ -4,7 +4,16 @@ const {STRING, INTEGER, TEXT} = require('sequelize')
 
 module.exports = db => db.define('reviews', {
   title: STRING,
-  text: TEXT,
+  text: {
+    type: TEXT,
+    validate: {
+      minLength: function(value) {
+        if (value.length < 20) {
+          throw new Error('Review must have at least 20 characters')
+        }
+      }
+    }
+  },
   rating: {
     type: INTEGER,
     validate: {

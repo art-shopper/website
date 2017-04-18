@@ -51,6 +51,7 @@ module.exports.associations = (User, {OAuth, Order, Review}) => {
   User.hasOne(OAuth)
   User.hasMany(Order)
   User.hasMany(Review)
+
 }
 
 function setEmailAndPassword(user) {
