@@ -32,9 +32,13 @@ module.exports = require('express').Router()
       .then(orderItems => res.status(201).json(orderItems))
       .catch(next))
   .get('/:id',
-    mustBeLoggedIn,
+    forbidden('Unauthorize access.'),
     (req, res, next) =>
-      Order.findById(req.params.id)
+      OrderItem.findAll({
+        where: {
+          order_id: req.params.id,
+        }
+      })
       .then(order => res.json(order))
       .catch(next))
   .put('/:id',
