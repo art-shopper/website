@@ -17,7 +17,7 @@ module.exports = require('express').Router()
       }
     })
     .catch(next)
-  }) 
+  })
   .get('/',
     // The forbidden middleware will fail *all* requests to list users.
     // Remove it if you want to allow anyone to list all users on the site.
@@ -35,27 +35,27 @@ module.exports = require('express').Router()
       User.create(req.body)
       .then(user => res.status(201).json(user))
       .catch(next))
-  .get('/:id', mustBeLoggedIn, (req, res, next) => res.json(req.foundUser))
+  .get('/:id', (req, res, next) => res.json(req.foundUser))
   .put('/:id',
     selfOnly,
-    (req, res, next) => 
+    (req, res, next) =>
       req.foundUser.updateAttributes(req.body)
       .spread((count, rows) => res.status(count ? 200 : 400).send())
       .catch(next))
   .delete('/:id',
     forbidden('deleting users is not allowed'),
-    (req, res, next) => 
+    (req, res, next) =>
       req.foundUser.destroy()
       .then(success => res.status(success ? 200 : 400).send())
       .catch(next))
   // MIGHT NEED TO CASCADE OUR DELETE
-  .get('/:id/orders', 
-    (req, res, next) => 
+  .get('/:id/orders',
+    (req, res, next) =>
       req.foundUser.getOrders()
       .then(orders => res.json(orders))
       .catch(next))
-  .get('/:id/reviews', 
-    (req, res, next) => 
+  .get('/:id/reviews',
+    (req, res, next) =>
       req.foundUser.getReviews()
       .then(reviews => res.json(reviews))
       .catch(next))
