@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
 const bcrypt = require('bcryptjs')

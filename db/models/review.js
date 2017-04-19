@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const {STRING, INTEGER, TEXT} = require('sequelize')
+const {STRING, INTEGER, TEXT} = require('sequelize');
 
 module.exports = db => db.define('reviews', {
   title: STRING,
@@ -10,7 +10,7 @@ module.exports = db => db.define('reviews', {
     validate: {
       minLength: function(value) {
         if (value.length < 20) {
-          throw new Error('Review must have at least 20 characters')
+          throw new Error('Review must have at least 20 characters');
         }
       }
     }
@@ -23,9 +23,9 @@ module.exports = db => db.define('reviews', {
       max: 5
     }
   }
-})
+});
 
 module.exports.associations = (Review, {User, Product}) => {
-  Review.belongsTo(User, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
-  Review.belongsTo(Product, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
-}
+  Review.belongsTo(User, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
+  Review.belongsTo(Product, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
+};
