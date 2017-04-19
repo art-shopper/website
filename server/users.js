@@ -31,8 +31,9 @@ module.exports = require('express').Router()
         .then(users => res.json(users))
         .catch(next))
   .post('/',
+    // OB/YP: consider access control here
     (req, res, next) =>
-      User.create(req.body)
+      User.create(req.body) // OB/YP: consider `.findOrCreate`
       .then(user => res.status(201).json(user))
       .catch(next))
   .get('/:id', (req, res, next) => res.json(req.foundUser))
@@ -49,6 +50,7 @@ module.exports = require('express').Router()
       .then(success => res.status(success ? 200 : 400).send())
       .catch(next))
   // MIGHT NEED TO CASCADE OUR DELETE
+  // OB/YP: this is pretty
   .get('/:id/orders',
     (req, res, next) =>
       req.foundUser.getOrders()

@@ -3,7 +3,7 @@
 const {STRING, INTEGER, TEXT} = require('sequelize');
 
 module.exports = db => db.define('reviews', {
-  title: STRING,
+  title: STRING, // OB/YP: consider validations here
   text: {
     type: TEXT,
     allowNull: false,

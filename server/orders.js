@@ -22,6 +22,7 @@ module.exports = require('express').Router()
   // after a order is created, we create all of the individual items in the OrderItem database
   .post('/',
     (req, res, next) =>
+      // OB/YP: could maybe be a class method
       Order.create({
         date_fulfilled: Date.now(),
         email: req.body.email ? req.body.email : req.user.email,
@@ -49,6 +50,7 @@ module.exports = require('express').Router()
       .then(order => order.updateAttributes(req.body))
       .catch(next))
   // delete one order - only admins can do this
+  // OB/YP: consider router.param
   .delete('/:id',
     forbidden('deleting orders is not allowed'),
     (req, res, next) =>
