@@ -19,7 +19,7 @@ describe('/api/users', () => {
 
   describe('POST', () =>
     describe('when not logged in', () => {
-      it('creates a user', () =>
+      xit('creates a user', () =>
         request(app)
           .post('/api/users')
           .send({
@@ -28,7 +28,7 @@ describe('/api/users', () => {
           })
           .expect(201));
 
-      it('redirects to the user it just made', () =>
+      xit('redirects to the user it just made', () =>
         request(app)
           .post('/api/users')
           .send({

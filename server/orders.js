@@ -23,7 +23,7 @@ module.exports = require('express').Router()
   .post('/',
     (req, res, next) =>
       Order.create({
-        date_fulfilled: req.body.date,
+        date_fulfilled: Date.now(),
         email: req.body.email ? req.body.email : req.user.email,
         user_id: req.body.email ? null : req.user.id
       })
