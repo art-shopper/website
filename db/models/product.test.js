@@ -22,11 +22,11 @@ describe('Product', () => {
         Product.create({title: "Afro", quantity: 1, tags: ['ross', 'phony'], description: "??????????", price: 1000000.00})
         .then(product => product3 = product)
       ])
-      .then(() => product1.createReview({title: "5/7", text: "WE HATE YOU DEAN AND EDWARD", rating: 5}))
-      .then(() => product1.createReview({title: "AMAZING", text: "WE HATE YOU DEAN AND EDWARD", rating: 5}))
-      .then(() => product1.createReview({title: "PERFECTION", text: "WE HATE YOU DEAN AND EDWARD", rating: 5}))
-      .then(() => product1.createReview({title: "10/10", text: "WE HATE YOU DEAN AND EDWARD", rating: 5}))
-      .then(() => product3.createReview({title: "buyer beware!!!", text: "WE HATE YOU DEAN AND EDWARD", rating: 1}))
+      .then(() => product1.createReview({title: "5/7", text: "BOB ROSS IS ALMOST AS COOL AS OMRI", rating: 5}))
+      .then(() => product1.createReview({title: "AMAZING", text: "BOB ROSS IS ALMOST AS COOL AS OMRI", rating: 5}))
+      .then(() => product1.createReview({title: "PERFECTION", text: "BOB ROSS IS ALMOST AS COOL AS OMRI", rating: 5}))
+      .then(() => product1.createReview({title: "10/10", text: "BOB ROSS IS ALMOST AS COOL AS OMRI", rating: 5}))
+      .then(() => product3.createReview({title: "buyer beware!!!", text: "BOB ROSS IS ALMOST AS COOL AS OMRI", rating: 1}))
   })
 
   // describe.only('validations', () => {
