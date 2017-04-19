@@ -69,6 +69,10 @@ describe('Product', () => {
         return Product.searchWithOffset(['ross', 'trees'], 0)
         .then(products => expect(products).to.be.length(1))
       })
+      it('returns none if tag is not used', () => {
+        return Product.searchWithOffset(['fake tag'], 0)
+        .then(products => expect(products).to.be.length(0))
+      })
     })
   })
 })
