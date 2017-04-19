@@ -16,11 +16,11 @@ describe('Product', () => {
   beforeEach('Create Products', () => {
     return Promise.all([
         Product.create({title: "Ross' first painting", quantity: 1, tags: ['cool', 'ross'], description: '??????????', price: 99999999.99})
-        .then(product => product1 = product),
+          .then(product => product1 = product),
         Product.create({title: 'Happy Little Trees', quantity: 10385, tags: ['trees', 'ross'], description: '??????????', price: 999.99})
-        .then(product => product2 = product),
+          .then(product => product2 = product),
         Product.create({title: 'Afro', quantity: 1, tags: ['ross', 'phony'], description: '??????????', price: 1000000.00})
-        .then(product => product3 = product)
+          .then(product => product3 = product)
       ])
       .then(() => product1.createReview({title: '5/7', text: 'BOB ROSS IS ALMOST AS COOL AS OMRI', rating: 5}))
       .then(() => product1.createReview({title: 'AMAZING', text: 'BOB ROSS IS ALMOST AS COOL AS OMRI', rating: 5}))
