@@ -39,9 +39,9 @@ describe('User', () => {
       .then(() => user2.createOrder({email: "crapshoot@gmail.com"}))
       .then(() => user2.createOrder())
       .then(() => user2.createOrder())
-      .then(() => user1.createReview())
-      .then(() => user2.createReview())
-      .then(() => user2.createReview({title: "The Ross", text: "This guy's afro is crazy!!!", rating: 5}))
+      .then(() => user1.createReview({title: "The Moss", text: "This guy's afro is crazy wowww!!!", rating: 5}))
+      .then(() => user2.createReview({title: "The Boss", text: "This guy's afro is crazy wowww!!!", rating: 5}))
+      .then(() => user2.createReview({title: "The Ross", text: "This guy's afro is crazy wowww!!!", rating: 5}))
     })
 
     // TEST OUR USERS' ORDERS

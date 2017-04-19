@@ -6,6 +6,7 @@ module.exports = db => db.define('reviews', {
   title: STRING,
   text: {
     type: TEXT,
+    allowNull: false,
     validate: {
       minLength: function(value) {
         if (value.length < 20) {
@@ -16,6 +17,7 @@ module.exports = db => db.define('reviews', {
   },
   rating: {
     type: INTEGER,
+    allowNull: false,
     validate: {
       min: 1,
       max: 5

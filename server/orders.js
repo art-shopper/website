@@ -8,18 +8,18 @@ const OrderItem = db.model('order_items')
 const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters')
 
 module.exports = require('express').Router()
+  // get all orders - only admins can do this. normal users are blocked
   .get('/',
-    // The forbidden middleware will fail *all* requests to list users.
-    // Remove it if you want to allow anyone to list all users on the site.
-    //
-    // If you want to only let admins list all the users, then you'll
-    // have to add a role column to the users table to support
-    // the concept of admin users.
     forbidden('listing orders is not allowed'),
     (req, res, next) =>
       Order.findAll()
         .then(orders => res.json(orders))
         .catch(next))
+  // order creation happens after a user completes a purchase while items are in cart
+  // this creates a new order in the database
+  // if the user_id is not present, this means they are a guest.
+  // we collect emails from both guests and authenticated users
+  // after a order is created, we create all of the individual items in the OrderItem database
   .post('/',
     (req, res, next) =>
       Order.create({
@@ -27,11 +27,10 @@ module.exports = require('express').Router()
         email: req.body.email ? req.body.email : req.user.email,
         user_id: req.body.email ? null : req.user.id
       })
-      .then(createdOrder => {
-        return OrderItem.bulkCreate(req.body.orderItems)
-      })
-      .then(orderItems => res.status(201).json(orderItems))
+      .then(createdOrder => Promise.all(req.body.orderItems.map(item => createdOrder.createOrderItem(item))))
+      .then(() => res.sendStatus(201))
       .catch(next))
+  // get one order - only admins can do this. normal users are blocked
   .get('/:id',
     forbidden('Unauthorize access.'),
     (req, res, next) =>
@@ -42,12 +41,14 @@ module.exports = require('express').Router()
       })
       .then(order => res.json(order))
       .catch(next))
+  // update one order - only a user that's updating their own order can do that.
   .put('/:id',
     selfOnly,
     (req, res, next) =>
       Order.findById(req.params.id)
       .then(order => order.updateAttributes(req.body))
       .catch(next))
+  // delete one order - only admins can do this
   .delete('/:id',
     forbidden('deleting orders is not allowed'),
     (req, res, next) =>
