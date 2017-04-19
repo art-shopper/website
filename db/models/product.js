@@ -29,7 +29,7 @@ module.exports = db => db.define('products', {
     type: ARRAY(STRING),
     allowNull: false,
     validate: {
-      notEmpty: true
+      notEmpty: (value) => { if (value.length < 1) throw new Error("Must have a tag"); }
     } 
   }
 }, {
