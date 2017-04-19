@@ -44,7 +44,6 @@ describe('/api/orders', () => {
           .post('/api/orders')
           .send({
             email: 'beth@secrets.org',
-            password: '12345',
             orderItems: [{
               productId: 1,
               quantity: 2,

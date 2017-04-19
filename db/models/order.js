@@ -7,6 +7,7 @@ module.exports = db => db.define('orders', {
   email: STRING
 });
 
-module.exports.associations = (Order, {User}) => {
+module.exports.associations = (Order, {User, OrderItem}) => {
   Order.belongsTo(User);
+  Order.hasMany(OrderItem);
 };
