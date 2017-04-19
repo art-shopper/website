@@ -29,6 +29,7 @@ describe('Product', () => {
       .then(() => product3.createReview({title: 'buyer beware!!!', text: 'BOB ROSS IS ALMOST AS COOL AS OMRI', rating: 1}));
   });
 
+  // OB/YP: keep dead code dead, not half-alive
   // describe.only('validations', () => {
   //   it('validates product tags', () => {
   //     Product.create({title:"joe", quantity: 2, description: "??"})).to.throw('Validation error');

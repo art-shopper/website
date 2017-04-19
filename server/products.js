@@ -14,7 +14,8 @@ module.exports = require('express').Router()
         .then(products => res.json(products))
         .catch(next))
   // get a number of products based on offset and search tags
-  .get('/search',
+  // OB/YP: consider squashing together these two routes
+  .get('/search', // OB/YP: GET /api/products/search feels a little non-RESTful, very awake
     (req, res, next) =>
       Product.searchWithOffset(req.body.tags, req.query.offset || 0)
       .then(products => res.json(products))
@@ -40,6 +41,7 @@ module.exports = require('express').Router()
       .then(product => product.updateAttributes(req.body))
       .catch(next))
   // delete a product (admin only)
+  // OB/YP: consider router.param
   .delete('/:id',
     forbidden('deleting products is not allowed'),
     (req, res, next) =>

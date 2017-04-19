@@ -24,25 +24,31 @@ describe('Review', () => {
     });
 
     it('does not create review if text is blank', () => {
+      // OB/YP: watch out for false-positives here, check out `chai-as-promised`
       return testUser.createReview({title: 'No Text; Should Fail', rating: 1, productId: 1})
       .catch(err => expect(err.message).to.eql('notNull Violation: text cannot be null'));
     });
 
     it('does not create review if text is less than 20 characters', () => {
+      // OB/YP: ^^ ditto
       return testUser.createReview({title: 'Invalid Review', text: 'Too few characters', rating: 2, productId: 1})
       .catch(err => expect(err.message).to.eql('Validation error: Review must have at least 20 characters'));
     });
 
     it('does not create review if rating is blank', () => {
+      // OB/YP: ^^ :ditto:
       return testUser.createReview({title: 'Invalid Review', text: 'This is an invalid rating because the rating is null', productId: 1})
       .catch(err => expect(err.message).to.eql('notNull Violation: rating cannot be null'));
     });
 
     // THIS TEST SHOULD NOT BE PASSING: Due to lack of product_id foreign key
-    xit('does not create review if there is no product attached', () => {
+    it.only('does not create review if there is no product attached', () => {
+      // OB/YP: ^^ http://cdn.bulbagarden.net/upload/thumb/3/36/132Ditto.png/250px-132Ditto.png
       return testUser.createReview({title: 'Invalid Review', text: 'This review has no product_id foreignKey', rating: 4})
-      .then(thing => console.log(thing))
-      .catch(err => expect(err.message).to.eql('Validation error: Valid'));
+      .then(
+        thing => {throw Error("Promise should have rejected")},
+        err => expect(err.message).to.eql('Validation error: Valid')
+      )
     });
 
   });

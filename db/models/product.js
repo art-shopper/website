@@ -4,6 +4,7 @@ const {STRING, INTEGER, ARRAY, DECIMAL} = require('sequelize');
 const {PRODUCT_REVIEW_LIMIT, PRODUCT_LIMIT} = require('./constants');
 
 module.exports = db => db.define('products', {
+  // OB/YP: consider unique validator here, also watch out for empty strings
   title: {
     type: STRING,
     allowNull: false
@@ -16,16 +17,19 @@ module.exports = db => db.define('products', {
   image: {
     type: STRING,
     defaultValue: "http://s.newsweek.com/sites/www.newsweek.com/files/2014/09/29/1003bobrosstoc.jpg"
+    // OB/YP: consider isUrl validator in sequelize
   },
-  price: {
+  price: { // OB/YP: consider using INTEGER instead, to avoid floating point math horror
     type: DECIMAL(10, 2),
     allowNull: false
   },  
+  // OB/YP: consider min validation (0)
   quantity: {
     type: INTEGER,
     allowNull: false
   },
   tags: {
+    // OB/YP: if you're worried about query performance searching tags, consider indexing it
     type: ARRAY(STRING),
     allowNull: false,
     validate: {

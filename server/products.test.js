@@ -35,6 +35,7 @@ describe('/api/products', () => {
           .expect(403)
       )));
 
+  // OB/YP: consider adding this TODO to waffle / github instead
   // TODO: need to create tests for authenticated users
 
 });

@@ -28,6 +28,7 @@ describe('/api/orders', () => {
   describe('GET /:id', () =>
     describe('when user is not admin', () =>
       it('fails with a 403 (Unauthorized)', () =>
+        // OB/YP: to log a user in, just do a beforeEach that submits a login request
         request(app)
           .get(`/api/orders/${order1.id}`)
           .send({
@@ -37,7 +38,7 @@ describe('/api/orders', () => {
       )))
 
 // Still working on this 
-  describe.only('POST', () =>
+  describe('POST', () =>
     describe('when not logged in', () => {
       it('creates a order', () =>
         request(app)
