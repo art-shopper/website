@@ -1,10 +1,10 @@
-'use strict'
+'use strict';
 
-const db = require('APP/db')
+const db = require('APP/db');
 
-const Product = db.model('products')
+const Product = db.model('products');
 
-const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters')
+const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters');
 
 module.exports = require('express').Router()
   // get a number of products based on offset
@@ -14,14 +14,14 @@ module.exports = require('express').Router()
         .then(products => res.json(products))
         .catch(next))
   // get a number of products based on offset and search tags
-  .get('/search', 
-    (req, res, next) => 
+  .get('/search',
+    (req, res, next) =>
       Product.searchWithOffset(req.body.tags, req.query.offset || 0)
       .then(products => res.json(products))
       .catch(next))
   // add a product to db (admin only)
-  .post('/', 
-    forbidden("adding products is not allowed"),
+  .post('/',
+    forbidden('adding products is not allowed'),
     (req, res, next) =>
       Product.create(req.body)
       .then(createdProduct => res.status(201).json(createdProduct))
@@ -34,7 +34,7 @@ module.exports = require('express').Router()
       .catch(next))
   // adjust attributes of a product (admin only)
   .put('/:id',
-    forbidden("adjusting products is not allowed"),
+    forbidden('adjusting products is not allowed'),
     (req, res, next) =>
       Product.findById(req.params.id)
       .then(product => product.updateAttributes(req.body))
@@ -51,4 +51,4 @@ module.exports = require('express').Router()
     (req, res, next) =>
       Product.getReviewsWithOffset(req.query.offset)
       .then(reviews => res.json(reviews))
-      .catch(next))
+      .catch(next));
