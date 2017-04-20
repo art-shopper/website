@@ -36,8 +36,8 @@ describe('/api/orders', () => {
           .expect(403)
       )))
 
-// Still working on this 
-  describe.only('POST', () =>
+// Still working on this
+  describe('POST', () =>
     describe('when not logged in', () => {
       it('creates a order', () =>
         request(app)

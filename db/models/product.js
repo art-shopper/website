@@ -70,6 +70,6 @@ module.exports = db => db.define('products', {
 })
 
 module.exports.associations = (Product, {Review, OrderItem}) => {
-  Product.hasMany(Review);
+  Product.hasMany(Review, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
   Product.hasMany(OrderItem);
 }
