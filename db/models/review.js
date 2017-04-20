@@ -3,7 +3,10 @@
 const {STRING, INTEGER, TEXT} = require('sequelize');
 
 module.exports = db => db.define('reviews', {
-  title: STRING,
+  title: {
+    type: STRING,
+    allowNull: false,
+  },
   text: {
     type: TEXT,
     allowNull: false,
@@ -27,5 +30,5 @@ module.exports = db => db.define('reviews', {
 
 module.exports.associations = (Review, {User, Product}) => {
   Review.belongsTo(User, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
-  Review.belongsTo(Product, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
+  // Review.belongsTo(Product, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
 };
