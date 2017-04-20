@@ -31,9 +31,10 @@ module.exports = require('express').Router()
         .then(users => res.json(users))
         .catch(next))
   .post('/',
+    forbidden('adding users is not allowed'),
     (req, res, next) =>
-      User.create(req.body)
-      .then(user => res.status(201).json(user))
+      User.findOrCreate(req.body)
+      .then(user => res.json(user))
       .catch(next))
   .get('/:id', (req, res, next) => res.json(req.foundUser))
   .put('/:id',
@@ -58,4 +59,10 @@ module.exports = require('express').Router()
     (req, res, next) =>
       req.foundUser.getReviews()
       .then(reviews => res.json(reviews))
+      .catch(next))
+  .post('/:id/reviews',   // might need to auth people who actually bought product
+    selfOnly,
+    (req, res, next) => 
+      req.foundUser.createReview(req.body)   // req.body should have the product_id and all other review fields
+      .then(createdReview => res.json(createdReview))
       .catch(next))
