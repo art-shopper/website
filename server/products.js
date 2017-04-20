@@ -10,15 +10,9 @@ module.exports = require('express').Router()
   // get a number of products based on offset
   .get('/',
     (req, res, next) =>
-      Product.findAllWithOffset(req.query.offset || 0)
+      Product.searchWithOffset(req.query.search, req.query.offset)
         .then(products => res.json(products))
         .catch(next))
-  // get a number of products based on offset and search tags
-  .get('/search',
-    (req, res, next) =>
-      Product.searchWithOffset(req.body.tags, req.query.offset || 0)
-      .then(products => res.json(products))
-      .catch(next))
   // add a product to db (admin only)
   .post('/',
     forbidden('adding products is not allowed'),
