@@ -6,7 +6,11 @@ const {PRODUCT_REVIEW_LIMIT, PRODUCT_LIMIT} = require('./constants');
 module.exports = db => db.define('products', {
   title: {
     type: STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true,
+    validate:{
+      notEmpty: true,
+    }
   },
   description: {
     type: STRING,
@@ -15,26 +19,36 @@ module.exports = db => db.define('products', {
   year: INTEGER,
   image: {
     type: STRING,
-    defaultValue: "http://s.newsweek.com/sites/www.newsweek.com/files/2014/09/29/1003bobrosstoc.jpg"
+    defaultValue: "http://s.newsweek.com/sites/www.newsweek.com/files/2014/09/29/1003bobrosstoc.jpg",
+    validate: {
+      isUrl: true,
+    }
   },
+  //use cent and not dollar so that we can avoid prices with multiple decimals.
   price: {
-    type: DECIMAL(10, 2),
-    allowNull: false
-  },  
+    type: INTEGER,
+    allowNull: false,
+    validate:{
+      min: 0,
+    }
+  },
   quantity: {
     type: INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 0,
+    }
   },
   tags: {
     type: ARRAY(STRING),
     allowNull: false,
     validate: {
       notEmpty: (value) => { if (value.length < 1) throw new Error("Must have a tag"); }
-    } 
+    }
   }
 }, {
   classMethods: {
-    /***** 
+    /*****
       Class methods to deal with getting products with offsets.
     *****/
     findAllWithOffset(offset){
@@ -56,6 +70,6 @@ module.exports = db => db.define('products', {
 })
 
 module.exports.associations = (Product, {Review, OrderItem}) => {
-  Product.hasMany(Review);
+  Product.hasMany(Review, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
   Product.hasMany(OrderItem);
 }
