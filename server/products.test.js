@@ -35,6 +35,4 @@ describe('/api/products', () => {
           .expect(403)
       )));
 
-  // TODO: need to create tests for authenticated users
-
 });

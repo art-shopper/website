@@ -6,7 +6,7 @@ const request = require('supertest')
 
 /* global describe it before afterEach */
 
-const omri = {username:"BobRoss@omri.com", password:"bobross"};
+const omri = {username:"ihatebones@omri.com", password:"thanksobama"};
 
 describe('/api/orders', () => {
   before('Await database sync', () => db.didSync)
@@ -62,21 +62,12 @@ describe('/api/orders', () => {
 
       const agent = request.agent(app)
 
-      // beforeEach('log in', () => agent
-      //   .post('/api/auth/login/local')
-      //   .send(omri)
-      // )
+      beforeEach('log in', () => agent
+        .post('/api/auth/login/local')
+        .send(omri)
+      )
 
-      it('succeeds with a valid username and password', () =>
-            request(app)
-              .post('/api/auth/login/local')
-              .send(omri)
-              .expect(302)
-              .expect('Set-Cookie', /session=.*/)
-              .expect('Location', '/')
-            )
-
-      xit('creates an order for that user', () => 
+      it('creates an order for that user', () => 
           agent
             .post('/api/orders')
             .send({
