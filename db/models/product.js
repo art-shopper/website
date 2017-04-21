@@ -51,11 +51,11 @@ module.exports = db => db.define('products', {
     /*****
       Class methods to deal with getting products with offsets.
     *****/
-    findAllWithOffset(offset){
+    findAllWithOffset(offset = 0){
       return this.findAll({limit: PRODUCT_LIMIT, offset});
     },
     // tags is an array of strings
-    searchWithOffset(tags, offset){
+    searchWithOffset(tags, offset = 0){
       return this.findAll({limit: PRODUCT_LIMIT, offset, where: {tags: {$contains: tags}}})
     }
   },

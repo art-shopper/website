@@ -38,10 +38,10 @@ module.exports = db => db.define('users', {
             err ? reject(err) : resolve(result))
         )
     },
-    getOrdersWithOffset(offset) {
+    getOrdersWithOffset(offset = 0) {
       return this.getOrders({limit: 1, offset});
     },
-    getReviewsWithOffset(offset) {
+    getReviewsWithOffset(offset = 0) {
       return this.getReviews({limit: 1, offset});
     }
   }
