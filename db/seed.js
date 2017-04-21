@@ -16,25 +16,37 @@ function seedEverything() {
 }
 
 const users = seed(User, {
-  god: {
-    email: 'god@example.com',
-    first_name: 'So many names',
-    last_name: 'So many names',
-    password: '1234',
+  bob: {
+    first_name: 'Bob',
+    last_name: 'Ross',
+    email: 'bob@zeke.zeke',
+    password: '123',
     is_admin: true
   },
   barack: {
     first_name: 'Barack',
     last_name: 'Obama',
-    email: 'barack@example.gov',
-    password: '1234'
+    email: 'barack@formerpresidents.gov',
+    password: '123',
+    is_admin: true
   },
 })
 
 const products = seed(Product, {
-  surfing: {title: 'surfing', description: "stuff"},
-  smiting: {title: 'smiting', description: "stuff"},
-  puppies: {title: 'puppies', description: "stuff"},
+  painting1: {
+    title: 'Painting 1',
+    description: 'This painting is a great painting by Pablo Picasso.',
+    price: 10000,
+    quantity: 1,
+    tags: ['awesome', 'picasso']
+  },
+  painting2: {
+    title: 'Untitled',
+    description: "We don't know who painted this.",
+    price: 20000,
+    quantity: 1,
+    tags: ['black', 'white', 'untitled']
+  }
 })
 
 // const favorites = seed(Favorite,
