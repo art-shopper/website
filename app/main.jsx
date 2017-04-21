@@ -31,7 +31,7 @@ render(
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/myaccount" component={MyAccount} />
+        <Route path="/account" component={MyAccount} />
         <Route path="/login" component={Login} />
       </Route>
       <Route path='*' component={NotFound} />
