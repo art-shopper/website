@@ -10,7 +10,7 @@ const MyAccount = (props) => (
     <Row>
         <Collection>
           <CollectionItem href='#'>Alvin</CollectionItem>
-          <CollectionItem href='#' active>Alvin</CollectionItem>
+          <CollectionItem href='#'>Alvin</CollectionItem>
           <CollectionItem href='#'>Alvin</CollectionItem>
           <CollectionItem href='#'>Alvin</CollectionItem>
         </Collection>

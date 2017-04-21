@@ -6,6 +6,7 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 import Home from './components/Home'
+import MyAccount from './components/MyAccount'
 import NotFound from './components/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -29,6 +30,7 @@ render(
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
+        <Route path="/myaccount" component={MyAccount} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
