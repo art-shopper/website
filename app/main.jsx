@@ -9,6 +9,7 @@ import Home from './components/Home'
 import NotFound from './components/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ProductViewPage from './components/ProductViewPage'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -29,10 +30,10 @@ render(
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
+        <Route path="/products" component={ProductViewPage} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
   </Provider>,
   document.getElementById('main')
 )
-
