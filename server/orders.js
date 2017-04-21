@@ -27,7 +27,7 @@ module.exports = require('express').Router()
         email: req.body.email ? req.body.email : req.user.email,
         user_id: req.body.email ? null : req.user.id
       })
-      .then(createdOrder => Promise.all(req.body.orderItems.map(item => createdOrder.createOrder_item(item)))) // fix the name of the model
+      .then(createdOrder => Promise.all(req.body.orderItems.map(item => createdOrder.createOrderItem(item)))) // fix the name of the model
       .then(() => res.sendStatus(201))
       .catch(next))
   // get one order - only admins can do this. normal users are blocked
