@@ -3,7 +3,7 @@ import {Footer} from 'react-materialize'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-export default (props) => (
+export const TheFooter = (props) => (
       <Footer copyrights="&copy; 2017 Copyright Text"
       moreLinks={
         <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
@@ -25,9 +25,9 @@ export default (props) => (
 
 /* -------------------<   CONTAINER   >-------------------- */
 
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 
-// export default connect(
-//   state => ({}),
-//   {footer},
-// )(Footer)
+export default connect(
+  state => ({}),
+  {},
+)(TheFooter)
