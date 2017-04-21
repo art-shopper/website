@@ -1,4 +1,14 @@
-import axios from 'axios'
+/* -------------------<   ACTIONS   >--------------------- */
+
+const AUTHENTICATED = 'AUTHENTICATED'
+
+/* ---------------<   ACTION CREATORS   >------------------- */
+
+export const authenticated = user => ({
+  type: AUTHENTICATED, user
+})
+
+/* -------------------<   REDUCERS   >--------------------- */
 
 const reducer = (state=null, action) => {
   switch (action.type) {
@@ -8,10 +18,8 @@ const reducer = (state=null, action) => {
   return state
 }
 
-const AUTHENTICATED = 'AUTHENTICATED'
-export const authenticated = user => ({
-  type: AUTHENTICATED, user
-})
+/* ------------------<   DISPATCHERS   >-------------------- */
+import axios from 'axios'
 
 export const login = (username, password) =>
   dispatch =>
