@@ -10,6 +10,7 @@ import MyAccount from './components/MyAccount'
 import NotFound from './components/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Login from './components/Login'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -31,6 +32,7 @@ render(
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
         <Route path="/myaccount" component={MyAccount} />
+        <Route path="/login" component={Login} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

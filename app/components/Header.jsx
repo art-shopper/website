@@ -9,9 +9,9 @@ import WhoAmI from './WhoAmI'
 export const Header = (props) => (
   <Navbar brand='art-shopper' right>
     <NavItem href='/'>Categories Dropdown</NavItem>
+    <NavItem href='/'>Login</NavItem>
     <NavItem href='/myaccount'>My Account</NavItem>
     <NavItem href='/'>Cart</NavItem>
-    <NavItem href='/'>Login</NavItem>
     {/*<NavItem href='/'>{props.user ? <WhoAmI/> : <Login/>}</NavItem>*/}
   </Navbar>
 )
