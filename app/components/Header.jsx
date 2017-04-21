@@ -16,7 +16,7 @@ export const Header = ({ user, logout }) => (
       <NavItem><Link to="/login" className="nostyle">Login</Link></NavItem>
     }
     <NavItem><Link to="/account" className="nostyle">My Account</Link></NavItem>
-    <NavItem><Link to="/" className="nostyle">Cart</Link></NavItem>
+    <NavItem><Link to="/cart" className="nostyle">Cart</Link></NavItem>
   </Navbar>
 )
 
