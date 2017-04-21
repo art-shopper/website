@@ -41,7 +41,7 @@ describe('/api/orders', () => {
           .expect(403)
       )))
 
-  describe('POST', () =>
+  describe('POST', () => {
     describe('when not logged in', () => {
       it('creates a order', () =>
         request(app)

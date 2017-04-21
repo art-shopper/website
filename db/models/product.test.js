@@ -51,7 +51,7 @@ describe('Product', () => {
       });
     });
   });
-  describe('class methods', () => {
+  describe.only('class methods', () => {
     describe('getting products', () => {
       it('returns none if offset is too high', () => {
         return Product.findAllWithOffset(3)
@@ -62,7 +62,7 @@ describe('Product', () => {
         .then(products => expect(products).to.be.length(3));
       });
       it('returns all with tag ross', () => {
-        return Product.searchWithOffset(['ross'], 0)
+        return Product.searchWithOffset()
         .then(products => expect(products).to.be.length(3));
       });
       it('returns all with tags ross and trees', () => {

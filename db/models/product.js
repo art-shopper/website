@@ -55,15 +55,17 @@ module.exports = db => db.define('products', {
       return this.findAll({limit: PRODUCT_LIMIT, offset});
     },
     // tags is an array of strings
-    searchWithOffset(tags, offset = 0){
-      return this.findAll({limit: PRODUCT_LIMIT, offset, where: {tags: {$contains: tags}}})
+    searchWithOffset(tags = [], offset = 0){
+      return tags.length !== 0 ? 
+        this.findAll({limit: PRODUCT_LIMIT, offset, where: {tags: {$contains: tags}}}) :
+        this.findAll({limit: PRODUCT_LIMIT, offset});
     }
   },
   instanceMethods: {
     /*****
       Instance methods to get all the products.
     *****/
-    getReviewsWithOffset(offset) {
+    getReviewsWithOffset(offset = 0) {
       return this.getReviews({limit: PRODUCT_REVIEW_LIMIT, offset});
     }
   }

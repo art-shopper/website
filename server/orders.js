@@ -3,7 +3,7 @@
 const db = require('APP/db')
 
 const Order = db.model('orders')
-const OrderItem = db.model('order_items')
+const OrderItem = db.model('orderItems')
 
 const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters')
 
