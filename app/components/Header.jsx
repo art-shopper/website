@@ -7,9 +7,11 @@ import WhoAmI from './WhoAmI'
 /* -------------------<   COMPONENT   >-------------------- */
 
 export const Header = (props) => (
-  <Navbar brand='logo' left>
+  <Navbar brand='art-shopper' right>
+    <NavItem href='/'>Categories Dropdown</NavItem>
+    <NavItem href='/'>My Account</NavItem>
+    <NavItem href='/'>Cart</NavItem>
     <NavItem href='/'>Login</NavItem>
-    <NavItem href='/'>Components</NavItem>
     {/*<NavItem href='/'>{props.user ? <WhoAmI/> : <Login/>}</NavItem>*/}
   </Navbar>
 )

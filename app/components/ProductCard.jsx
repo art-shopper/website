@@ -6,7 +6,7 @@ import {Card, CardTitle} from 'react-materialize'
 const ProductCard = (props) => (
     <Card className='small'
       header={<CardTitle image='assets/sample-1.jpg'>Card Title</CardTitle>}
-      actions={[<a href='#'>This is a Link</a>]}>
+      actions={[<a href='#'>View Details</a>]}>
       I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
     </Card>
 )
