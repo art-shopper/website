@@ -6,7 +6,8 @@
 
 /* -------------------<   ACTIONS   >--------------------- */
 
-// const AUTHENTICATED = 'AUTHENTICATED';
+const SET_LIST = 'SET_LIST';
+const SET_CURRENT_REVIEW = 'SET_CURRENT_REVIEW';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -29,5 +30,14 @@ const reducer = (state = initialState, action) => {
 
 /* ------------------<   DISPATCHERS   >-------------------- */
 import axios from 'axios';
+
+// Fetch all reviews for a product
+
+
+// Fetch all reviews for a user
+
+
+// Fetch a single review
+
 
 export default reducer;

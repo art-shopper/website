@@ -1,6 +1,7 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
-// const AUTHENTICATED = 'AUTHENTICATED';
+const SET_LIST = 'SET_LIST';
+const SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -23,5 +24,11 @@ const reducer = (state = initialState, action) => {
 
 /* ------------------<   DISPATCHERS   >-------------------- */
 import axios from 'axios';
+
+// Fetch all products (with search)
+
+
+// Fetch a single product
+
 
 export default reducer;

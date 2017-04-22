@@ -21,6 +21,7 @@ const reducer = (state=null, action) => {
 /* ------------------<   DISPATCHERS   >-------------------- */
 import axios from 'axios'
 
+// Logging in
 export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/login/local',
@@ -28,12 +29,14 @@ export const login = (username, password) =>
       .then(() => dispatch(whoami()))
       .catch(() => dispatch(whoami()))
 
+// Logging out
 export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
       .then(() => dispatch(whoami()))
       .catch(() => dispatch(whoami()))
 
+// Getting user info
 export const whoami = () =>
   dispatch =>
     axios.get('/api/auth/whoami')
