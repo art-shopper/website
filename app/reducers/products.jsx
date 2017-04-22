@@ -13,7 +13,7 @@ const SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT';
 
 const initialState = {
   list: [],
-  current: {}
+  selected: {}
 };
 
 const reducer = (state = initialState, action) => {
