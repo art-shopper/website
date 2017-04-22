@@ -1,7 +1,14 @@
+/*****
+  Reviews redux set will deal with single and multiple reviews.
+  Single review in state.reviews.selected.
+  Multiple reviews in state.reviews.list.
+*****/
+
 /* -------------------<   ACTIONS   >--------------------- */
 
-const SET_CART_LIST = 'SET_CART_LIST';
-const ADD_ORDER_ITEM ='ADD_ORDER_ITEM';
+const SET_REVIEWS_LIST = 'SET_REVIEWS_LIST';
+const SET_CURRENT_REVIEW = 'SET_CURRENT_REVIEW';
+const ADD_REVIEW = 'ADD_REVIEW';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -12,22 +19,26 @@ const ADD_ORDER_ITEM ='ADD_ORDER_ITEM';
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  list: []
+  list: [],
+  selected: {}
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   }
-  return state
+  return state;
 };
 
 /* ------------------<   DISPATCHERS   >-------------------- */
 import axios from 'axios';
 
-// Add an item to the state (might not need axios for this)
+// Fetch all reviews for a product
 
 
-// Remove an item from the state
+// Fetch all reviews for a user
+
+
+// Fetch a single review
 
 
 export default reducer;

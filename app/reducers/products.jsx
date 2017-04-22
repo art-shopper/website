@@ -1,6 +1,7 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
-const AUTHENTICATED = 'AUTHENTICATED';
+const SET_PRODUCT_LIST = 'SET_PRODUCT_LIST';
+const SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -11,8 +12,10 @@ const AUTHENTICATED = 'AUTHENTICATED';
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  products: ['hello'],
+  list: [],
+  selected: {}
 };
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   }
@@ -21,5 +24,11 @@ const reducer = (state = initialState, action) => {
 
 /* ------------------<   DISPATCHERS   >-------------------- */
 import axios from 'axios';
+
+// Fetch all products (with search)
+
+
+// Fetch a single product
+
 
 export default reducer;
