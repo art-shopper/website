@@ -1,6 +1,6 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
-const AUTHENTICATED = 'AUTHENTICATED'
+// const AUTHENTICATED = 'AUTHENTICATED'
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -11,7 +11,7 @@ const AUTHENTICATED = 'AUTHENTICATED'
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  items: []
+  list: []
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {

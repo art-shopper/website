@@ -1,3 +1,9 @@
+/*****
+  Reviews redux set will deal with single and multiple reviews.
+  Single review in state.reviews.selected.
+  Multiple reviews in state.reviews.list.
+*****/
+
 /* -------------------<   ACTIONS   >--------------------- */
 
 // const AUTHENTICATED = 'AUTHENTICATED';
@@ -11,11 +17,11 @@
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  list: [],
-  current: {}
-};
+  list = [],
+  selected = {}
+}
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
   }
   return state;
