@@ -21,7 +21,7 @@ const initialState = {
   selected: {}
 }
 
-const reducer = (state = [], action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
   }
   return state;
