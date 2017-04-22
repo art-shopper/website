@@ -17,8 +17,8 @@
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  list = [],
-  selected = {}
+  list: [],
+  selected: {}
 }
 
 const reducer = (state = [], action) => {
