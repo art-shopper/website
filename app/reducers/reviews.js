@@ -6,7 +6,7 @@
 
 /* -------------------<   ACTIONS   >--------------------- */
 
-const SET_LIST = 'SET_LIST';
+const SET_REVIEWS_LIST = 'SET_REVIEWS_LIST';
 const SET_CURRENT_REVIEW = 'SET_CURRENT_REVIEW';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
@@ -20,7 +20,7 @@ const SET_CURRENT_REVIEW = 'SET_CURRENT_REVIEW';
 const initialState = {
   list: [],
   selected: {}
-}
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

@@ -1,6 +1,6 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
-// const AUTHENTICATED = 'AUTHENTICATED'
+const SET_CART_LIST = 'SET_CART_LIST';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -12,15 +12,16 @@
 
 const initialState = {
   list: []
-}
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
   }
   return state
-}
+};
 
 /* ------------------<   DISPATCHERS   >-------------------- */
-import axios from 'axios'
+import axios from 'axios';
 
 // Fetch an item for the state (might not need axios for this)
 
@@ -28,4 +29,4 @@ import axios from 'axios'
 // Remove an item from the state
 
 
-export default reducer
+export default reducer;

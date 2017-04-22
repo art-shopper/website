@@ -1,6 +1,6 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
-const SET_LIST = 'SET_LIST';
+const SET_PRODUCT_LIST = 'SET_PRODUCT_LIST';
 const SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
