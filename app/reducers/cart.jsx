@@ -1,6 +1,7 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
 const SET_CART_LIST = 'SET_CART_LIST';
+const ADD_ORDER_ITEM ='ADD_ORDER_ITEM';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -23,7 +24,7 @@ const reducer = (state = initialState, action) => {
 /* ------------------<   DISPATCHERS   >-------------------- */
 import axios from 'axios';
 
-// Fetch an item for the state (might not need axios for this)
+// Add an item to the state (might not need axios for this)
 
 
 // Remove an item from the state
