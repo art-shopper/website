@@ -10,6 +10,7 @@ import MyAccount from './components/MyAccount'
 import NotFound from './components/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Products from './components/Products'
 import ProductViewPage from './components/ProductViewPage'
 import Login from './components/Login'
 import Cart from './components/Cart'
@@ -34,7 +35,8 @@ render(
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/products" component={ProductViewPage} />
+        <Route path="/products" component={Product} />
+        <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
