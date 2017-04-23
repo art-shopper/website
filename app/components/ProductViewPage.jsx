@@ -25,7 +25,7 @@ const ProductViewPage = props => (
           <Collection>
             <CollectionItem>year</CollectionItem>
             <CollectionItem>description</CollectionItem>
-            <Button right>Add a review</Button>
+            <Button>Add a review</Button>
             <CollectionItem>Review 1</CollectionItem>
             <CollectionItem>Review 2</CollectionItem>
             <CollectionItem>Review 3</CollectionItem>
@@ -38,10 +38,10 @@ const ProductViewPage = props => (
           <CollectionItem>price</CollectionItem>
           <CollectionItem>
             <label>
-              Quantity: <Button floating small className='red' waves='light' icon='add' />
+              Quantity: <Button floating className='red' waves='light' icon='add' />
             </label>
           </CollectionItem>
-          <Button right>Add a review</Button>
+          <Button>Add a review</Button>
         </Collection>
       </Col>
     </Row>
