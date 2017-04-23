@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import ProductViewPage from './components/ProductViewPage'
 import Login from './components/Login'
 import Cart from './components/Cart'
+import OrderItems from './components/OrderItems'
 
 
 const ExampleApp = connect(
@@ -36,6 +37,7 @@ render(
         <Route path="/home" component={Home} />
         <Route path="/products" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
+        <Route path="/orders/1" component={OrderItems} />
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
       </Route>
