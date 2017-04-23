@@ -5,7 +5,7 @@ import { Card, CardTitle } from 'react-materialize';
 
 const ProductCard = props => (
   <Card
-    className="small"
+    className="small hoverable"
     header={<CardTitle image="assets/sample-1.jpg">Card Title</CardTitle>}
     actions={[<a href="#">View Details</a>]}
   >
