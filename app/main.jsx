@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import ProductViewPage from './components/ProductViewPage'
 import Login from './components/Login'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
 import OrderItems from './components/OrderItems'
 
 
@@ -40,6 +41,7 @@ render(
         <Route path="/orders/1" component={OrderItems} />
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

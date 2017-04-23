@@ -1,5 +1,5 @@
 import React from 'react'
-import {} from 'react-materialize'
+import {Input} from 'react-materialize'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
@@ -49,7 +49,7 @@ const Checkout = (props) => (
         browserHistory.push('/')
       } }>
         <Input name="email" label="Email" s={12}  />
-        <Input name="address" label="Address" type="address" s={12} />
+        <Input name="address" label="Address" s={12} />
         <Input type="submit" value="Finish Checkout" />
       </form>
 

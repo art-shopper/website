@@ -7,6 +7,7 @@ const OrderItems = (props) => (
     <div className="container">
      <p className="caption"> Order #13401591 </p>
      <p className="caption"> Order Date: 04/10/2017, 7:40pm </p>
+     <p className="caption"> Order Status: Shipped </p>
       <table>
         <thead>
           <tr>
@@ -44,6 +45,7 @@ const OrderItems = (props) => (
       </table>
 
       <p className="caption"> Total price: $10.67 </p>
+
     </div>
 )
 
