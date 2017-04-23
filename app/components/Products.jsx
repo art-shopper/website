@@ -8,11 +8,11 @@ const ProductsPage = (props) => (
   <div className="container">
     <Row>
       { 
-        props.products && props.products.map(product => {
+        props.products && props.products.map(product => (
           <Col s={4} className='grid-example' key={product.id}>
             <ProductCard product={product}/>
           </Col>
-        })
+        ))
       }
     </Row>
   </div>

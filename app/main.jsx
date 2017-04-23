@@ -50,7 +50,9 @@ const mapProps = null;
 
 const mapDispatch = dispatch => ({
   onProductsEnter:  (nextRouterState) => {
-    console.log(nextRouterState.query);
+    //console.log(nextRouterState.location.query);
+    dispatch(fetchProducts(nextRouterState.location.query.search,
+                            nextRouterState.location.query.offset));
   }
 })
 
