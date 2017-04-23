@@ -14,6 +14,8 @@ import Products from './components/Products'
 import ProductViewPage from './components/ProductViewPage'
 import Login from './components/Login'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
+import SingleOrder from './components/SingleOrder'
 
 import {fetchProducts} from './reducers/products';
 
@@ -39,8 +41,10 @@ const RoutesComponent = ({onProductsEnter}) => (
         <Route path="/products" component={Products} onEnter={onProductsEnter}/>
         <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
+        <Route path="/orders/1" component={SingleOrder} />
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

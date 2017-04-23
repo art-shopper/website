@@ -9,6 +9,7 @@ import WhoAmI from './WhoAmI'
 
 export const Header = ({ user, logout }) => (
   <Navbar brand='art-shopper' right>
+    <NavItem><Link to="/" className="nostyle">Home</Link></NavItem>
     <NavItem><Link to="/" className="nostyle">Categories</Link></NavItem>
     {
       user ?
