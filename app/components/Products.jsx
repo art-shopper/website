@@ -19,11 +19,11 @@ const ProductsPage = (props) => (
 );
 
 /* -------------------<   CONTAINER   >-------------------- */
-
+  
 import {connect} from 'react-redux';
 
 export default connect(
-  {products} => ({
+  ({products}) => ({
       products: products.list
     })
 )(ProductsPage);

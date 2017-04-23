@@ -15,8 +15,10 @@ import ProductViewPage from './components/ProductViewPage'
 import Login from './components/Login'
 import Cart from './components/Cart'
 
+import {fetchProducts} from './reducers/products';
 
-const ExampleApp = connect(
+
+const App = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
@@ -29,13 +31,12 @@ const ExampleApp = connect(
     </div>
 )
 
-render(
-  <Provider store={store}>
+const RoutesComponent = ({onProductsEnter}) => (
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={App}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/products" component={Products} />
+        <Route path="/products" component={Products} onEnter={onProductsEnter}/>
         <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
         <Route path="/login" component={Login} />
@@ -43,6 +44,23 @@ render(
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
+)
+
+const mapProps = null;
+
+const mapDispatch = dispatch => ({
+  onProductsEnter:  (nextRouterState) => {
+    console.log(nextRouterState.query);
+  }
+})
+
+const Routes = connect(mapProps, mapDispatch)(RoutesComponent);
+
+render(
+  <Provider store={store}>
+    <Routes />
   </Provider>,
   document.getElementById('main')
 )
+
+
