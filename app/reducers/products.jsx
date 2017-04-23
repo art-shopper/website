@@ -5,9 +5,9 @@ const SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
-// export const authenticated = user => ({
-//   type: AUTHENTICATED, user
-// })
+export const setProducts = products => ({
+  type: SET_PRODUCT_LIST, products
+})
 
 /* -------------------<   REDUCERS   >--------------------- */
 
@@ -26,7 +26,11 @@ const reducer = (state = initialState, action) => {
 import axios from 'axios';
 
 // Fetch all products (with search)
-
+export const fetchProducts = dispatch => {
+  axios.get('/api/products')
+    .then(products => dispatch(setProducts(products)))
+    .catch(err => console.log(err)) // TODO: real err handling
+};
 
 // Fetch a single product
 
