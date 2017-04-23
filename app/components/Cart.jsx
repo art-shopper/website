@@ -43,7 +43,7 @@ const Cart = (props) => (
         </tbody>
       </table>
 
-      <Button><Link to="/checkout">Checkout</Link></Button>
+      <Button><Link to="/checkout" style={{color:'white'}}>Checkout</Link></Button>
     </div>
 )
 
