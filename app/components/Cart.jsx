@@ -1,5 +1,5 @@
 import React from 'react'
-import {} from 'react-materialize'
+import {Button} from 'react-materialize'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
@@ -41,6 +41,8 @@ const Cart = (props) => (
           </tr>
         </tbody>
       </table>
+
+      <Button><Link to="/">Checkout</Link></Button>
     </div>
 )
 

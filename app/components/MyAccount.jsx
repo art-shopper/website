@@ -12,7 +12,7 @@ const MyAccount = (props) => (
     <Row>
       <p className="caption"> My Orders </p>
         <Collection>
-          <CollectionItem href='#'><Link to="/orders/1" className="nostyle">Order #13401591</Link></CollectionItem>
+          <CollectionItem href='#'><Link to="/orders/1">Order #13401591</Link></CollectionItem>
           <CollectionItem href='#'>Order #13401592</CollectionItem>
           <CollectionItem href='#'>Order #13401593</CollectionItem>
           <CollectionItem href='#'>Order #13401594</CollectionItem>
