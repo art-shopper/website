@@ -10,12 +10,15 @@ import MyAccount from './components/MyAccount'
 import NotFound from './components/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Products from './components/Products'
 import ProductViewPage from './components/ProductViewPage'
 import Login from './components/Login'
 import Cart from './components/Cart'
 
+import {fetchProducts} from './reducers/products';
 
-const ExampleApp = connect(
+
+const App = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
@@ -28,19 +31,38 @@ const ExampleApp = connect(
     </div>
 )
 
-render(
-  <Provider store={store}>
+const RoutesComponent = ({onProductsEnter}) => (
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={App}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/products" component={ProductViewPage} />
+        <Route path="/products" component={Products} onEnter={onProductsEnter}/>
+        <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
+)
+
+const mapProps = null;
+
+const mapDispatch = dispatch => ({
+  onProductsEnter:  (nextRouterState) => {
+    //console.log(nextRouterState.location.query);
+    dispatch(fetchProducts(nextRouterState.location.query.search,
+                            nextRouterState.location.query.offset));
+  }
+})
+
+const Routes = connect(mapProps, mapDispatch)(RoutesComponent);
+
+render(
+  <Provider store={store}>
+    <Routes />
   </Provider>,
   document.getElementById('main')
 )
+
+
