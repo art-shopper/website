@@ -41,9 +41,19 @@ export const fetchReviews = () => dispatch => {
 };
 
 // Fetch all reviews for a user
-
+export const fetchUserReviews = (userId) => dispatch => {
+  axios.get(`/api/users/{userId}/reviews`)
+  .then(res => res.data)
+  .then(reviews => dispatach(setReviews(reviews)))
+  .catch(err => console.log(err))
+};
 
 // Fetch a single review
-
+export const fetchReview = (reviewId) => dispatch => {
+  axios.get(`/api/reviews/reviewId`)
+  .then(res => res.data)
+  .then(review => dispatch(setReview(review)))
+  .catch(err => console.log(err))
+};
 
 export default reducer;
