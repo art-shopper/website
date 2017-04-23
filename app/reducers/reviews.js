@@ -33,7 +33,12 @@ const reducer = (state = initialState, action) => {
 import axios from 'axios';
 
 // Fetch all reviews for a product
-
+export const fetchReviews = () => dispatch => {
+  axios.get(`/api/reviews`)
+  .then(res => res.data)
+  .then(reviews => dispatach(setReviews(reviews)))
+  .catch(err => console.log(err))
+};
 
 // Fetch all reviews for a user
 
