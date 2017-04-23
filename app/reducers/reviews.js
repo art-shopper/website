@@ -12,10 +12,17 @@ const ADD_REVIEW = 'ADD_REVIEW';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
-// export const authenticated = user => ({
-//   type: AUTHENTICATED, user
-// })
+export const setReviews = reviews => ({
+  type: SET_REVIEWS_LIST, reviews
+})
 
+export const setReview = review => ({
+  type: SET_CURRENT_REVIEW, review
+})
+
+export const addReview = review => ({
+  type: ADD_REVIEW, review
+})
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
@@ -25,6 +32,15 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_CURRENT_REVIEW:
+      return Object.assign({}, state, {
+        selected: action.reviews
+      });
+    case SET_REVIEWS_LIST:
+      return Object.assing({}, state, {
+        list: action.reviews
+      });
+      //do we need case for Add Review??
   }
   return state;
 };
@@ -36,7 +52,7 @@ import axios from 'axios';
 export const fetchReviews = () => dispatch => {
   axios.get(`/api/reviews`)
   .then(res => res.data)
-  .then(reviews => dispatach(setReviews(reviews)))
+  .then(reviews => dispatch(setReviews(reviews)))
   .catch(err => console.log(err))
 };
 
@@ -44,7 +60,7 @@ export const fetchReviews = () => dispatch => {
 export const fetchUserReviews = (userId) => dispatch => {
   axios.get(`/api/users/{userId}/reviews`)
   .then(res => res.data)
-  .then(reviews => dispatach(setReviews(reviews)))
+  .then(reviews => dispatch(setReviews(reviews)))
   .catch(err => console.log(err))
 };
 
@@ -55,5 +71,12 @@ export const fetchReview = (reviewId) => dispatch => {
   .then(review => dispatch(setReview(review)))
   .catch(err => console.log(err))
 };
+
+//add a review
+export const postReview = (review) => dispatch => {
+  axios.post(`/api/users/{userId}/reviews`, review)
+  .then(res => console.log("Review Posted"))
+  .catch(err => console.log(err));
+}
 
 export default reducer;
