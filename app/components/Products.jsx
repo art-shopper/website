@@ -1,23 +1,29 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Row, Col} from 'react-materialize';
+import ProductCard from './ProductCard';
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const ProductPage = (props) => (
+const ProductsPage = (props) => (
   <div className="container">
     <Row>
-      <Col s={4} className='grid-example' key='1'> <ProductCard /> </Col>
-      <Col s={4} className='grid-example' key='2'> <ProductCard /> </Col>
-      <Col s={4} className='grid-example' key='3'> <ProductCard /> </Col>
-      <Col s={4} className='grid-example' key='1'> <ProductCard /> </Col>
-      <Col s={4} className='grid-example' key='2'> <ProductCard /> </Col>
-       <Col s={4} className='grid-example' key='3'> <ProductCard /> </Col>
+      { 
+        props.products && props.products.map(product => {
+          <Col s={4} className='grid-example' key={product.id}>
+            <ProductCard product={product}/>
+          </Col>
+        })
+      }
     </Row>
   </div>
-)
+);
 
 /* -------------------<   CONTAINER   >-------------------- */
 
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 
 export default connect(
-)(ProductPage)
+  {products} => ({
+      products: products.list
+    })
+)(ProductsPage);
