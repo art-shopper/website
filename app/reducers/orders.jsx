@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
       })
     case SET_ORDERS_LIST:
       return Object.assign({}, state, {
-        list: action.order
+        list: action.orders
       })
   }
   return state;
@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
 import axios from 'axios';
 
 // Fetch all orders (for the current user)
-export const getUserOrder = (userId) => dispatch => {
+export const getUserOrders = (userId) => dispatch => {
   axios.get(`/api/users/${userId}/orders`)
     .then(res => res.data)
     .then(orders => dispatch(allOrders(orders)))

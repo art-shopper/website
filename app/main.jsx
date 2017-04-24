@@ -19,12 +19,7 @@ import SingleOrder from './components/SingleOrder'
 import SingleReview from './components/SingleReview'
 
 import {fetchProducts, fetchHomeProducts} from './reducers/products';
-
-// browserHistory.listen(location => {
-//   console.log(location.query);
-//   store.dispatch(fetchProducts(location.query.search,
-//                                location.query.offset))
-// })
+import {getUserOrders} from './reducers/orders';
 
 const App = connect(
   ({ auth }) => ({ user: auth })
@@ -39,14 +34,14 @@ const App = connect(
     </div>
 )
 
-const RoutesComponent = ({onProductsEnter, onHomeEnter}) => (
+const RoutesComponent = ({onProductsEnter, onHomeEnter, onAccountEnter}) => (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onHomeEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} onChange={onProductsEnter} />
         <Route path="/products/:id" component={ProductViewPage} />
-        <Route path="/account" component={MyAccount} />
+        <Route path="/account" component={MyAccount} onEnter={onAccountEnter}/>
         <Route path="/orders/1" component={SingleOrder} />
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
@@ -59,7 +54,7 @@ const RoutesComponent = ({onProductsEnter, onHomeEnter}) => (
 
 const mapProps = null;
 
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch, ownProps) => ({
   onProductsEnter:  (nextRouterState) => {
     const queries = browserHistory.getCurrentLocation().query;
     dispatch(fetchProducts(queries.search,
@@ -67,10 +62,17 @@ const mapDispatch = dispatch => ({
   },
   onHomeEnter: (nextRouterState) => {
     dispatch(fetchHomeProducts());
+  },
+  onAccountEnter: (nextRouterState) => {
+    // TODO: FIX THIS
+    // console.log(nextRouterState)
+    if(store.getState().auth) dispatch(getUserOrders(store.getState().auth.id))
+    // if(ownProps.auth) dispatch(getUserOrders(ownProps.auth.id));
   }
 })
 
 const Routes = connect(mapProps, mapDispatch)(RoutesComponent);
+
 
 render(
   <Provider store={store}>

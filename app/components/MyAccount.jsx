@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 
 import {Row, Col, Collection, CollectionItem} from 'react-materialize'
 
-import ProductCard from './ProductCard'
+import Orders from './Orders'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
@@ -11,12 +11,7 @@ const MyAccount = (props) => (
   <div className="container">
     <Row>
       <p className="caption"> My Orders </p>
-        <Collection>
-          <CollectionItem href='#'><Link to="/orders/1">Order #13401591</Link></CollectionItem>
-          <CollectionItem href='#'>Order #13401592</CollectionItem>
-          <CollectionItem href='#'>Order #13401593</CollectionItem>
-          <CollectionItem href='#'>Order #13401594</CollectionItem>
-        </Collection>
+        <Orders orders={props.orders}/>
     </Row>
     <Row>
       <p className="caption"> My Reviews </p>
@@ -36,4 +31,5 @@ const MyAccount = (props) => (
 import {connect} from 'react-redux'
 
 export default connect(
+  ({orders}) => ({orders: orders.list})
 )(MyAccount)
