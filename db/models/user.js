@@ -50,7 +50,7 @@ module.exports = db => db.define('users', {
 module.exports.associations = (User, {OAuth, Order, Review}) => {
   User.hasOne(OAuth)
   User.hasMany(Order)
-  User.hasMany(Review)
+  User.hasMany(Review, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
 
 }
 

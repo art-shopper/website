@@ -41,7 +41,7 @@ import axios from 'axios';
 
 // Fetch all products (with search)
 export const fetchProducts = (searchStr, offset) => dispatch => {
-  axios.get('/api/products')
+  axios.get(`/api/products?searchStr=${searchStr || ''}&offset=${offset || 0}`)
     .then(res => res.data)
     .then(products => dispatch(setProducts(products)))
     .catch(err => console.log(err)) // TODO: real err handling

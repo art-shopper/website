@@ -30,5 +30,5 @@ module.exports = db => db.define('reviews', {
 
 module.exports.associations = (Review, {User, Product}) => {
   Review.belongsTo(User, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
-  // Review.belongsTo(Product, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
+  Review.belongsTo(Product, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
 };
