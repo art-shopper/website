@@ -16,6 +16,7 @@ import Login from './components/Login'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleOrder from './components/SingleOrder'
+import Signup from './components/Signup'
 import SingleReview from './components/SingleReview'
 
 import {fetchProducts, fetchHomeProducts} from './reducers/products';
@@ -49,6 +50,7 @@ const RoutesComponent = ({onProductsEnter, onHomeEnter}) => (
         <Route path="/account" component={MyAccount} />
         <Route path="/orders/1" component={SingleOrder} />
         <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/reviews/:id" component={SingleReview} />
@@ -78,5 +80,3 @@ render(
   </Provider>,
   document.getElementById('main')
 )
-
-
