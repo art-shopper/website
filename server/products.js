@@ -7,12 +7,13 @@ const Product = db.model('products');
 const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters');
 
 module.exports = require('express').Router()
-  // get a number of products based on offset
+  // get a number of products based on offset and search
   .get('/',
     (req, res, next) =>
-      Product.searchWithOffset(req.query.search, req.query.offset)
+{   console.log(req.query);   
+    return Product.searchWithOffset(req.query.searchStr, +req.query.offset)
         .then(products => res.json(products))
-        .catch(next))
+        .catch(next)})
   // get up to 6 products for the front page
   // TODO: get top bought products?
   .get('/homepage',
