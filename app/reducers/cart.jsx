@@ -53,6 +53,10 @@ export const addToCart = product => dispatch(addProduct(product));
 export const removeItem = product => dispatch(deleteItem(product));
 
 //Submit an order which should clear the state
-export const placeOrder = order => dispatch(submitOrder(order));
+export const placeOrder = order => dispatch => {
+  axios.post(`/api/orders`, order)
+  .then(res => res.data)
+  .then(newOrder => dispatch(submitOrder(newOrder)))
+}
 
 export default reducer;
