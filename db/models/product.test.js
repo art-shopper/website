@@ -29,12 +29,6 @@ describe('Product', () => {
       .then(() => product3.createReview({title: 'buyer beware!!!', text: 'BOB ROSS IS ALMOST AS COOL AS OMRI', rating: 1}));
   });
 
-  // describe.only('validations', () => {
-  //   it('validates product tags', () => {
-  //     Product.create({title:"joe", quantity: 2, description: "??"})).to.throw('Validation error');
-  //   })
-  // })
-
   describe('instance methods', () => {
     describe('reviews', () => {
       it('returns none if there are no reviews', () => {

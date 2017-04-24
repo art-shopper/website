@@ -41,7 +41,7 @@ import axios from 'axios';
 
 // Fetch all products (with search)
 export const fetchProducts = (searchStr, offset) => dispatch => {
-  axios.get('/api/products')
+  return axios.get(`/api/products?searchStr=${searchStr || ''}&offset=${offset || 0}`)
     .then(res => res.data)
     .then(products => dispatch(setProducts(products)))
     .catch(err => console.log(err)) // TODO: real err handling
@@ -49,7 +49,7 @@ export const fetchProducts = (searchStr, offset) => dispatch => {
 
 // Fetch a single product
 export const fetchProduct = (productId) => dispatch => {
-  axios.get(`/api/products/${productId}`)
+  return axios.get(`/api/products/${productId}`)
     .then(res => res.data)
     .then(product => dispatch(setProduct(product)))
     .catch(err => console.log(err)) // TODO: real err handling
@@ -57,7 +57,7 @@ export const fetchProduct = (productId) => dispatch => {
 
 // Fetch products for home page
 export const fetchHomeProducts = () => dispatch => {
-  axios.get('/api/products/homepage')
+  return axios.get('/api/products/homepage')
     .then(res => res.data)
     .then(products => dispatch(setProducts(products)))
     .catch(err => console.log(err)) // TODO: real err handling
