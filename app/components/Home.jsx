@@ -8,12 +8,13 @@ import ProductCard from './ProductCard'
 const Home = (props) => (
   <div className="container">
     <Row>
-       <Col s={12} m={6} l={4} className='grid-example' key='1'> <ProductCard /> </Col>
-       <Col s={12} m={6} l={4} className='grid-example' key='2'> <ProductCard /> </Col>
-       <Col s={12} m={6} l={4} className='grid-example' key='3'> <ProductCard /> </Col>
-       <Col s={12} m={6} l={4} className='grid-example' key='4'> <ProductCard /> </Col>
-       <Col s={12} m={6} l={4} className='grid-example' key='5'> <ProductCard /> </Col>
-       <Col s={12} m={6} l={4} className='grid-example' key='6'> <ProductCard /> </Col>
+      { 
+        props.products && props.products.map(product => (
+          <Col s={12} m={6} l={4} className='grid-example' key={product.id}>
+            <ProductCard product={product}/>
+          </Col>
+        ))
+      }
     </Row>
   </div>
 )
@@ -23,4 +24,7 @@ const Home = (props) => (
 import {connect} from 'react-redux'
 
 export default connect(
+  ({products}) => ({
+      products: products.list
+    })
 )(Home)
