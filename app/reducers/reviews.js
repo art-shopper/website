@@ -37,10 +37,13 @@ const reducer = (state = initialState, action) => {
         selected: action.reviews
       });
     case SET_REVIEWS_LIST:
-      return Object.assing({}, state, {
+      return Object.assign({}, state, {
         list: action.reviews
       });
-      //do we need case for Add Review??
+    case ADD_REVIEW:
+      return Object.assign({}, state, {
+        list: [action.review, ... state.list]
+      });
   }
   return state;
 };
@@ -76,6 +79,7 @@ export const fetchReview = (reviewId) => dispatch => {
 export const postReview = (review) => dispatch => {
   axios.post(`/api/users/{userId}/reviews`, review)
   .then(res => console.log("Review Posted"))
+  .then(review => dispatch(addReview(review)))
   .catch(err => console.log(err));
 }
 
