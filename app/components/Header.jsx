@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router'
 import {Navbar, NavItem} from 'react-materialize'
+import {browserHistory} from 'react-router'
 
 import Login from './Login'
 import WhoAmI from './WhoAmI'
@@ -10,7 +11,20 @@ import WhoAmI from './WhoAmI'
 export const Header = ({ user, logout }) => (
   <Navbar brand='art-shopper' right>
     <NavItem><Link to="/" className="nostyle">Home</Link></NavItem>
-    <NavItem><Link to="/" className="nostyle">Categories</Link></NavItem>
+    <NavItem>
+      <form onSubmit={ (evt) => {
+        evt.preventDefault();
+        browserHistory.push(
+          `products?search=${evt.target.search.value}`);
+      }}>
+        <div className="input-field">
+          <input id="search" type="search" name="search" />
+          <label className="label-icon" htmlFor="search">
+            <i className="material-icons">search</i>
+          </label>
+        </div>
+      </form>
+    </NavItem>
     {
       user ?
       <NavItem onClick={logout}><Link to="/" className="nostyle">Logout {user && user.first_name + " " + user.last_name}</Link></NavItem> :
