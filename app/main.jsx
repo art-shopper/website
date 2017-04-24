@@ -37,7 +37,7 @@ const RoutesComponent = ({onProductsEnter}) => (
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} />
         <Route path="/products" component={Products} onEnter={onProductsEnter}/>
-        <Route path="/product/:id" component={ProductViewPage} />
+        <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
