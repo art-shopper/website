@@ -1,0 +1,52 @@
+#main-container {
+  min-height: 70vh;
+}
+
+.nostyle {
+  text-decoration: none;
+  background-color: transparent !important;
+  border: 0;
+}
+
+#nav-mobile {
+  background-color: sandybrown;
+  padding-top: 25px;
+}
+
+[type="radio"]:checked + label {
+  position: relative;
+  padding-left: 5px; /* changed due to star review needs */
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  font-size: 1rem;
+  transition: .28s ease;
+  /* webkit (konqueror) browsers */
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+[type="radio"] + label:after {
+  /*content: '';*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 4px;
+  width: 16px;
+  height: 16px;
+  z-index: 0;
+  transition: .28s ease;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+  height: 35px;
+}
+
+.height {
+  height: 300px;
+}
