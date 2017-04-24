@@ -1,17 +1,18 @@
 'use strict'
 
 const db = require('APP/db')
-    , {User, Product, Review, Promise} = db
+    , {User, Product, Review, Order, OrderItem, Promise} = db
     , {mapValues} = require('lodash')
 
 function seedEverything() {
   const seeded = {
     users: users(),
     products: products(),
-    reviews: reviews(),
   }
 
-  // seeded.favorites = favorites(seeded)
+  seeded.reviews = reviews(seeded)
+  seeded.orders = orders(seeded)
+  seeded.orderItems = orderItems(seeded)
 
   return Promise.props(seeded)
 }
@@ -102,65 +103,124 @@ const products = seed(Product, {
     quantity: 1,
     tags: ['famous', 'yellow', 'untitled', 'wow']
   },
-
 })
 
-const reviews = seed(Review, {
-  review1: {
-    title: 'Painting 1',
-    text: 'Nice Painting! Definetely worth the price!!',
-    rating: 5,
-    product_id: 1,
-    user_id: 1
-  },
-  review2: {
-    title: 'Painting 2',
-    text: 'This painting is a great painting by Pablo Picasso.',
-    rating: 3,
-    product_id: 2,
-    user_id: 1
-  },
+const reviews = seed(Review,
+  // We're specifying a function here, rather than just a rows object.
+  // Using a function lets us receive the previously-seeded rows (the seed
+  // function does this wiring for us).
+  ({users, products}) => ({
+    review1: {
+      title: 'Wow awesome painting',
+      text: 'Nice Painting! Definitely worth the price!! I love how peaceful this is.',
+      rating: 5,
+      product_id: products.painting1.id,
+      user_id: users.omri.id
+    },
+    review2: {
+      title: 'Great lake but bad shipping',
+      text: 'This lake is so beautifully represented. But the edges of the painting were kind of frayed when I received it.',
+      rating: 3,
+      product_id: products.painting2.id,
+      user_id: users.yoonahbrow.id
+    },
     review3: {
-    title: 'Painting 2',
-    text: 'What is this painting? I do not know why I purchased it',
-    rating: 2,
-    product_id: 1,
-    user_id: 2
-  }
-})
+      title: 'Why did I do this...',
+      text: 'What is this painting? I do not know why I purchased it.',
+      rating: 2,
+      product_id: products.painting6.id,
+      user_id: users.omri.id
+    },
+    review4: {
+      title: 'I really really like this painting',
+      text: 'Sometimes I cry because this painting is so beautiful.',
+      rating: 2,
+      product_id: products.painting5.id,
+      user_id: users.yoonahbrow.id
+    }
+  })
+)
 
-// const favorites = seed(Favorite,
-//   // We're specifying a function here, rather than just a rows object.
-//   // Using a function lets us receive the previously-seeded rows (the seed
-//   // function does this wiring for us).
-//   //
-//   // This lets us reference previously-created rows in order to create the join
-//   // rows. We can reference them by the names we used above (which is why we used
-//   // Objects above, rather than just arrays).
-//   ({users, products}) => ({
-//     // The easiest way to seed associations seems to be to just create rows
-//     // in the join table.
-//     'obama loves surfing': {
-//       user_id: users.barack.id,    // users.barack is an instance of the User model
-//                                    // that we created in the user seed above.
-//                                    // The seed function wires the promises so that it'll
-//                                    // have been created already.
-//       thing_id: products.surfing.id  // Same thing for products.
-//     },
-//     'god is into smiting': {
-//       user_id: users.god.id,
-//       thing_id: products.smiting.id
-//     },
-//     'obama loves puppies': {
-//       user_id: users.barack.id,
-//       thing_id: products.puppies.id
-//     },
-//     'god loves puppies': {
-//       user_id: users.god.id,
-//       thing_id: products.puppies.id
-//     },
-//   })
-// )
+const orders = seed(Order,
+  ({users}) => ({
+    order1: {
+      id: 13401591,
+      email: 'omri@omri.omri',
+      status: 'shipped',
+      user_id: users.omri.id
+    },
+    order2: {
+      id: 13401592,
+      email: 'omri@omri.omri',
+      status: 'ordered',
+      user_id: users.omri.id
+    },
+    order3: {
+      id: 13401593,
+      email: 'yuna@luna.luna',
+      status: 'delivered',
+      user_id: users.omri.id
+    },
+    order4: {
+      id: 13401594,
+      email: 'yuna@luna.luna',
+      status: 'lost in delivery',
+      user_id: users.yoonahbrow.id
+    },
+    order5: {
+      id: 13401595,
+      email: 'guest@guest.com',
+      status: 'ordered',
+    },
+  })
+)
+
+const orderItems = seed(OrderItem,
+  ({products}) => ({
+    order1item1: {
+      order_id: 13401591,
+      product_id: products.painting1.id,
+      quantity: 1,
+      current_price: 2400000,
+    },
+    order1item2: {
+      order_id: 13401591,
+      product_id: products.painting2.id,
+      quantity: 1,
+      current_price: 4303400,
+    },
+    order1item3: {
+      order_id: 13401591,
+      product_id: products.painting3.id,
+      quantity: 1,
+      current_price: 3000000,
+    },
+    order2item1: {
+      order_id: 13401592,
+      product_id: products.painting1.id,
+      quantity: 1,
+      current_price: 2400000,
+    },
+    order3item1: {
+      order_id: 13401593,
+      product_id: products.painting3.id,
+      quantity: 1,
+      current_price: 4303400,
+    },
+    order4item1: {
+      order_id: 13401594,
+      product_id: products.painting4.id,
+      quantity: 1,
+      current_price: 9800000,
+    },
+    order5item1: {
+      order_id: 13401595,
+      product_id: products.painting6.id,
+      quantity: 1,
+      current_price: 14000000,
+    },
+  })
+)
 
 if (module === require.main) {
   db.didSync
@@ -230,4 +290,4 @@ function seed(Model, rows) {
   }
 }
 
-module.exports = Object.assign(seed, {users, products, reviews})
+module.exports = Object.assign(seed, {users, products, reviews, orders, orderItems})
