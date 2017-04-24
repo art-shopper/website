@@ -10,7 +10,7 @@ const Home = (props) => (
     <Row>
       { 
         props.products && props.products.map(product => (
-          <Col s={4} className='grid-example' key={product.id}>
+          <Col s={12} m={6} l={4} className='grid-example' key={product.id}>
             <ProductCard product={product}/>
           </Col>
         ))
