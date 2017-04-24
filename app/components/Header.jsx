@@ -14,6 +14,7 @@ export const Header = ({ user, logout }) => (
     <NavItem>
       <form onSubmit={ (evt) => {
         evt.preventDefault();
+        // OB/YP: instead of changing URL, consider dispatching to store instead
         browserHistory.push(
           `products?search=${evt.target.search.value}`);
       }}>

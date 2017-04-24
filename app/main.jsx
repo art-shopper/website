@@ -19,6 +19,7 @@ import SingleOrder from './components/SingleOrder'
 
 import {fetchProducts, fetchHomeProducts} from './reducers/products';
 
+// OB/YP: zombie code, bury it
 // browserHistory.listen(location => {
 //   console.log(location.query);
 //   store.dispatch(fetchProducts(location.query.search,

@@ -26,6 +26,8 @@ const initialState = {
   selected: {}
 };
 
+// OB/YP: could combine reducers here
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCT_LIST:
@@ -40,6 +42,7 @@ const reducer = (state = initialState, action) => {
 import axios from 'axios';
 
 // Fetch all products (with search)
+// OB/YP: consider default values (or maybe that's not working)
 export const fetchProducts = (searchStr, offset) => dispatch => {
   return axios.get(`/api/products?searchStr=${searchStr || ''}&offset=${offset || 0}`)
     .then(res => res.data)
