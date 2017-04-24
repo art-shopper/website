@@ -4,15 +4,15 @@ import { Card, CardTitle } from 'react-materialize';
 /* -------------------<   COMPONENT   >-------------------- */
 
 const ProductCard = props => (
-  <Card
-    className="small hoverable"
-    header={<CardTitle image="assets/sample-1.jpg">Card Title</CardTitle>}
-    actions={[<a href="#">View Details</a>]}
-  >
-    I am a very simple card. I am good at containing small bits of information.
-    I am convenient because I require little markup to use effectively.
+  <Card header={<CardTitle reveal image={"https://s-media-cache-ak0.pinimg.com/originals/02/6c/47/026c47ad36933184efcb93dc5767d63b.jpg"} waves='light'/>}
+    title="Peaceful Reflections"
+    reveal={<p>One of Bob's favorite paintings.
+    Tags: mountains, trees, clouds</p>}>
+    <p><a href="/products/1">View Details</a></p>
   </Card>
 );
+
+
 
 /* -------------------<   CONTAINER   >-------------------- */
 
