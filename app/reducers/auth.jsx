@@ -45,7 +45,7 @@ export const logout = () => dispatch =>
 
 export const signup = credentials => dispatch => {
   return axios
-    .post('/api/auth/login/local', credentials)
+    .post('/api/auth/signup', credentials)
     .then(res => res.data)
     .then(user => {
       dispatch(create(user)); // so new user appears in our master list
@@ -56,7 +56,7 @@ export const signup = credentials => dispatch => {
 
 export const signupAndGoToUser = credentials => dispatch => {
   dispatch(signup(credentials))
-    .then(user => browserHistory.push(`/users/${user.id}`))
+    .then(user => browserHistory.push('/'))
     .catch(err => console.error('Problem signing up:', err));
 };
 

@@ -20,23 +20,15 @@ class Signup extends React.Component {
           <div>
             <div>
               <form onSubmit={this.onSignupSubmit}>
-                <div>
-                  <Input placeholder="First Name" type="first_name"s={12} label="First Name" />
-                </div>
-                <div>
-                  <Input placeholder="Last Name" type="last_name" s={12} label="Last Name" />
-                </div>
-                <div>
-                  <Input label="email" name="email" type="email" s={12} required />
-                </div>
-                <div>
-                  <Input label="password" name="password" type="password" s={12} required />
-                </div>
+                <Input label="First Name" name="first_name" type="text" s={12} required />
+                <Input label="Last Name" name="last_name" type="text" s={12} required />
+                <Input label="email" name="email" type="email" s={12} required />
+                <Input label="password" name="password" type="password" s={12} required />
                 <Button type="submit" >{message}</Button>
               </form>
             </div>
-            <div className="or buffer">
-              <div className="back-line">
+            <div>
+              <div>
                 <span>OR</span>
               </div>
             </div>
@@ -46,7 +38,6 @@ class Signup extends React.Component {
                   target="_self"
                   href="/api/auth/google"
                   className="btn btn-social btn-google">
-                  <i className="fa fa-google" />
                   <span>{message} with Google</span>
                 </a>
               </p>
@@ -55,7 +46,6 @@ class Signup extends React.Component {
                   target="_self"
                   href="/api/auth/github"
                   className="btn btn-social btn-github">
-                  <i className="fa fa-github" />
                   <span>{message} with GitHub</span>
                 </a>
               </p>
@@ -64,7 +54,6 @@ class Signup extends React.Component {
                   target="_self"
                   href="/api/auth/twitter"
                   className="btn btn-social btn-twitter">
-                  <i className="fa fa-twitter" />
                   <span>{message} with Twitter</span>
                 </a>
               </p>
@@ -78,11 +67,13 @@ class Signup extends React.Component {
   onSignupSubmit(event) {
     event.preventDefault();
     const credentials = {
-      first_name: event.target.first_name,
-      last_name: event.target.last_name,
+      first_name: event.target.first_name.value,
+      last_name: event.target.last_name.value,
       email: event.target.email.value,
       password: event.target.password.value
     };
+
+    console.log(credentials);
     this.props.signup(credentials);
   }
 }
