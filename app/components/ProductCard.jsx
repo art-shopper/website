@@ -6,11 +6,11 @@ import { Card, CardTitle } from 'react-materialize';
 
 const ProductCard = props => (
   <Card
-    className="small"
+    className="small hoverable"
     header={
             <Link to={`products/${props.product.id}`}>
               <CardTitle 
-              image="http://media.boingboing.net/wp-content/uploads/2015/10/lovable.jpg">
+              image={props.product.image}>
                 {props.product.title}
               </CardTitle>
             </Link>
