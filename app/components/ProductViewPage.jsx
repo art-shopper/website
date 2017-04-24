@@ -16,12 +16,10 @@ import StarRatingComponent from 'react-star-rating-component';
 class ProductViewPage extends React.Component {
    constructor() {
         super();
-
         this.state = {
-            rating: 1
+            rating: 0
         };
     }
-
     onStarClick(nextValue, prevValue, name) {
         this.setState({rating: nextValue});
     }
@@ -31,7 +29,7 @@ render () {
   return (
   <div className="container">
     <Row>
-      <Col s={8} className="grid-example" key="1" >
+      <Col s={8}>
         <Card
           header={
             <CardTitle image="http://s.newsweek.com/sites/www.newsweek.com/files/2014/09/29/1003bobrosstoc.jpg">
@@ -39,78 +37,69 @@ render () {
             </CardTitle>
           }
         >
-          <Collection>
-            <CollectionItem>year</CollectionItem>
-            <CollectionItem>description</CollectionItem>
-            <Button right>Add a review</Button>
-            <CollectionItem>
-              Review 1
-              <br />
-              <span className="rating-element"> Rating: </span>
-              <input className="with-gap" name="group1" type="radio" id="1star" />
-                <label htmlFor="1star">1</label>
-              <input className="with-gap" name="group1" type="radio" id="2stars" />
-                <label htmlFor="2stars">2</label>
-              <input className="with-gap" name="group1" type="radio" id="3stars" />
-                <label htmlFor="3stars">3</label>
-              <input className="with-gap" name="group1" type="radio" id="4stars" />
-               <label htmlFor="4stars">4</label>
-              <input className="with-gap" name="group1" type="radio" id="5stars" />
-                <label htmlFor="5stars">5</label>
-              <br />
-              <div className="input-field">
-                <label htmlFor="textarea1">What did you think of the product? (20 characters minimum)</label>
-                <textarea id="textarea1" className="materialize-textarea"></textarea>
-              </div>
-            </CollectionItem>
-            <CollectionItem>Review 2
-              <div className="rating-container">
-                <br />
-                <span className="rating-element"> Rating: </span>
-                <i className="material-icons rating-element">star</i>
-                <i className="material-icons rating-element">star</i>
-                <i className="material-icons rating-element">star</i>
-                <i className="material-icons rating-element">star</i>
-                <i className="material-icons rating-element">star</i>
-              </div>
-             </CollectionItem>
-            <CollectionItem>
-              Rating 3
-              <div className="rating">
-                <span>☆</span>
-                <span>☆</span>
-                <span>☆</span>
-                <span>☆</span>
-                <span>☆</span>
-              </div>
-            </CollectionItem>
-            <CollectionItem> <p>Review 4</p>
-                <StarRatingComponent
-                    id="star-rating-component"
-                    name="rate1"
-                    starCount={5}
-                    value={rating}
-                    onStarClick={this.onStarClick.bind(this)}
-                />
-                <div className="input-field">
-                  <label htmlFor="textarea1">What did you think of the product? (20 characters minimum)</label>
-                  <textarea id="textarea1" className="materialize-textarea"></textarea>
-                 </div>
-                </CollectionItem>
-
-          </Collection>
         </Card>
       </Col>
-      <Col s={4} className="grid-example" key="2">
-        <Collection>
-          <CollectionItem>price</CollectionItem>
-          <CollectionItem>
-            <label>
-              Quantity: <Button floating small className='red' waves='light' icon='add' />
-            </label>
-          </CollectionItem>
-          <Button right>Add a review</Button>
+      <Col s={4}>
+        <Collection className="minheight">
+          <CollectionItem> Description </CollectionItem>
+          <CollectionItem> Price: $54002 </CollectionItem>
+          <CollectionItem> <span> Remaining Quantity: 2 </span> </CollectionItem>
+          <CollectionItem> Year </CollectionItem>
+          <CollectionItem> Tags </CollectionItem>
+          <Button>Add to Cart</Button>
         </Collection>
+      </Col>
+    </Row>
+    <Row>
+      <Col s={12}>
+        <Collection>
+            <CollectionItem>Reviews
+               <Collection>
+                  <CollectionItem>
+                    <p>Insert Review Title Here &nbsp;
+                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                    </p>
+                    <p>Insert Date Created</p>
+                    <p>Insert Review Content Here</p>
+                  </CollectionItem>
+               </Collection>
+
+
+            </CollectionItem>
+
+            {/*<Button>Add a review</Button>*/}
+            <CollectionItem> <p> New Review </p>
+
+              <form className="col s12" onSubmit={this.submitReview}>
+                <div className="row">
+                  <div className="input-field col s12 m6 l6">
+                    <input id="input_text" type="text" data-length="10" />
+                    <label htmlFor="input_text">Give your review a title!</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input id="input_text2" type="text" data-length="10" />
+                    <label htmlFor="input_text2">What did you think of the product? (20 chars min)</label>
+                  </div>
+                </div>
+
+                <div className="rating-container">
+                  <span> Overall Rating: </span>
+                  <StarRatingComponent
+                      name="star-rating"
+                      starCount={5}
+                      value={rating}
+                      onStarClick={this.onStarClick.bind(this)}
+                  />
+                </div>
+                <br />
+                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i className="material-icons right">send</i>
+                </button>
+              </form>
+            </CollectionItem>
+          </Collection>
       </Col>
     </Row>
   </div>
