@@ -56,11 +56,11 @@ module.exports = db => db.define('products', {
     },
     // tags is an array of strings
     searchWithOffset(searchStr = "", offset = 0){
-      const tags = searchStr.split(' ');
+      const tags = searchStr.split(',');
       return searchStr.length !== 0 ? 
         this.findAll({limit: PRODUCT_LIMIT, offset, 
           where: {$or: [{tags: {$contains: tags}},
-                       {title: {$like: searchStr}}] }}) :
+                       {title: {$iLike: '%' + searchStr + '%'}}] }}) :
         this.findAll({limit: PRODUCT_LIMIT, offset});
     }
   },

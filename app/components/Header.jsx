@@ -17,12 +17,7 @@ export const Header = ({ user, logout }) => (
         browserHistory.push(
           `products?search=${evt.target.search.value}`);
       }}>
-        <div className="input-field">
           <input id="search" type="search" name="search" />
-          <label className="label-icon" htmlFor="search">
-            <i className="material-icons">search</i>
-          </label>
-        </div>
       </form>
     </NavItem>
     {

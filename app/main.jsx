@@ -19,6 +19,11 @@ import SingleOrder from './components/SingleOrder'
 
 import {fetchProducts, fetchHomeProducts} from './reducers/products';
 
+// browserHistory.listen(location => {
+//   console.log(location.query);
+//   store.dispatch(fetchProducts(location.query.search,
+//                                location.query.offset))
+// })
 
 const App = connect(
   ({ auth }) => ({ user: auth })
@@ -38,7 +43,7 @@ const RoutesComponent = ({onProductsEnter, onHomeEnter}) => (
       <Route path="/" component={App}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onHomeEnter} />
-        <Route path="/products" component={Products} onEnter={onProductsEnter} />
+        <Route path="/products" component={Products} onEnter={onProductsEnter} onChange={onProductsEnter} />
         <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
         <Route path="/orders/1" component={SingleOrder} />
@@ -54,8 +59,9 @@ const mapProps = null;
 
 const mapDispatch = dispatch => ({
   onProductsEnter:  (nextRouterState) => {
-    dispatch(fetchProducts(nextRouterState.location.query.search,
-                            nextRouterState.location.query.offset));
+    const queries = browserHistory.getCurrentLocation().query;
+    dispatch(fetchProducts(queries.search,
+                            queries.offset));
   },
   onHomeEnter: (nextRouterState) => {
     dispatch(fetchHomeProducts());
