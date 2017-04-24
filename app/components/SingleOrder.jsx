@@ -1,11 +1,13 @@
 import React from 'react'
-import {Input} from 'react-materialize'
+import {} from 'react-materialize'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const Checkout = (props) => (
+const SingleOrder = (props) => (
     <div className="container">
-     <p className="caption"> Checkout </p>
+     <p className="caption"> Order #13401591 </p>
+     <p className="caption"> Order Date: 04/10/2017, 7:40pm </p>
+     <p className="caption"> Order Status: Shipped </p>
       <table>
         <thead>
           <tr>
@@ -44,15 +46,6 @@ const Checkout = (props) => (
 
       <p className="caption"> Total price: $10.67 </p>
 
-      <form onSubmit={evt => {
-        evt.preventDefault()
-        browserHistory.push('/')
-      } }>
-        <Input name="email" label="Email" s={12}  />
-        <Input name="address" label="Address" s={12} />
-        <Input type="submit" value="Finish Checkout" />
-      </form>
-
     </div>
 )
 
@@ -61,4 +54,4 @@ const Checkout = (props) => (
 import {connect} from 'react-redux'
 
 export default connect(
-)(Checkout)
+)(SingleOrder)

@@ -4,9 +4,9 @@ import {Footer} from 'react-materialize'
 /* -------------------<   COMPONENT   >-------------------- */
 
 export const TheFooter = (props) => (
-      <Footer copyrights="&copy; 2017 Copyright Text"
+      <Footer copyrights="&copy; 2017 Art Shopper"
       moreLinks={
-        <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+        <a className="grey-text text-lighten-4 right" href="#!"></a>
       }
       links={
         <ul>

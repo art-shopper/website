@@ -13,6 +13,13 @@ module.exports = require('express').Router()
       Product.searchWithOffset(req.query.search, req.query.offset)
         .then(products => res.json(products))
         .catch(next))
+  // get up to 6 products for the front page
+  // TODO: get top bought products?
+  .get('/homepage',
+    (req,res,next) =>
+      Product.findAll({limit: 6})
+      .then(products => res.json(products))
+      .catch(next))
   // add a product to db (admin only)
   .post('/',
     forbidden('adding products is not allowed'),
