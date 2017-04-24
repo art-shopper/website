@@ -86,7 +86,6 @@ export const fetchReview = (reviewId) => dispatch => {
 //add a review
 export const postReview = (review) => dispatch => {
   axios.post(`/api/users/{userId}/reviews`, review)
-  .then(res => console.log("Review Posted"))
   .then(review => dispatch(addReview(review)))
   .catch(err => console.log(err));
 }
