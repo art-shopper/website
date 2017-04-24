@@ -84,13 +84,18 @@ render () {
                 <span>☆</span>
               </div>
             </CollectionItem>
-            <CollectionItem>Review 4
-            <StarRatingComponent
+            <CollectionItem> <p>Review 4</p>
+                <StarRatingComponent
+                    id="star-rating-component"
                     name="rate1"
                     starCount={5}
                     value={rating}
                     onStarClick={this.onStarClick.bind(this)}
                 />
+                <div className="input-field">
+                  <label htmlFor="textarea1">What did you think of the product? (20 characters minimum)</label>
+                  <textarea id="textarea1" className="materialize-textarea"></textarea>
+                 </div>
                 </CollectionItem>
 
           </Collection>
