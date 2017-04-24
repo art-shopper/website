@@ -6,12 +6,29 @@ import {
   CollectionItem,
   Col,
   Row,
-  Button
+  Button,
+  Input
 } from 'react-materialize';
+import StarRatingComponent from 'react-star-rating-component';
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const ProductViewPage = props => (
+class ProductViewPage extends React.Component {
+   constructor() {
+        super();
+
+        this.state = {
+            rating: 1
+        };
+    }
+
+    onStarClick(nextValue, prevValue, name) {
+        this.setState({rating: nextValue});
+    }
+
+render () {
+  const { rating } = this.state;
+  return (
   <div className="container">
     <Row>
       <Col s={8} className="grid-example" key="1" >
@@ -27,27 +44,55 @@ const ProductViewPage = props => (
             <CollectionItem>description</CollectionItem>
             <Button right>Add a review</Button>
             <CollectionItem>
-            Review 1
-              <fieldset class="rating">
-    <input type="radio" id="star5" name="rating" value="5" /><label className = "full" for="star5" title="5 Stars"></label>
-    <input type="radio" id="star4" name="rating" value="4" /><label className = "full" for="star4" title="4 Stars"></label>
-    <input type="radio" id="star3" name="rating" value="3" /><label className = "full" for="star3" title="3 Stars"></label>
-    <input type="radio" id="star2" name="rating" value="2" /><label className = "full" for="star2" title="2 Stars"></label>
-    <input type="radio" id="star1" name="rating" value="1" /><label className = "full" for="star1" title="1 Star"></label>
-</fieldset>
-
+              Review 1
+              <br />
+              <span className="rating-element"> Rating: </span>
+              <input className="with-gap" name="group1" type="radio" id="1star" />
+                <label htmlFor="1star">1</label>
+              <input className="with-gap" name="group1" type="radio" id="2stars" />
+                <label htmlFor="2stars">2</label>
+              <input className="with-gap" name="group1" type="radio" id="3stars" />
+                <label htmlFor="3stars">3</label>
+              <input className="with-gap" name="group1" type="radio" id="4stars" />
+               <label htmlFor="4stars">4</label>
+              <input className="with-gap" name="group1" type="radio" id="5stars" />
+                <label htmlFor="5stars">5</label>
+              <br />
+              <div className="input-field">
+                <label htmlFor="textarea1">What did you think of the product? (20 characters minimum)</label>
+                <textarea id="textarea1" className="materialize-textarea"></textarea>
+              </div>
             </CollectionItem>
             <CollectionItem>Review 2
               <div className="rating-container">
                 <br />
                 <span className="rating-element"> Rating: </span>
-                <i className="material-icons rating-element">add</i>
                 <i className="material-icons rating-element">star</i>
-
+                <i className="material-icons rating-element">star</i>
+                <i className="material-icons rating-element">star</i>
+                <i className="material-icons rating-element">star</i>
+                <i className="material-icons rating-element">star</i>
               </div>
              </CollectionItem>
-            <CollectionItem>Review 3</CollectionItem>
-            <CollectionItem>Review 4</CollectionItem>
+            <CollectionItem>
+              Rating 3
+              <div className="rating">
+                <span>☆</span>
+                <span>☆</span>
+                <span>☆</span>
+                <span>☆</span>
+                <span>☆</span>
+              </div>
+            </CollectionItem>
+            <CollectionItem>Review 4
+            <StarRatingComponent
+                    name="rate1"
+                    starCount={5}
+                    value={rating}
+                    onStarClick={this.onStarClick.bind(this)}
+                />
+                </CollectionItem>
+
           </Collection>
         </Card>
       </Col>
@@ -63,11 +108,9 @@ const ProductViewPage = props => (
         </Collection>
       </Col>
     </Row>
-
-
-
   </div>
-);
+  )}
+}
 /* -------------------<   CONTAINER   >-------------------- */
 
 import { connect } from 'react-redux';
