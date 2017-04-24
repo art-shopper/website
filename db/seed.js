@@ -56,18 +56,21 @@ const reviews = seed(Review, {
     text: 'Nice Painting! Definetely worth the price!!',
     rating: 5,
     product_id: 1,
+    user_id: 1
   },
   review2: {
     title: 'Painting 2',
     text: 'This painting is a great painting by Pablo Picasso.',
     rating: 3,
-    product_id: 1,
+    product_id: 2,
+    user_id: 1
   },
     review3: {
     title: 'Painting 2',
     text: 'What is this painting? I do not know why I purchased it',
     rating: 2,
     product_id: 1,
+    user_id: 2
   }
 })
 
