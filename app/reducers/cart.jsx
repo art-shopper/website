@@ -14,7 +14,7 @@ export const deleteItem = product => ({
   type: DELETE_ITEM, product
 })
 
-export const submitOrder = order => ({
+export const submitOrder = order => ({ // OB/YP: order arg not needed (see reducer)
   type: SUBMIT_ORDER, order
 })
 /* -------------------<   REDUCERS   >--------------------- */
@@ -26,7 +26,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ORDER_ITEM:
-      return Object.assign({}, state, {
+      return Object.assign({}, state, { // OB/YP: check out immutable.js
         list: [action.product, ... state.list]
       })
     case DELETE_ITEM:
@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
           return elm.product_id !== action.product.product_id
         })
       }
-    case submitOrder:
+    case submitOrder: // OB/YP: bug here, should be SUBMIT_ORDER
       return {
         list: []
       }
@@ -56,7 +56,7 @@ export const removeItem = product => dispatch(deleteItem(product));
 export const placeOrder = order => dispatch => {
   axios.post(`/api/orders`, order)
   .then(res => res.data)
-  .then(newOrder => dispatch(submitOrder(newOrder)))
+  .then(newOrder => dispatch(submitOrder(newOrder))) // OB/YP: order arg not needed (see reducer)
 }
 
 export default reducer;

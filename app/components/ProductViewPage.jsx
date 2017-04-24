@@ -13,6 +13,8 @@ import StarRatingComponent from 'react-star-rating-component';
 
 /* -------------------<   COMPONENT   >-------------------- */
 
+// OB/YP: maybe more than one file for this
+
 class ProductViewPage extends React.Component {
    constructor() {
         super();
@@ -63,6 +65,7 @@ render () {
     <Row>
       <Col s={12}>
         <Collection>
+        {/* OB/YP: inconsistent indentation */}
             <CollectionItem>Reviews
                <Collection>
                   <CollectionItem>
@@ -77,6 +80,7 @@ render () {
 
             </CollectionItem>
 
+            {/* OB/YP: dead code */}
             {/*<Button>Add a review</Button>*/}
             <CollectionItem> <p> New Review </p>
 

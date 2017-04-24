@@ -3,6 +3,7 @@ import {} from 'react-materialize'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
+// OB/YP: inconsistent indentation
 const SingleOrder = (props) => (
     <div className="container">
      <p className="caption"> Order #13401591 </p>

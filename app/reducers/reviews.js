@@ -60,8 +60,9 @@ export const fetchReviews = () => dispatch => {
 };
 
 // Fetch all reviews for a user
+// OB/DY: might have user reviews go to user reducer
 export const fetchUserReviews = (userId) => dispatch => {
-  axios.get(`/api/users/{userId}/reviews`)
+  axios.get(`/api/users/{userId}/reviews`) // OB/YP: "going broke"
   .then(res => res.data)
   .then(reviews => dispatch(setReviews(reviews)))
   .catch(err => console.log(err))
@@ -77,7 +78,7 @@ export const fetchProductReviews = (productId) => dispatch => {
 
 // Fetch a single review
 export const fetchReview = (reviewId) => dispatch => {
-  axios.get(`/api/reviews/reviewId`)
+  axios.get(`/api/reviews/reviewId`) // OB/YP: missing money and mustaches
   .then(res => res.data)
   .then(review => dispatch(setReview(review)))
   .catch(err => console.log(err))
