@@ -17,7 +17,7 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleOrder from './components/SingleOrder'
 
-import {fetchProducts} from './reducers/products';
+import {fetchProducts, fetchHomeProducts} from './reducers/products';
 
 
 const App = connect(
@@ -33,12 +33,12 @@ const App = connect(
     </div>
 )
 
-const RoutesComponent = ({onProductsEnter}) => (
+const RoutesComponent = ({onProductsEnter, onHomeEnter}) => (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRedirect to="/home" />
-        <Route path="/home" component={Home} />
-        <Route path="/products" component={Products} onEnter={onProductsEnter}/>
+        <Route path="/home" component={Home} onEnter={onHomeEnter} />
+        <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} />
         <Route path="/orders/1" component={SingleOrder} />
@@ -57,6 +57,9 @@ const mapDispatch = dispatch => ({
     //console.log(nextRouterState.location.query);
     dispatch(fetchProducts(nextRouterState.location.query.search,
                             nextRouterState.location.query.offset));
+  },
+  onHomeEnter: (nextRouterState) => {
+    dispatch(fetchHomeProducts());
   }
 })
 
