@@ -67,6 +67,14 @@ export const fetchUserReviews = (userId) => dispatch => {
   .catch(err => console.log(err))
 };
 
+// Fetch all reviews for a product
+export const fetchProductReviews = (productId) => dispatch => {
+  axios.get(`/api/products/{productId}/reviews`)
+  .then(res => res.data)
+  .then(reviews => dispatch(setReviews(reviews)))
+  .catch(err => console.log(err))
+};
+
 // Fetch a single review
 export const fetchReview = (reviewId) => dispatch => {
   axios.get(`/api/reviews/reviewId`)
