@@ -1,21 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router'
 import { Card, CardTitle } from 'react-materialize';
 
 /* -------------------<   COMPONENT   >-------------------- */
 
 const ProductCard = props => (
+
   <Card
-    className="small"
-    header={<CardTitle image="assets/sample-1.jpg">Card Title</CardTitle>}
-    actions={[<a href="#">View Details</a>]}
+    className="small hoverable"
+    header={
+            <Link to={`products/${props.product.id}`}>
+              <CardTitle 
+              image={props.product.image}>
+                {props.product.title}
+              </CardTitle>
+            </Link>
+            }
   >
-    I am a very simple card. I am good at containing small bits of information.
-    I am convenient because I require little markup to use effectively.
+    {props.product.description}
   </Card>
 );
+
+
 
 /* -------------------<   CONTAINER   >-------------------- */
 
 import { connect } from 'react-redux';
 
-export default connect()(ProductCard);
+export default connect(
+    (state, {product}) => (
+      {
+        product
+      }
+    )
+  )(ProductCard);

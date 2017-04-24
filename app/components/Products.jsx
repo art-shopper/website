@@ -1,11 +1,10 @@
-import React from 'react'
-import {Row, Col} from 'react-materialize'
-
-import ProductCard from './ProductCard'
+import React, { Component } from 'react';
+import {Row, Col} from 'react-materialize';
+import ProductCard from './ProductCard';
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const Home = (props) => (
+const ProductsPage = (props) => (
   <div className="container">
     <Row>
       { 
@@ -17,14 +16,14 @@ const Home = (props) => (
       }
     </Row>
   </div>
-)
+);
 
 /* -------------------<   CONTAINER   >-------------------- */
-
-import {connect} from 'react-redux'
+  
+import {connect} from 'react-redux';
 
 export default connect(
   ({products}) => ({
       products: products.list
     })
-)(Home)
+)(ProductsPage);
