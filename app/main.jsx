@@ -16,6 +16,7 @@ import Login from './components/Login'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleOrder from './components/SingleOrder'
+import SingleReview from './components/SingleReview'
 
 import {fetchProducts, fetchHomeProducts} from './reducers/products';
 
@@ -50,6 +51,7 @@ const RoutesComponent = ({onProductsEnter, onHomeEnter}) => (
         <Route path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/reviews/:id" component={SingleReview} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
