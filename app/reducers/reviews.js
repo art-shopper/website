@@ -61,7 +61,7 @@ export const fetchReviews = () => dispatch => {
 
 // Fetch all reviews for a user
 export const fetchUserReviews = (userId) => dispatch => {
-  axios.get(`/api/users/{userId}/reviews`)
+  axios.get(`/api/users/${userId}/reviews`)
   .then(res => res.data)
   .then(reviews => dispatch(setReviews(reviews)))
   .catch(err => console.log(err))
@@ -69,7 +69,7 @@ export const fetchUserReviews = (userId) => dispatch => {
 
 // Fetch all reviews for a product
 export const fetchProductReviews = (productId) => dispatch => {
-  axios.get(`/api/products/{productId}/reviews`)
+  axios.get(`/api/products/${productId}/reviews`)
   .then(res => res.data)
   .then(reviews => dispatch(setReviews(reviews)))
   .catch(err => console.log(err))
@@ -77,7 +77,7 @@ export const fetchProductReviews = (productId) => dispatch => {
 
 // Fetch a single review
 export const fetchReview = (reviewId) => dispatch => {
-  axios.get(`/api/reviews/reviewId`)
+  axios.get(`/api/reviews/${reviewId}`)
   .then(res => res.data)
   .then(review => dispatch(setReview(review)))
   .catch(err => console.log(err))
@@ -85,7 +85,7 @@ export const fetchReview = (reviewId) => dispatch => {
 
 //add a review
 export const postReview = (review) => dispatch => {
-  axios.post(`/api/users/{userId}/reviews`, review)
+  axios.post(`/api/users/${userId}/reviews`, review)
   .then(review => dispatch(addReview(review)))
   .catch(err => console.log(err));
 }
