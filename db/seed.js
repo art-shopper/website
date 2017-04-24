@@ -31,23 +31,78 @@ const users = seed(User, {
     password: '123',
     is_admin: true
   },
+  omri: {
+    first_name: 'Omri',
+    last_name: 'Bernstein',
+    email: 'omri@omri.omri',
+    password: '123',
+    is_admin: false
+  },
+  yoonahbrow: {
+    first_name: 'Yoo-Nah',
+    last_name: 'Park',
+    email: 'yuna@luna.luna',
+    password: '123',
+    is_admin: false
+  },
 })
 
 const products = seed(Product, {
   painting1: {
-    title: 'Painting 1',
-    description: 'This painting is a great painting by Pablo Picasso.',
-    price: 10000,
+    title: 'Peaceful Reflections',
+    description: "One of Bob's legendary pictures. The light is shown pouring from the heavens.",
+    year: 1991,
+    image: 'https://s-media-cache-ak0.pinimg.com/originals/02/6c/47/026c47ad36933184efcb93dc5767d63b.jpg',
+    price: 240000,
     quantity: 1,
-    tags: ['awesome', 'picasso']
+    tags: ['mountains', 'trees', 'lake', 'water', 'timeless']
   },
   painting2: {
-    title: 'Untitled',
-    description: "We don't know who painted this.",
-    price: 20000,
+    title: 'Quiet Clearing',
+    description: 'Critics lauded the use of chiaroscuro in this painting as groundbreaking.',
+    year: 1983,
+    image: 'https://s-media-cache-ak0.pinimg.com/736x/e4/b6/59/e4b65938e0cc90f694ce0593485a8001.jpg',
+    price: 120000,
     quantity: 1,
-    tags: ['black', 'white', 'untitled']
-  }
+    tags: ['trees', 'shadows', 'reflections', 'clouds', 'dark']
+  },
+  painting3: {
+    title: 'Bobby and the Campfire',
+    description: 'One of the few paintings Bob made that portrayed the human form.',
+    year: 1986,
+    image: 'https://espnfivethirtyeight.files.wordpress.com/2014/04/campfire_banner1.jpg?quality=90&strip=all&w=575&ssl=1',
+    price: 300000,
+    quantity: 1,
+    tags: ['campfire', 'trees', 'devastatingly-red', 'awesome']
+  },
+  painting4: {
+    title: 'Shortly After a Winter Storm',
+    description: 'The great blizzard of 1986 inpsired Bob to make this iconic painting of a wintry expanse.',
+    year: 1986,
+    image: 'http://d3rde5ck80dcsn.cloudfront.net/wp-content/uploads/2015/12/4.jpg',
+    price: 1500000,
+    quantity: 1,
+    tags: ['winter', 'trees', 'pine', 'road', 'snowy']
+  },
+  painting5: {
+    title: 'Self-Portrait',
+    description: 'In the later years of his career, he composited one of the greatest self-portraits of all time.',
+    year: 1991,
+    image: 'https://i.imgur.com/lH6zsxr.jpg',
+    price: 50402030,
+    quantity: 1,
+    tags: ['bob', 'ross', 'how-did-he-do-it', 'legendary']
+  },
+  painting6: {
+    title: 'Untitled',
+    description: "We don't know who painted this but we are selling it anyway.",
+    year: 1590,
+    image: 'http://www.louvre.fr/sites/default/files/imagecache/940x768/medias/medias_images/images/louvre-portrait-de-lisa-gherardini-epouse-de-francesco-del-giocondo-dite-monna-lisa-la-gioconda-ou-la-jocon.jpg',
+    price: 200000000,
+    quantity: 1,
+    tags: ['famous', 'yellow', 'untitled', 'wow']
+  },
+
 })
 
 const reviews = seed(Review, {
