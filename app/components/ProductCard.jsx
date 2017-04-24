@@ -5,6 +5,7 @@ import { Card, CardTitle } from 'react-materialize';
 /* -------------------<   COMPONENT   >-------------------- */
 
 const ProductCard = props => (
+
   <Card
     className="small hoverable"
     header={
@@ -19,6 +20,8 @@ const ProductCard = props => (
     {props.product.description}
   </Card>
 );
+
+
 
 /* -------------------<   CONTAINER   >-------------------- */
 
