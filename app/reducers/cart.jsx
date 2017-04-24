@@ -1,7 +1,7 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
 const ADD_ORDER_ITEM ='ADD_ORDER_ITEM';
-const SUBMIT_ORDER = 'SUBMIT_ORDER';
+const CLEAR_CART = 'CLEAR_CART';
 const DELETE_ITEM = 'DELETE_ITEM';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
@@ -14,8 +14,8 @@ export const deleteItem = product => ({
   type: DELETE_ITEM, product
 })
 
-export const submitOrder = order => ({
-  type: SUBMIT_ORDER, order
+export const clearCart = () => ({
+  type: CLEAR_CART
 })
 /* -------------------<   REDUCERS   >--------------------- */
 
@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
           return elm.product_id !== action.product.product_id
         })
       }
-    case submitOrder:
+    case CLEAR_CART:
       return {
         list: []
       }
@@ -56,7 +56,7 @@ export const removeItem = product => dispatch(deleteItem(product));
 export const placeOrder = order => dispatch => {
   axios.post(`/api/orders`, order)
   .then(res => res.data)
-  .then(newOrder => dispatch(submitOrder(newOrder)))
+  .then(() => dispatch(clearCart()))
 }
 
 export default reducer;
