@@ -37,6 +37,16 @@ render () {
             </CardTitle>
           }
         >
+
+          <Collection>
+            <CollectionItem>year</CollectionItem>
+            <CollectionItem>description</CollectionItem>
+            <Button>Add a review</Button>
+            <CollectionItem>Review 1</CollectionItem>
+            <CollectionItem>Review 2</CollectionItem>
+            <CollectionItem>Review 3</CollectionItem>
+            <CollectionItem>Review 4</CollectionItem>
+          </Collection>
         </Card>
       </Col>
       <Col s={4}>
