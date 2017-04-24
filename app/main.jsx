@@ -26,7 +26,7 @@ const App = connect(
   ({ user, children }) =>
     <div>
       <Header />
-        <div id="mainContainer" className="section">
+        <div id="main-container" className="section">
           {children}
         </div>
       <Footer />
