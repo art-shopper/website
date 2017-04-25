@@ -1,6 +1,9 @@
 import React from 'react'
 import {} from 'react-materialize'
 
+import { Link } from 'react-router'
+
+
 /* -------------------<   COMPONENT   >-------------------- */
 
 const SingleOrder = (props) => (
@@ -15,18 +18,16 @@ const SingleOrder = (props) => (
               <th>Item Name</th>
               <th>Item Price</th>
               <th>Quantity</th>
-              <th>Link to Item</th>
           </tr>
         </thead>
 
         <tbody>
           {props.orderItems && props.orderItems.map(orderItem => (
-              <tr>
-                <td>{orderItem.product.image}</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-                <td>1</td>
-                <td>Button</td>
+              <tr key={orderItem.id}>
+                <td><img className="thumb" src={orderItem.product.image}/></td>
+                <td><Link to={`/products/${orderItem.product.id}`}>{orderItem.product.title}</Link></td>
+                <td>{orderItem.current_price}</td>
+                <td>{orderItem.quantity}</td>
               </tr>
             ))}
         </tbody>

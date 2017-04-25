@@ -14,7 +14,9 @@ module.exports = db => db.define('orderItems', {
 },
 {
   defaultScope: {
-    all:true
+    include: {
+      all:true
+    }
   }
 }
 )
