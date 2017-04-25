@@ -45,7 +45,7 @@ const RoutesComponent = ({onProductEnter, onProductsEnter, onHomeEnter, onAccoun
         <Route path="/home" component={Home} onEnter={onHomeEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} onChange={onProductsEnter} />
         <Route path="/products/:id" component={SingleProduct} onEnter={onProductEnter} />
-        <Route path="/account" component={MyAccount} onEnter={onAccountEnter}/>
+        <Route path="/account" component={MyAccount} />
         <Route path="/orders/:id" component={SingleOrder} onEnter={onOrderEnter} />
         <Route path="/login" component={Login} onEnter={onLoginEnter} />
         <Route path="/signup" component={Signup} />
@@ -73,7 +73,8 @@ const mapDispatch = (dispatch, ownProps) => ({
     if(!store.getState().auth) browserHistory.push('/login');
   },
   onOrderEnter: (nextRouterState) => {
-    dispatch(getCurrentOrder(store.getState().auth.id, nextRouterState.params.id));
+    if(!store.getState().auth) browserHistory.push('/');
+    else dispatch(getCurrentOrder(store.getState().auth.id, nextRouterState.params.id));
   },
   onLoginEnter: (nextRouterState) => {
     if(store.getState().auth) browserHistory.push('/account');
