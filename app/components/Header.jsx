@@ -12,22 +12,25 @@ export const Header = ({ user, logout }) => (
   <Navbar brand='art shopper' right>
     <NavItem><Link to="/" className="nostyle">Home</Link></NavItem>
     <NavItem>
-      <form onSubmit={ (evt) => {
+      <form className="nostyle" onSubmit={ (evt) => {
         evt.preventDefault();
         browserHistory.push(
           `/products?search=${evt.target.search.value}`);
       }}>
-          <input id="search" type="search" name="search" />
+          <input placeholder="Search by Category" id="search" type="search" name="search" />
       </form>
     </NavItem>
     {
       user ?
         <NavItem onClick={logout}><Link to="/" className="nostyle">Logout {user && user.first_name + " " + user.last_name}</Link></NavItem> :
       <NavItem><Link to="/login" className="nostyle">Login</Link></NavItem>
-
     }
-    <NavItem><Link to="/signup" className="nostyle">Signup</Link></NavItem>
-    <NavItem><Link to="/account" className="nostyle">My Account</Link></NavItem>
+    {
+      user ? null : <NavItem><Link to="/signup" className="nostyle">Signup</Link></NavItem>
+    }
+    {
+      user ? <NavItem><Link to="/account" className="nostyle">My Account</Link></NavItem> : null
+    }
     <NavItem><Link to="/cart" className="nostyle">Cart</Link></NavItem>
   </Navbar>
 )

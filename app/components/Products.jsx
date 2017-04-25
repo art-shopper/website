@@ -7,7 +7,7 @@ import ProductCard from './ProductCard';
 const ProductsPage = (props) => (
   <div className="container">
     <Row>
-      { 
+      {
         props.products && props.products.map(product => (
           <Col s={12} m={6} l={4} className='grid-example animated fadeIn' key={product.id}>
             <ProductCard product={product}/>
@@ -19,7 +19,7 @@ const ProductsPage = (props) => (
 );
 
 /* -------------------<   CONTAINER   >-------------------- */
-  
+
 import {connect} from 'react-redux';
 
 export default connect(

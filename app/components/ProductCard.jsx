@@ -10,7 +10,7 @@ const ProductCard = props => (
     className="small hoverable"
     header={
             <Link to={`products/${props.product.id}`}>
-              <CardTitle 
+              <CardTitle
               image={props.product.image}>
                 {props.product.title}
               </CardTitle>

@@ -50,13 +50,13 @@ render () {
   <div className="container">
     <Row>
       <Col s={12} m={8} l={8}>
-        <Card
-          header={
+        <Card>
+
             <CardTitle image={image}>
               {title}
             </CardTitle>
-          }
-        >
+
+
         </Card>
       </Col>
       <Col s={12} m={4} l={4}>
