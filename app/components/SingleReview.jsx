@@ -16,7 +16,7 @@ export default class SingleReview extends React.Component {
                 value={this.props.rating}
             />
          </div>
-        <p> <i> Posted on {this.props.date} by {this.props.firstName} {this.props.lastName} </i> </p>
+        <p> <i> Posted on {this.props.date} {/* by {this.props.firstName} {this.props.lastName}*/} </i> </p>
 
         <p>{this.props.content}</p>
       </div>

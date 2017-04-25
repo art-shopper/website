@@ -82,8 +82,6 @@ render () {
                         content={review.text}
                         title={review.title}
                         rating={review.rating}
-                        firstName={review.user.first_name}
-                        lastName={review.user.last_name}
                       />
                       </CollectionItem>)
                     }
@@ -138,3 +136,6 @@ export default connect(
   ({ products, reviews, auth }) => ({ products, reviews, user: auth }),
   ({ addToCart, postReview }),
 )(SingleProduct)
+
+                        /*firstName={review.user.first_name}
+                        lastName={review.user.last_name}*/

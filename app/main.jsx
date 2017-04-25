@@ -44,7 +44,7 @@ const RoutesComponent = ({onProductEnter, onProductsEnter, onHomeEnter, onAccoun
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onHomeEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} onChange={onProductsEnter} />
-        <Route path="/products/:id" component={ProductViewPage} />
+        <Route path="/products/:id" component={SingleProduct} onEnter={onProductEnter} />
         <Route path="/account" component={MyAccount} onEnter={onAccountEnter}/>
         <Route path="/orders/:id" component={SingleOrder} onEnter={onOrderEnter} />
         <Route path="/login" component={Login} onEnter={onLoginEnter} />
