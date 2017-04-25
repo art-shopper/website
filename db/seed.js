@@ -77,7 +77,7 @@ const products = seed(Product, {
     tags: ['campfire', 'trees', 'devastatingly-red', 'awesome']
   },
   painting4: {
-    title: 'Shortly After a Winter Storm',
+    title: 'After a Winter Storm',
     description: 'The great blizzard of 1986 inpsired Bob to make this iconic painting of a wintry expanse.',
     year: 1986,
     image: 'http://d3rde5ck80dcsn.cloudfront.net/wp-content/uploads/2015/12/4.jpg',

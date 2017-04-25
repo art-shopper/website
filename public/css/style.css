@@ -67,11 +67,25 @@
 }
 
 .brand-logo {
-  margin-left: 50px;
+  margin-left: 150px;
 }
 
 @media screen and (max-width: 992px) {
   .brand-logo {
     margin-left: 0px;
   }
+}
+
+#search {
+  padding-left: 16px;
+}
+
+.card-title {
+  background-color: rgba(0, 0, 0, 0.37);
+  border-radius: 5px;
+}
+
+.card .card-image .card-title {
+  padding: 7px;
+  margin: 10px;
 }

@@ -7,8 +7,9 @@ import ProductCard from './ProductCard'
 
 const Home = (props) => (
   <div className="container">
+    {/*// <p className="caption"> Featured Products </p>*/}
     <Row>
-      { 
+      {
         props.products && props.products.map(product => (
           <Col s={12} m={6} l={4} className='grid-example' key={product.id}>
             <ProductCard product={product}/>
