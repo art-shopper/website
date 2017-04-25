@@ -9,7 +9,7 @@ import WhoAmI from './WhoAmI'
 /* -------------------<   COMPONENT   >-------------------- */
 
 export const Header = ({ user, logout }) => (
-  <Navbar brand='art-shopper' right>
+  <Navbar brand='art shopper' right>
     <NavItem><Link to="/" className="nostyle">Home</Link></NavItem>
     <NavItem>
       <form onSubmit={ (evt) => {
