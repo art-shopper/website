@@ -54,9 +54,6 @@ module.exports.associations = (User, {OAuth, Order, Review}) => {
   User.hasOne(OAuth)
   User.hasMany(Order)
   User.hasMany(Review, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
-  // User.addScope('scoperino', 
-  //   () => ({defaultScope:true, include: [{model: 'reviews'}, {model: 'orders'}]}),
-  //   {override: true})
 }
 
 function setEmailAndPassword(user) {

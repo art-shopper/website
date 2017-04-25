@@ -11,7 +11,13 @@ module.exports = db => db.define('orderItems', {
     }
   },
   current_price: INTEGER
-})
+},
+{
+  defaultScope: {
+    all:true
+  }
+}
+)
 
 module.exports.associations = (OrderItem, {Order, Product}) => {
   OrderItem.belongsTo(Order)

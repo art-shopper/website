@@ -20,6 +20,8 @@ import SingleReview from './components/SingleReview'
 
 import {fetchProducts, fetchHomeProducts} from './reducers/products';
 import {getUserOrders} from './reducers/orders';
+import {getCurrentOrder} from './reducers/orders';
+
 
 const App = connect(
   ({ auth }) => ({ user: auth })
@@ -34,7 +36,7 @@ const App = connect(
     </div>
 )
 
-const RoutesComponent = ({onProductsEnter, onHomeEnter, onAccountEnter}) => (
+const RoutesComponent = ({onProductsEnter, onHomeEnter, onAccountEnter, onOrderEnter, onLoginEnter}) => (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRedirect to="/home" />
@@ -42,8 +44,8 @@ const RoutesComponent = ({onProductsEnter, onHomeEnter, onAccountEnter}) => (
         <Route path="/products" component={Products} onEnter={onProductsEnter} onChange={onProductsEnter} />
         <Route path="/products/:id" component={ProductViewPage} />
         <Route path="/account" component={MyAccount} onEnter={onAccountEnter}/>
-        <Route path="/orders/1" component={SingleOrder} />
-        <Route path="/login" component={Login} />
+        <Route path="/orders/:id" component={SingleOrder} onEnter={onOrderEnter} />
+        <Route path="/login" component={Login} onEnter={onLoginEnter} />
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/reviews/:id" component={SingleReview} />
@@ -64,7 +66,14 @@ const mapDispatch = (dispatch, ownProps) => ({
     dispatch(fetchHomeProducts());
   },
   onAccountEnter: (nextRouterState) => {
+    console.log("curr user:", store.getState().auth);
     if(!store.getState().auth) browserHistory.push('/login');
+  },
+  onOrderEnter: (nextRouterState) => {
+    dispatch(getCurrentOrder(store.getState().auth.id, nextRouterState.params.id));
+  },
+  onLoginEnter: (nextRouterState) => {
+    if(store.getState().auth) browserHistory.push('/account');
   }
 })
 

@@ -16,7 +16,7 @@ export const allOrders = orders => ({
 
 const initialState = {
   list: [],
-  selected: {}
+  selected: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -45,8 +45,8 @@ export const getUserOrders = (userId) => dispatch => {
 };
 
 // Fetch a single order
-export const getCurrentOrder = (orderId) => dispatch => {
-  axios.get(`/api/orders/${orderId}`)
+export const getCurrentOrder = (userId, orderId) => dispatch => {
+  axios.get(`/api/users/${userId}/orders/${orderId}`)
     .then(res => res.data)
     .then(order => dispatch(currentOrder(order)))
     .catch(err => console.log(err))

@@ -20,27 +20,15 @@ const SingleOrder = (props) => (
         </thead>
 
         <tbody>
-          <tr>
-            <td>Picture here</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
-          <tr>
-            <td>Picture here</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
-          <tr>
-            <td>Picture here</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
+          {props.orderItems && props.orderItems.map(orderItem => (
+              <tr>
+                <td>{orderItem.product.image}</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td>1</td>
+                <td>Button</td>
+              </tr>
+            ))}
         </tbody>
       </table>
 
@@ -54,4 +42,5 @@ const SingleOrder = (props) => (
 import {connect} from 'react-redux'
 
 export default connect(
+  ({orders}) => {console.log(orders);return{orderItems: orders.selected}}
 )(SingleOrder)
