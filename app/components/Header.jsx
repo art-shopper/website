@@ -9,7 +9,7 @@ import WhoAmI from './WhoAmI'
 /* -------------------<   COMPONENT   >-------------------- */
 
 export const Header = ({ user, logout }) => (
-  <Navbar brand='art-shopper' right>
+  <Navbar brand='art shopper' right>
     <NavItem><Link to="/" className="nostyle">Home</Link></NavItem>
     <NavItem>
       <form onSubmit={ (evt) => {
@@ -22,9 +22,11 @@ export const Header = ({ user, logout }) => (
     </NavItem>
     {
       user ?
-      <NavItem onClick={logout}><Link to="/" className="nostyle">Logout {user && user.first_name + " " + user.last_name}</Link></NavItem> :
+        <NavItem onClick={logout}><Link to="/" className="nostyle">Logout {user && user.first_name + " " + user.last_name}</Link></NavItem> :
       <NavItem><Link to="/login" className="nostyle">Login</Link></NavItem>
+
     }
+    <NavItem><Link to="/signup" className="nostyle">Signup</Link></NavItem>
     <NavItem><Link to="/account" className="nostyle">My Account</Link></NavItem>
     <NavItem><Link to="/cart" className="nostyle">Cart</Link></NavItem>
   </Navbar>
@@ -39,4 +41,3 @@ export default connect(
   ({ auth }) => ({ user: auth }),
   {logout},
 )(Header)
-

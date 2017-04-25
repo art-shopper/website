@@ -1,30 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router'
-import { CollectionItem } from 'react-materialize';
+import StarRatingComponent from 'react-star-rating-component';
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const SingleReview = props => (
-  <div>
-    <p>Insert Review Title Here &nbsp;
-      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-    </p>
-    <p>Insert Date Created</p>
-    <p>Insert Review Content Here</p>
-  </div>
+export default class SingleReview extends React.Component {
 
-);
+  render () {
+    return (
+      <div>
+        <div className="rating-container">
+          <span className="review-caption"> {this.props.title} &nbsp; </span>
+            <StarRatingComponent
+                name="star-rating"
+                starCount={5}
+                value={this.props.rating}
+            />
+         </div>
+        <p> <i> Posted on {this.props.date} by {this.props.firstName} {this.props.lastName} </i> </p>
 
-
-
-/* -------------------<   CONTAINER   >-------------------- */
-
-import { connect } from 'react-redux';
-
-export default connect(
-    (state, {review}) => (
-      {
-        review
-      }
+        <p>{this.props.content}</p>
+      </div>
     )
-  )(SingleReview);
+  }
+}

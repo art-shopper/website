@@ -11,17 +11,18 @@ import NotFound from './components/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Products from './components/Products'
-import ProductViewPage from './components/ProductViewPage'
+import SingleProduct from './components/SingleProduct'
 import Login from './components/Login'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleOrder from './components/SingleOrder'
+import Signup from './components/Signup'
 import SingleReview from './components/SingleReview'
 
-import {fetchProducts, fetchHomeProducts} from './reducers/products';
+import {fetchProduct, fetchProducts, fetchHomeProducts} from './reducers/products';
 import {getUserOrders} from './reducers/orders';
 import {getCurrentOrder} from './reducers/orders';
-
+import {fetchProductReviews} from './reducers/reviews';
 
 const App = connect(
   ({ auth }) => ({ user: auth })
@@ -36,7 +37,8 @@ const App = connect(
     </div>
 )
 
-const RoutesComponent = ({onProductsEnter, onHomeEnter, onAccountEnter, onOrderEnter, onLoginEnter}) => (
+const RoutesComponent = ({onProductEnter, onProductsEnter, onHomeEnter, onAccountEnter, onOrderEnter, onLoginEnter}) => (
+
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRedirect to="/home" />
@@ -46,6 +48,7 @@ const RoutesComponent = ({onProductsEnter, onHomeEnter, onAccountEnter, onOrderE
         <Route path="/account" component={MyAccount} onEnter={onAccountEnter}/>
         <Route path="/orders/:id" component={SingleOrder} onEnter={onOrderEnter} />
         <Route path="/login" component={Login} onEnter={onLoginEnter} />
+        <Route path="/signup" component={Signup} />
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/reviews/:id" component={SingleReview} />
@@ -74,6 +77,11 @@ const mapDispatch = (dispatch, ownProps) => ({
   },
   onLoginEnter: (nextRouterState) => {
     if(store.getState().auth) browserHistory.push('/account');
+  },
+  onProductEnter: (nextRouterState) => {
+    let id = nextRouterState.params.id;
+    dispatch(fetchProduct(id));
+    dispatch(fetchProductReviews(id));
   }
 })
 
@@ -86,5 +94,3 @@ render(
   </Provider>,
   document.getElementById('main')
 )
-
-

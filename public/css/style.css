@@ -50,3 +50,28 @@
 .height {
   height: 300px;
 }
+
+#star {
+  color: rgb(255, 180, 0);
+  margin-right: 2px;
+  font-size: 1rem;
+}
+
+.caption {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.review-caption {
+  font-size: 20px;
+}
+
+.brand-logo {
+  margin-left: 50px;
+}
+
+@media screen and (max-width: 992px) {
+  .brand-logo {
+    margin-left: 0px;
+  }
+}
