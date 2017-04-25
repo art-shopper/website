@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory} from 'react-router'
 import { Button, Input, Row, Icon } from 'react-materialize'
-import {browserHistory} from 'react-router'
+import { intToUSD } from '../utils'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
@@ -30,6 +30,7 @@ class Cart extends React.Component {
     })
     evt.preventDefault()
     browserHistory.push('/')
+    toastr.success(`Success! Your product(s) will arrive within 5-7 business days. Your email confirmation has been sent to ${evt.target.email.value}.`)
   }
 
   render() {
@@ -40,9 +41,9 @@ class Cart extends React.Component {
         <tr>
           <td> <img className="thumb" src={item.product.image} /></td>
           <td>{item.product.title}</td>
-          <td>{+item.product.price}</td>
+          <td>{intToUSD(+item.product.price)}</td>
           <td>{item.quantity} </td>
-          <td>{item.quantity * item.product.price}</td>
+          <td>{intToUSD(item.quantity * item.product.price)}</td>
           <td><Button floating icon='mode_edit' className='green' /><Button onClick={this.onDeleteClick.bind(this, this.props.id)} floating icon='delete' className='red' /></td>
         </tr>
       )
@@ -81,7 +82,9 @@ class Cart extends React.Component {
           <Input name="name" label="Name" s={12}  />
           <Input name="email" label="Email" s={12}  />
           <Input name="address" label="Shipping Address" s={12} />
-          <Input type="submit" value="Finish Checkout" />
+          <button style={{marginTop: 20}} className="btn waves-effect waves-light" type="submit" name="action" value="Checkout">Finish Checkout
+          <i className="material-icons right">shopping_cart</i>
+          </button>
         </form>
         </div>
       </div>

@@ -6,10 +6,10 @@ import {Link} from 'react-router'
 
 export default (props) => (
     <Collection>
-      { 
+      {
         props.orders && props.orders.map(order => (
           <CollectionItem key={order.id}>
-            <Link to={`/orders/${order.id}`}>#{order.id}</Link>
+            <Link to={`/orders/${order.id}`}>Order #{order.id}</Link>
           </CollectionItem>
         ))
       }

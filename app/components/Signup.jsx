@@ -91,7 +91,8 @@ class Signup extends React.Component {
       password: event.target.password.value,
     };
 
-    console.log(credentials);
+    // console.log(credentials);
+    toastr.success(`Great! You've successfully created an account!.`)
     this.props.signup(credentials);
   }
 }

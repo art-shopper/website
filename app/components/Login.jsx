@@ -10,6 +10,7 @@ export const Login = ({ login }) => (
         onSubmit={evt => {
           evt.preventDefault();
           login(evt.target.username.value, evt.target.password.value);
+          toastr.success(`You've been logged in.`)
           browserHistory.push('/');
         }}
       >

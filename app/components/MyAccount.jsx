@@ -25,18 +25,18 @@ class MyAccount extends React.Component {
         </Row>
         <Row>
           <p className="caption"> My Reviews </p>
-               <Collection>
-                    {
-                      props.reviews.map(review =>
-                      <CollectionItem key={review.id}><SingleReview
-                        date={review.created_at.split('T')[0]} // Splits on T to separate out date. example: 2017-04-24T21:26:33.285Z
-                        content={review.text}
-                        title={review.title}
-                        rating={review.rating}
-                      />
-                      </CollectionItem>)
-                    }
-               </Collection>
+            <Collection>
+              {
+                props.reviews.map(review =>
+                <CollectionItem key={review.id}><SingleReview
+                  date={review.created_at.split('T')[0]} // Splits on T to separate out date. example: 2017-04-24T21:26:33.285Z
+                  content={review.text}
+                  title={review.title}
+                  rating={review.rating}
+                />
+                </CollectionItem>)
+              }
+            </Collection>
         </Row>
       </div>
     )

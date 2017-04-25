@@ -41,11 +41,14 @@ return (
 
       <form onSubmit={evt => {
         evt.preventDefault()
+        toastr.success('Added to Cart!')
         browserHistory.push('/')
       } }>
         <Input name="email" label="Email" s={12}  />
         <Input name="address" label="Address" s={12} />
-        <Input type="submit" value="Finish Checkout" />
+        <button style={{margin: 10}} className="btn waves-effect waves-light" type="submit" name="action" value="Checkout">Finish Checkout
+        <i className="material-icons right">shopping_cart</i>
+        </button>
       </form>
 
     </div>
