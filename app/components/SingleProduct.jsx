@@ -10,10 +10,11 @@ import {
   Input
 } from 'react-materialize';
 import StarRatingComponent from 'react-star-rating-component';
+import SingleReview from './SingleReview'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-class ProductViewPage extends React.Component {
+class SingleProduct extends React.Component {
    constructor() {
         super();
         this.state = {
@@ -23,55 +24,56 @@ class ProductViewPage extends React.Component {
     onStarClick(nextValue, prevValue, name) {
         this.setState({rating: nextValue});
     }
+    addToCartClick(product) {
+      console.log("product in component", product)
+      this.props.addToCart(product)
+    }
 
 render () {
   const { rating } = this.state;
+  const { image, title, description, year, tags, price, quantity } = this.props.products.selected;
+  const joinedTags = tags && tags.join(', ');
+  const { list } = this.props.reviews;
+
   return (
   <div className="container">
     <Row>
-      <Col s={8}>
+      <Col s={12} m={8} l={8}>
         <Card
           header={
-            <CardTitle image="http://s.newsweek.com/sites/www.newsweek.com/files/2014/09/29/1003bobrosstoc.jpg">
-              Card Title
+            <CardTitle image={image}>
+              {title}
             </CardTitle>
           }
         >
-
-          <Collection>
-            <CollectionItem>year</CollectionItem>
-            <CollectionItem>description</CollectionItem>
-            <Button>Add a review</Button>
-            <CollectionItem>Review 1</CollectionItem>
-            <CollectionItem>Review 2</CollectionItem>
-            <CollectionItem>Review 3</CollectionItem>
-            <CollectionItem>Review 4</CollectionItem>
-          </Collection>
         </Card>
       </Col>
-      <Col s={4}>
+      <Col s={12} m={4} l={4}>
         <Collection className="minheight">
-          <CollectionItem> Description </CollectionItem>
-          <CollectionItem> Price: $54002 </CollectionItem>
-          <CollectionItem> <span> Remaining Quantity: 2 </span> </CollectionItem>
-          <CollectionItem> Year </CollectionItem>
-          <CollectionItem> Tags </CollectionItem>
-          <Button>Add to Cart</Button>
+          <CollectionItem> <b>Description:</b> {description} </CollectionItem>
+          <CollectionItem> <b>Price:</b> {price} </CollectionItem>
+          <CollectionItem> <span> <b>Remaining Quantity:</b> {quantity} </span> </CollectionItem>
+          <CollectionItem> <b>Year:</b> {year} </CollectionItem>
+          <CollectionItem> <b>Tags:</b> {joinedTags} </CollectionItem>
+          <Button onClick={this.addToCartClick.bind(this, this.props.products.selected)}>Add to Cart</Button>
         </Collection>
       </Col>
     </Row>
     <Row>
       <Col s={12}>
         <Collection>
-            <CollectionItem>Reviews
+            <CollectionItem> <p className="caption"> Reviews </p>
                <Collection>
-                  <CollectionItem>
-                    <p>Insert Review Title Here &nbsp;
-                      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                    </p>
-                    <p>Insert Date Created</p>
-                    <p>Insert Review Content Here</p>
-                  </CollectionItem>
+                    {
+                      list.map(review =>
+                      <CollectionItem key={review.id}><SingleReview
+                        date={review.created_at.split('T')[0]} // Splits on T to separate out date. example: 2017-04-24T21:26:33.285Z
+                        content={review.text}
+                        title={review.title}
+                        rating={review.rating}
+                      />
+                      </CollectionItem>)
+                    }
                </Collection>
 
 
@@ -118,5 +120,9 @@ render () {
 /* -------------------<   CONTAINER   >-------------------- */
 
 import { connect } from 'react-redux';
+import { addToCart, addProduct } from '../reducers/cart'
 
-export default connect()(ProductViewPage);
+export default connect(
+  ({ products, reviews }) => ({ products, reviews }),
+  ({ addToCart }),
+)(SingleProduct)

@@ -11,14 +11,15 @@ import NotFound from './components/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Products from './components/Products'
-import ProductViewPage from './components/ProductViewPage'
+import SingleProduct from './components/SingleProduct'
 import Login from './components/Login'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleOrder from './components/SingleOrder'
 import SingleReview from './components/SingleReview'
 
-import {fetchProducts, fetchHomeProducts} from './reducers/products';
+import {fetchProduct, fetchProducts, fetchHomeProducts} from './reducers/products';
+import {fetchProductReviews} from './reducers/reviews';
 
 // browserHistory.listen(location => {
 //   console.log(location.query);
@@ -39,13 +40,13 @@ const App = connect(
     </div>
 )
 
-const RoutesComponent = ({onProductsEnter, onHomeEnter}) => (
+const RoutesComponent = ({onProductEnter, onProductsEnter, onHomeEnter}) => (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onHomeEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} onChange={onProductsEnter} />
-        <Route path="/products/:id" component={ProductViewPage} />
+        <Route path="/products/:id" component={SingleProduct} onEnter={onProductEnter} />
         <Route path="/account" component={MyAccount} />
         <Route path="/orders/1" component={SingleOrder} />
         <Route path="/login" component={Login} />
@@ -67,6 +68,11 @@ const mapDispatch = dispatch => ({
   },
   onHomeEnter: (nextRouterState) => {
     dispatch(fetchHomeProducts());
+  },
+  onProductEnter: (nextRouterState) => {
+    let id = nextRouterState.params.id;
+    dispatch(fetchProduct(id));
+    dispatch(fetchProductReviews(id));
   }
 })
 
