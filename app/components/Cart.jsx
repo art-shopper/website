@@ -33,7 +33,7 @@ class Cart extends React.Component {
   }
 
   render() {
-    console.log('props', this.props)
+    // console.log('props', this.props)
     const cart = this.props.cart.list;
     const eachProduct = cart.map((item) => {
       return (
@@ -49,7 +49,7 @@ class Cart extends React.Component {
     })
     return (
       <div className="container">
-        <p className="caption"> My Cart </p>
+        <h5> My Cart </h5>
         <table>
           <thead>
             <tr>
@@ -72,7 +72,7 @@ class Cart extends React.Component {
       <div className="checkoutForm">
       <br />
         <div>
-          <h4> Checkout Information </h4>
+          <h5> Checkout Information </h5>
          </div>
 
         <form

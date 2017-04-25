@@ -60,7 +60,8 @@
 .thumb {
   max-height: 64px;
   max-width: 64px;
-  
+}
+
 .caption {
   font-size: 22px;
   font-weight: bold;
