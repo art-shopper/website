@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory} from 'react-router'
 import { Button, Input, Row, Icon } from 'react-materialize'
-import {browserHistory} from 'react-router'
 import { intToUSD } from '../utils'
 
 /* -------------------<   COMPONENT   >-------------------- */
