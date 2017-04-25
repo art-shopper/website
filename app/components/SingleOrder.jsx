@@ -8,9 +8,9 @@ import { intToUSD } from '../utils'
 const SingleOrder = (props) => {
  return  (
     <div className="container">
-     <p className="caption"> Order #13401591 </p>
-     <p className="caption"> Order Date: 04/10/2017, 7:40pm </p>
-     <p className="caption"> Order Status: Shipped </p>
+     <h4><b> Order #13401591 </b></h4>
+     <p className="ordercaption"> <b>Order Date:</b> 04/10/2017, 7:40pm </p>
+     <p className="ordercaption"> <b>Order Status:</b> Shipped </p>
       <table>
         <thead>
           <tr>

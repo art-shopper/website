@@ -12,7 +12,6 @@ import {
 import StarRatingComponent from 'react-star-rating-component';
 import SingleReview from './SingleReview'
 import { intToUSD } from '../utils'
-import toastr from 'toastr'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
@@ -28,10 +27,11 @@ class SingleProduct extends React.Component {
   }
   addToCartClick(product) {
     this.props.addToCart(product)
+    toastr.info('Added item to Cart!')
   }
   submitReview(event) {
     // we want page to refresh after post, so no prevent default
-    toastr.success('Have fun storming the castle!', 'Miracle Max Says')
+
     let userId = this.props.user.id
     let review = {
       title: event.target.title.value,

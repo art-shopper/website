@@ -30,6 +30,7 @@ class Cart extends React.Component {
     })
     evt.preventDefault()
     browserHistory.push('/')
+    toastr.success(`Success! Your product(s) will arrive within 5-7 business days. Your email confirmation has been sent to ${evt.target.email.value}.`)
   }
 
   render() {
@@ -81,7 +82,9 @@ class Cart extends React.Component {
           <Input name="name" label="Name" s={12}  />
           <Input name="email" label="Email" s={12}  />
           <Input name="address" label="Shipping Address" s={12} />
-          <Input type="submit" value="Finish Checkout" />
+          <button style={{marginTop: 20}} className="btn waves-effect waves-light" type="submit" name="action" value="Checkout">Finish Checkout
+          <i className="material-icons right">shopping_cart</i>
+          </button>
         </form>
         </div>
       </div>
