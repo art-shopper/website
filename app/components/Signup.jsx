@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { signupAndGoToUser } from '../reducers/auth';
 import { Col, Row, Input, Button } from 'react-materialize';
-import { Link } from 'react-router';
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -58,25 +57,25 @@ class Signup extends React.Component {
             </div>
             <div>
               <p>
-                <Link to="/api/auth/login/google">
-                  <Button >
+                <a href="/api/auth/login/google">
+                  <Button>
                     <span>{message} with Google</span>
                   </Button>
-                </Link>
+                </a>
               </p>
               <p>
-                <Link to="/api/auth/github">
-                  <Button target="_self" href="/api/auth/github">
+                <a href="/api/auth/login/github">
+                  <Button>
                     <span>{message} with GitHub</span>
                   </Button>
-                </Link>
+                </a>
               </p>
               <p>
-                <Link to="/api/auth/twitter">
-                  <Button target="_self" href="/api/auth/twitter">
-                    <span>{message} with Twitter</span>
+                <a href="/api/auth/login/facebook">
+                  <Button>
+                    <span>{message} with Facebook</span>
                   </Button>
-                </Link>
+                </a>
               </p>
             </div>
           </div>
