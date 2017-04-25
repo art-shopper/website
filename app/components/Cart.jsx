@@ -16,13 +16,20 @@ class Cart extends React.Component {
   }
 
   onSubmitClick(evt) {
+    // console.log('props on props', this.props.cart.list)
     const cart = this.props.cart.list;
-    cart.map((item) => {
-      console.log(this.props)
-      return this.props.placeOrder(item)
+
+    this.props.placeOrder({
+      orderItems: cart.map(item => (
+        {
+          product_id: item.product.id,
+          quantity: item.quantity,
+          current_price: item.product.price,
+        })),
+      email: this.props.auth.email ? null : evt.target.email.value
     })
     evt.preventDefault()
-    // browserHistory.push('/')
+    browserHistory.push('/')
   }
 
   render() {
@@ -31,11 +38,11 @@ class Cart extends React.Component {
     const eachProduct = cart.map((item) => {
       return (
         <tr>
-          <td> <img className="thumb" src={item.image} /></td>
-          <td>{item.title}</td>
-          <td>{+item.price}</td>
+          <td> <img className="thumb" src={item.product.image} /></td>
+          <td>{item.product.title}</td>
+          <td>{+item.product.price}</td>
           <td>{item.quantity} </td>
-          <td>{item.quantity * item.price}</td>
+          <td>{item.quantity * item.product.price}</td>
           <td><Button floating icon='mode_edit' className='green' /><Button onClick={this.onDeleteClick.bind(this, this.props.id)} floating icon='delete' className='red' /></td>
         </tr>
       )
@@ -93,6 +100,7 @@ const mapToState = (state) => {
   return {
     cart: state.cart,
     products: state.products,
+    auth: state.auth
   }
 }
 

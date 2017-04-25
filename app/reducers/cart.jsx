@@ -20,16 +20,7 @@ export const clearCart = () => ({
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  list: [{
-    id: 1,
-    title: 'Peaceful Reflections',
-    description: "One of Bob's legendary pictures. The light is shown pouring from the heavens.",
-    year: 1991,
-    image: 'https://s-media-cache-ak0.pinimg.com/originals/02/6c/47/026c47ad36933184efcb93dc5767d63b.jpg',
-    price: 240000,
-    quantity: 1,
-    tags: ['mountains', 'trees', 'lake', 'water', 'timeless']
-  }]
+  list: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -57,7 +48,7 @@ import axios from 'axios';
 
 // Add an item to the state (might not need axios for this)
 export const addToCart = product => dispatch => {
-  dispatch(addProduct(product))
+  dispatch(addProduct({product, quantity: 1}))
 };
 
 // Remove an item from the state
@@ -65,6 +56,7 @@ export const removeItem = product => dispatch(deleteItem(product));
 
 //Submit an order which should clear the state
 export const placeOrder = order => dispatch => {
+  console.log('order in cart', order)
   axios.post(`/api/orders`, order)
   .then(res => res.data)
   .then(() => dispatch(clearCart()))
