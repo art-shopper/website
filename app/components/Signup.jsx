@@ -6,7 +6,6 @@ import { Col, Row, Input, Button } from 'react-materialize';
 /* -----------------    COMPONENT     ------------------ */
 
 class Signup extends React.Component {
-
   constructor(props) {
     super(props);
     this.onSignupSubmit = this.onSignupSubmit.bind(this);
@@ -20,11 +19,35 @@ class Signup extends React.Component {
           <div>
             <div>
               <form onSubmit={this.onSignupSubmit}>
-                <Input label="First Name" name="first_name" type="text" s={12} required />
-                <Input label="Last Name" name="last_name" type="text" s={12} required />
-                <Input label="email" name="email" type="email" s={12} required />
-                <Input label="password" name="password" type="password" s={12} required />
-                <Button type="submit" >{message}</Button>
+                <Input
+                  label="First Name"
+                  name="first_name"
+                  type="text"
+                  s={12}
+                  required
+                />
+                <Input
+                  label="Last Name"
+                  name="last_name"
+                  type="text"
+                  s={12}
+                  required
+                />
+                <Input
+                  label="email"
+                  name="email"
+                  type="email"
+                  s={12}
+                  required
+                />
+                <Input
+                  label="password"
+                  name="password"
+                  type="password"
+                  s={12}
+                  required
+                />
+                <Button type="submit">{message}</Button>
               </form>
             </div>
             <div>
@@ -32,29 +55,26 @@ class Signup extends React.Component {
                 <span>OR</span>
               </div>
             </div>
-            <div >
+            <div>
               <p>
-                <a
-                  target="_self"
-                  href="/api/auth/google"
-                  className="btn btn-social btn-google">
-                  <span>{message} with Google</span>
+                <a href="/api/auth/login/google">
+                  <Button>
+                    <span>{message} with Google</span>
+                  </Button>
                 </a>
               </p>
               <p>
-                <a
-                  target="_self"
-                  href="/api/auth/github"
-                  className="btn btn-social btn-github">
-                  <span>{message} with GitHub</span>
+                <a href="/api/auth/login/github">
+                  <Button>
+                    <span>{message} with GitHub</span>
+                  </Button>
                 </a>
               </p>
               <p>
-                <a
-                  target="_self"
-                  href="/api/auth/twitter"
-                  className="btn btn-social btn-twitter">
-                  <span>{message} with Twitter</span>
+                <a href="/api/auth/login/facebook">
+                  <Button>
+                    <span>{message} with Facebook</span>
+                  </Button>
                 </a>
               </p>
             </div>
@@ -70,7 +90,7 @@ class Signup extends React.Component {
       first_name: event.target.first_name.value,
       last_name: event.target.last_name.value,
       email: event.target.email.value,
-      password: event.target.password.value
+      password: event.target.password.value,
     };
 
     console.log(credentials);
