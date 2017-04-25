@@ -56,3 +56,8 @@
   margin-right: 2px;
   font-size: 1rem;
 }
+
+.thumb {
+  max-height: 64px;
+  max-width: 64px;
+}

@@ -20,9 +20,16 @@ export const clearCart = () => ({
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  list: [
-  {title: "something cool", description: "this should be more than 20 characters", price: "$10", quantity: 1, tags: ['tree']}
-  ]
+  list: [{
+    id: 1,
+    title: 'Peaceful Reflections',
+    description: "One of Bob's legendary pictures. The light is shown pouring from the heavens.",
+    year: 1991,
+    image: 'https://s-media-cache-ak0.pinimg.com/originals/02/6c/47/026c47ad36933184efcb93dc5767d63b.jpg',
+    price: 240000,
+    quantity: 1,
+    tags: ['mountains', 'trees', 'lake', 'water', 'timeless']
+  }]
 };
 
 const reducer = (state = initialState, action) => {
