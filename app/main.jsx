@@ -16,11 +16,8 @@ import Login from './components/Login'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleOrder from './components/SingleOrder'
-<<<<<<< HEAD
 import Signup from './components/Signup'
-=======
 import SingleReview from './components/SingleReview'
->>>>>>> f69222c6ee1a44d2bdb1deaac92456e77b89dea9
 
 import {fetchProducts, fetchHomeProducts} from './reducers/products';
 
