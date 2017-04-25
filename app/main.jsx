@@ -64,10 +64,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     dispatch(fetchHomeProducts());
   },
   onAccountEnter: (nextRouterState) => {
-    // TODO: FIX THIS
-    // console.log(nextRouterState)
-    if(store.getState().auth) dispatch(getUserOrders(store.getState().auth.id))
-    // if(ownProps.auth) dispatch(getUserOrders(ownProps.auth.id));
+    if(!store.getState().auth) browserHistory.push('/');
   }
 })
 
