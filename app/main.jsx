@@ -64,7 +64,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     dispatch(fetchHomeProducts());
   },
   onAccountEnter: (nextRouterState) => {
-    if(!store.getState().auth) browserHistory.push('/');
+    if(!store.getState().auth) browserHistory.push('/login');
   }
 })
 
