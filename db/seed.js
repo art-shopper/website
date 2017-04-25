@@ -111,8 +111,8 @@ const reviews = seed(Review,
   // function does this wiring for us).
   ({users, products}) => ({
     review1: {
-      title: 'Wow awesome painting',
-      text: 'Nice Painting! Definitely worth the price!! I love how peaceful this is.',
+      title: 'Wow, Awesome Painting',
+      text: 'This is a great painting, and it is definitely worth the price!! I love how peaceful this is.',
       rating: 5,
       product_id: products.painting1.id,
       user_id: users.omri.id
@@ -136,6 +136,20 @@ const reviews = seed(Review,
       text: 'Sometimes I cry because this painting is so beautiful.',
       rating: 2,
       product_id: products.painting5.id,
+      user_id: users.yoonahbrow.id
+    },
+    review5: {
+      title: 'Are trees happy?',
+      text: 'Nature is magical. Bob harnesses the power of earth and water in this timeless masterpiece.',
+      rating: 4,
+      product_id: products.painting5.id,
+      user_id: users.omri.id
+    },
+    review6: {
+      title: 'Mountains are beautiful',
+      text: 'I love how Bob uses red, an unnatural color in a mountain setting, to create an extremely compelling effect.',
+      rating: 5,
+      product_id: products.painting1.id,
       user_id: users.yoonahbrow.id
     }
   })

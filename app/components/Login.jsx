@@ -4,7 +4,7 @@ import { Link, browserHistory } from 'react-router';
 
 export const Login = ({ login }) => (
   <Row>
-    <Col s={10} m={6} l={4} offset="s1 m3 l4">
+    <Col s={10} m={6} l={6} offset="s1 m3 l3">
       <p className="caption"> Login </p>
       <form
         onSubmit={evt => {
@@ -15,16 +15,39 @@ export const Login = ({ login }) => (
       >
         <Input name="username" label="Email" s={12} />
         <Input name="password" label="Password" type="password" s={12} />
-        <Input type="submit" value="Login" />
+        <button style={{margin: 10}} className="btn waves-effect waves-light" type="submit" name="action" value="Login">Log in
+        <i className="material-icons right">vpn_key</i>
+        </button>
         <div>
-          <div>
+          <div className="or-text">
             <span>OR</span>
           </div>
         </div>
       </form>
-      <a href="/api/auth/login/google">
-        <Button name="google">Google</Button>
-      </a>
+      <div className="flex">
+        <p>
+          <a href="/api/auth/login/google">
+            <Button className="auth-color" style={{margin: 5}}>
+              <span>Sign Up with Google</span>
+            </Button>
+          </a>
+        </p>
+        <p>
+          <a href="/api/auth/login/github">
+            <Button className="auth-color" style={{margin: 5}}>
+              <span>Sign up with GitHub</span>
+            </Button>
+          </a>
+        </p>
+        <p>
+          <a href="/api/auth/login/facebook">
+            <Button className="auth-color" style={{margin: 5}}>
+              <span>Sign up with Facebook</span>
+            </Button>
+          </a>
+        </p>
+      </div>
+
     </Col>
   </Row>
 );
