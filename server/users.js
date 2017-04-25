@@ -61,8 +61,15 @@ module.exports = require('express').Router()
       .then(reviews => res.json(reviews))
       .catch(next))
   .post('/:id/reviews',   // might need to auth people who actually bought product
-    selfOnly,
+    // selfOnly,
     (req, res, next) => 
       req.foundUser.createReview(req.body)   // req.body should have the product_id and all other review fields
       .then(createdReview => res.json(createdReview))
       .catch(next))
+  .get('/:id/orders/:orderId', 
+    (req, res, next) => 
+      req.foundUser.getOrders({where: {id: req.params.orderId}})
+      .then(order => order[0].getOrderItems())
+      .then(orderItems => res.json(orderItems))
+      .catch(next))
+

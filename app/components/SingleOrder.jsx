@@ -1,6 +1,11 @@
 import React from 'react'
 import {} from 'react-materialize'
 
+import { Link } from 'react-router'
+
+import { intToUSD } from '../utils'
+
+
 /* -------------------<   COMPONENT   >-------------------- */
 
 const SingleOrder = (props) => {
@@ -16,32 +21,18 @@ const SingleOrder = (props) => {
               <th>Item Name</th>
               <th>Item Price</th>
               <th>Quantity</th>
-              <th>Link to Item</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>Picture here</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
-          <tr>
-            <td>Picture here</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
-          <tr>
-            <td>Picture here</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
+          {props.orderItems && props.orderItems.map(orderItem => (
+              <tr key={orderItem.id}>
+                <td><img className="thumb" src={orderItem.product.image}/></td>
+                <td><Link to={`/products/${orderItem.product.id}`}>{orderItem.product.title}</Link></td>
+                <td>{intToUSD(orderItem.current_price)}</td>
+                <td>{orderItem.quantity}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
 
@@ -55,4 +46,5 @@ const SingleOrder = (props) => {
 import {connect} from 'react-redux'
 
 export default connect(
+  ({orders}) => {console.log(orders);return{orderItems: orders.selected}}
 )(SingleOrder)

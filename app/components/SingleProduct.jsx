@@ -15,19 +15,30 @@ import SingleReview from './SingleReview'
 /* -------------------<   COMPONENT   >-------------------- */
 
 class SingleProduct extends React.Component {
-   constructor() {
-        super();
-        this.state = {
-            rating: 0
-        };
-    }
-    onStarClick(nextValue, prevValue, name) {
-        this.setState({rating: nextValue});
-    }
-    addToCartClick(product) {
-      console.log("product in component", product)
-      this.props.addToCart(product)
-    }
+  constructor() {
+    super();
+    this.state = {
+        rating: 0
+    };
+  }
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
+  }
+  addToCartClick(product) {
+    this.props.addToCart(product)
+  }
+  submitReview(event) {
+    // we want page to refresh after post, so no prevent default
+    let userId = this.props.user.id
+    let review = {
+      title: event.target.title.value,
+      text: event.target.text.value,
+      rating: this.state.rating,
+      'product_id': this.props.products.selected.id,
+      'user_id': userId
+    };
+    this.props.postReview(userId, review)
+  }
 
 render () {
   const { rating } = this.state;
@@ -39,13 +50,13 @@ render () {
   <div className="container">
     <Row>
       <Col s={12} m={8} l={8}>
-        <Card
-          header={
+        <Card>
+
             <CardTitle image={image}>
               {title}
             </CardTitle>
-          }
-        >
+
+
         </Card>
       </Col>
       <Col s={12} m={4} l={4}>
@@ -75,23 +86,21 @@ render () {
                       </CollectionItem>)
                     }
                </Collection>
-
-
             </CollectionItem>
 
             {/*<Button>Add a review</Button>*/}
-            <CollectionItem> <p> New Review </p>
+            <CollectionItem> <p className="caption"> New Review </p>
 
-              <form className="col s12" onSubmit={this.submitReview}>
+              <form className="col s12" onSubmit={this.submitReview.bind(this)}>
                 <div className="row">
                   <div className="input-field col s12 m6 l6">
-                    <input id="input_text" type="text" data-length="10" />
+                    <input name="title" id="input_text" type="text" data-length="10" />
                     <label htmlFor="input_text">Give your review a title!</label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s12">
-                    <input id="input_text2" type="text" data-length="10" />
+                    <input name="text" id="input_text2" type="text" data-length="10" />
                     <label htmlFor="input_text2">What did you think of the product? (20 chars min)</label>
                   </div>
                 </div>
@@ -120,9 +129,13 @@ render () {
 /* -------------------<   CONTAINER   >-------------------- */
 
 import { connect } from 'react-redux';
-import { addToCart, addProduct } from '../reducers/cart'
+import { addToCart } from '../reducers/cart'
+import { postReview } from '../reducers/reviews'
 
 export default connect(
-  ({ products, reviews }) => ({ products, reviews }),
-  ({ addToCart }),
+  ({ products, reviews, auth }) => ({ products, reviews, user: auth }),
+  ({ addToCart, postReview }),
 )(SingleProduct)
+
+                        /*firstName={review.user.first_name}
+                        lastName={review.user.last_name}*/

@@ -29,6 +29,11 @@ module.exports = db => db.define('users', {
     beforeCreate: setEmailAndPassword,
     beforeUpdate: setEmailAndPassword,
   },
+  // defaultScope: {
+  //   include: {
+  //     all:true
+  //   }
+  // },
   instanceMethods: {
     // This method is a Promisified bcrypt.compare
     authenticate(plaintext) {
@@ -51,7 +56,7 @@ module.exports.associations = (User, {OAuth, Order, Review}) => {
   User.hasOne(OAuth)
   User.hasMany(Order)
   User.hasMany(Review, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
-
+  User.addScope('defaultScope', {include: [ Review, Order ]}, {override: true});
 }
 
 function setEmailAndPassword(user) {

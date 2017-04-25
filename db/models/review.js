@@ -27,14 +27,15 @@ module.exports = db => db.define('reviews', {
     }
   }
 }, {
-  defaultScope: {
-    include: {
-      all: true
-    }
-  }
+  // defaultScope: {
+  //   include: {
+  //     all: true
+  //   }
+  // }
 });
 
 module.exports.associations = (Review, {User, Product}) => {
   Review.belongsTo(User, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
   Review.belongsTo(Product, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'});
+  // Review.addScope('defaultScope', {include: [ User ]}, {override: true});
 };

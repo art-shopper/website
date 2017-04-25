@@ -33,11 +33,8 @@ module.exports = require('express').Router()
       .then(() => res.sendStatus(201))
       .catch(next))
     })
-
-
-  // get one order - only admins can do this. normal users are blocked
   .get('/:id',
-    forbidden('Unauthorize access.'),
+    selfOnly('Unauthorize access.'),
     (req, res, next) =>
       OrderItem.findAll({
         where: {

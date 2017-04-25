@@ -52,7 +52,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GOOGLE_CLIENT_ID,
     clientSecret: env.GOOGLE_CLIENT_SECRET,
-    callbackURL: `${app.baseUrl}/api/auth/login/google`,
+    callbackURL: `localhost:1337/api/auth/login/google`,
   },
   passport
 });
