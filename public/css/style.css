@@ -89,3 +89,32 @@
   padding: 7px;
   margin: 10px;
 }
+
+.or-text {
+  font-size: 22px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.signup-height {
+  min-height: 60vh;
+}
+
+.flexgrow {
+  flex-grow: 1
+}
+
+.oauth {
+  text-align: center;
+  background-color: black;
+}
+
+.auth-color {
+  background-color: darkslateblue;
+}
