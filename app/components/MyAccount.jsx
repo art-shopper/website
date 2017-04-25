@@ -31,5 +31,5 @@ const MyAccount = (props) => (
 import {connect} from 'react-redux'
 
 export default connect(
-  ({orders}) => ({orders: orders.list})
+  ({auth}) => {return auth ? {orders: auth.orders, reviews: auth.reviews} : {orders: [], reviews: []}}
 )(MyAccount)
