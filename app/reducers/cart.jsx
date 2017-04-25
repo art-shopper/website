@@ -47,7 +47,9 @@ const reducer = (state = initialState, action) => {
 import axios from 'axios';
 
 // Add an item to the state (might not need axios for this)
-export const addToCart = product => dispatch(addProduct(product));
+export const addToCart = product => dispatch => {
+  dispatch(addProduct(product))
+};
 
 // Remove an item from the state
 export const removeItem = product => dispatch(deleteItem(product));
