@@ -15,7 +15,7 @@ export const Header = ({ user, logout }) => (
       <form onSubmit={ (evt) => {
         evt.preventDefault();
         browserHistory.push(
-          `products?search=${evt.target.search.value}`);
+          `/products?search=${evt.target.search.value}`);
       }}>
           <input id="search" type="search" name="search" />
       </form>
