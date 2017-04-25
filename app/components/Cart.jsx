@@ -15,8 +15,14 @@ class Cart extends React.Component {
     this.props.removeItem(product_id)
   }
 
-  onSubmitClick(order) {
-
+  onSubmitClick(evt) {
+    const cart = this.props.cart.list;
+    cart.map((item) => {
+      console.log(this.props)
+      return this.props.placeOrder(item)
+    })
+    evt.preventDefault()
+    // browserHistory.push('/')
   }
 
   render() {
@@ -63,10 +69,7 @@ class Cart extends React.Component {
          </div>
 
         <form
-          onSubmit={evt => {
-            evt.preventDefault()
-            browserHistory.push('/')
-            } }>
+          onSubmit={this.onSubmitClick.bind(this) }>
 
           <Input name="name" label="Name" s={12}  />
           <Input name="email" label="Email" s={12}  />
