@@ -26,6 +26,12 @@ module.exports = db => db.define('reviews', {
       max: 5
     }
   }
+}, {
+  defaultScope: {
+    include: {
+      all: true
+    }
+  }
 });
 
 module.exports.associations = (Review, {User, Product}) => {

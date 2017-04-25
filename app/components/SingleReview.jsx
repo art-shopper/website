@@ -1,30 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router'
-import { CollectionItem } from 'react-materialize';
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const SingleReview = props => (
-  <div>
-    <p>Insert Review Title Here &nbsp;
-      <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-    </p>
-    <p>Insert Date Created</p>
-    <p>Insert Review Content Here</p>
-  </div>
+export default class SingleReview extends React.Component {
 
-);
-
-
-
-/* -------------------<   CONTAINER   >-------------------- */
-
-import { connect } from 'react-redux';
-
-export default connect(
-    (state, {review}) => (
-      {
-        review
-      }
+  const
+  render () {
+    return (
+      <div>
+        <p>{this.props.title} &nbsp;
+          <span id="star">&#9733;</span><span id="star">&#9733;</span><span id="star">&#9733;</span><span id="star">&#9733;</span><span id="star">☆</span>
+        </p>
+        <p>Date: {this.props.date}</p>
+        <p>{this.props.content}</p>
+      </div>
     )
-  )(SingleReview);
+  }
+}

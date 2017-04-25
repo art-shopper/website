@@ -10,7 +10,7 @@ module.exports = require('express').Router()
   // get a number of products based on offset and search
   .get('/',
     (req, res, next) =>
-{   console.log(req.query);   
+{   console.log(req.query);
     return Product.searchWithOffset(req.query.searchStr, +req.query.offset)
         .then(products => res.json(products))
         .catch(next)})
@@ -51,6 +51,7 @@ module.exports = require('express').Router()
   // get all the reviews for a product with an offset
   .get('/:id/reviews',
     (req, res, next) =>
-      Product.getReviewsWithOffset(req.query.offset)
+      Product.findById(req.params.id)
+      .then(product => product.getReviewsWithOffset(req.query.offset))
       .then(reviews => res.json(reviews))
       .catch(next));
