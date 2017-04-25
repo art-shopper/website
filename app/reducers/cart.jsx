@@ -20,7 +20,9 @@ export const clearCart = () => ({
 /* -------------------<   REDUCERS   >--------------------- */
 
 const initialState = {
-  list: []
+  list: [
+  {title: "something cool", description: "this should be more than 20 characters", price: "$10", quantity: 1, tags: ['tree']}
+  ]
 };
 
 const reducer = (state = initialState, action) => {

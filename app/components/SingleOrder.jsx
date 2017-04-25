@@ -3,7 +3,8 @@ import {} from 'react-materialize'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const SingleOrder = (props) => (
+const SingleOrder = (props) => {
+ return  (
     <div className="container">
      <p className="caption"> Order #13401591 </p>
      <p className="caption"> Order Date: 04/10/2017, 7:40pm </p>
@@ -48,7 +49,7 @@ const SingleOrder = (props) => (
 
     </div>
 )
-
+}
 /* -------------------<   CONTAINER   >-------------------- */
 
 import {connect} from 'react-redux'

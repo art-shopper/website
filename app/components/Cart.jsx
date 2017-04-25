@@ -4,7 +4,9 @@ import {Button} from 'react-materialize'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const Cart = (props) => (
+const Cart = (props) => {
+  console.log(props)
+ return  (
     <div className="container">
      <p className="caption"> My Cart </p>
       <table>
@@ -46,10 +48,19 @@ const Cart = (props) => (
       <Button><Link to="/checkout" style={{color:'white'}}>Checkout</Link></Button>
     </div>
 )
+}
 
 /* -------------------<   CONTAINER   >-------------------- */
 
 import {connect} from 'react-redux'
 
-export default connect(
-)(Cart)
+const mapToState = (state) => {
+  console.log('state in connect', state)
+  return {
+    cart: state.cart,
+    products: state.products,
+  }
+}
+
+
+export default connect(mapToState)(Cart)
