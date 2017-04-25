@@ -48,7 +48,7 @@ import axios from 'axios';
 
 // Add an item to the state (might not need axios for this)
 export const addToCart = product => dispatch => {
-  dispatch(addProduct(product))
+  dispatch(addProduct({product, quantity: 1}))
 };
 
 // Remove an item from the state
@@ -56,6 +56,7 @@ export const removeItem = product => dispatch(deleteItem(product));
 
 //Submit an order which should clear the state
 export const placeOrder = order => dispatch => {
+  console.log('order in cart', order)
   axios.post(`/api/orders`, order)
   .then(res => res.data)
   .then(() => dispatch(clearCart()))

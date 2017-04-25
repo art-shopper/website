@@ -1,9 +1,24 @@
 import React from 'react'
-import {Input} from 'react-materialize'
+import {Input, Button} from 'react-materialize'
+import {Link} from 'react-router'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
-const Checkout = (props) => (
+const Checkout = (props) => {
+  console.log(props)
+    const cart = props.cart.list;
+    const eachProduct = cart.map((item) => {
+      return (
+        <tr>
+          <td> <img className="thumb" src={item.image} /></td>
+          <td>{item.title}</td>
+          <td>{+item.price}</td>
+          <td>{item.quantity} </td>
+          <td><Button><Link to="/cart" style={{ color: 'white' }} >Edit</Link></Button> </td>
+        </tr>
+      )
+    })
+return (
     <div className="container">
      <p className="caption"> Checkout </p>
       <table>
@@ -18,27 +33,7 @@ const Checkout = (props) => (
         </thead>
 
         <tbody>
-          <tr>
-            <td>Picture here</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
-          <tr>
-            <td>Picture here</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
-          <tr>
-            <td>Picture here</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>1</td>
-            <td>Button</td>
-          </tr>
+         {eachProduct}
         </tbody>
       </table>
 
@@ -55,10 +50,19 @@ const Checkout = (props) => (
 
     </div>
 )
+}
 
 /* -------------------<   CONTAINER   >-------------------- */
 
 import {connect} from 'react-redux'
 
-export default connect(
+const mapToState = (state) => {
+  console.log('state in connect', state)
+  return {
+    cart: state.cart,
+    products: state.products,
+  }
+}
+
+export default connect(mapToState
 )(Checkout)
