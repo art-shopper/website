@@ -3,8 +3,6 @@ import {} from 'react-materialize'
 
 import { Link } from 'react-router'
 
-import { intToUSD } from '../utils'
-
 
 /* -------------------<   COMPONENT   >-------------------- */
 
@@ -29,7 +27,7 @@ const SingleOrder = (props) => {
               <tr key={orderItem.id}>
                 <td><img className="thumb" src={orderItem.product.image}/></td>
                 <td><Link to={`/products/${orderItem.product.id}`}>{orderItem.product.title}</Link></td>
-                <td>{intToUSD(orderItem.current_price)}</td>
+                <td>{orderItem.current_price}</td>
                 <td>{orderItem.quantity}</td>
               </tr>
             ))}
