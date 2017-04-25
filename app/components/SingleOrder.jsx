@@ -1,10 +1,7 @@
 import React from 'react'
 import {} from 'react-materialize'
-
 import { Link } from 'react-router'
-
 import { intToUSD } from '../utils'
-
 
 /* -------------------<   COMPONENT   >-------------------- */
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { Button, Input, Row, Icon } from 'react-materialize'
 import {browserHistory} from 'react-router'
+import { intToUSD } from '../utils'
 
 /* -------------------<   COMPONENT   >-------------------- */
 
@@ -40,9 +41,9 @@ class Cart extends React.Component {
         <tr>
           <td> <img className="thumb" src={item.product.image} /></td>
           <td>{item.product.title}</td>
-          <td>{+item.product.price}</td>
+          <td>{intToUSD(+item.product.price)}</td>
           <td>{item.quantity} </td>
-          <td>{item.quantity * item.product.price}</td>
+          <td>{intToUSD(item.quantity * item.product.price)}</td>
           <td><Button floating icon='mode_edit' className='green' /><Button onClick={this.onDeleteClick.bind(this, this.props.id)} floating icon='delete' className='red' /></td>
         </tr>
       )
