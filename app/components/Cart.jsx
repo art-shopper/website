@@ -30,7 +30,8 @@ class Cart extends React.Component {
     })
     evt.preventDefault()
     browserHistory.push('/')
-    toastr.success(`Success! Your product(s) will arrive within 5-7 business days. Your email confirmation has been sent to ${evt.target.email.value}.`)
+    toastr.success(`Success! Your product(s) will arrive within 5-7 business days. Y
+      our email confirmation has been sent to ${this.props.auth.email || evt.target.email.value}.`)
   }
 
   render() {

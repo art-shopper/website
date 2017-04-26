@@ -24,6 +24,7 @@ const reducer = (state = null, action) => {
     case SET:
       return action.user;
     case CLEAR_CART:
+      if (!state) return state;
       const usr = Object.assign({}, state);
       usr.orders.push(action.order);
       return usr;
