@@ -38,13 +38,14 @@ class Cart extends React.Component {
     const cart = this.props.cart.list;
     const eachProduct = cart.map((item) => {
       return (
-        <tr>
-          <td> <img className="thumb" src={item.product.image} /></td>
+        <tr key={item.id}>
+          <td className="mobile-hide"> <img className="thumb" src={item.product.image} /></td>
           <td>{item.product.title}</td>
-          <td>{intToUSD(+item.product.price)}</td>
+          <td className="mobile-hide">{intToUSD(+item.product.price)}</td>
           <td>{item.quantity} </td>
           <td>{intToUSD(item.quantity * item.product.price)}</td>
-          <td><Button floating icon='mode_edit' className='green' /><Button onClick={this.onDeleteClick.bind(this, this.props.id)} floating icon='delete' className='red' /></td>
+          <td><Button floating icon='mode_edit' className='green' /></td>
+          <td><Button onClick={this.onDeleteClick.bind(this, this.props.id)} floating icon='delete' className='red' /></td>
         </tr>
       )
     })
@@ -54,18 +55,22 @@ class Cart extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>Picture</th>
+              <th className="mobile-hide">Picture</th>
               <th>Item Name</th>
-              <th>Item Price</th>
+              <th className="mobile-hide">Item Price</th>
               <th>Quantity</th>
               <th>Total Price</th>
-              <th>Edit/Delete</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
 
           <tbody>
             {eachProduct}
           </tbody>
+          <p className="caption"> Total price:
+            { " " + intToUSD(cart.reduce((acc, item) => {return acc + item.product.price * item.quantity}, 0)) }
+          </p>
         </table>
 
       {/*<Button><Link to="/checkout" style={{ color: 'white' }}>Checkout</Link></Button>*/}

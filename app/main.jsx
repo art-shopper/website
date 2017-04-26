@@ -14,7 +14,6 @@ import Products from './components/Products'
 import SingleProduct from './components/SingleProduct'
 import Login from './components/Login'
 import Cart from './components/Cart'
-import Checkout from './components/Checkout'
 import SingleOrder from './components/SingleOrder'
 import Signup from './components/Signup'
 import SingleReview from './components/SingleReview'
@@ -50,7 +49,6 @@ const RoutesComponent = ({onProductEnter, onProductsEnter, onHomeEnter, onAccoun
         <Route path="/login" component={Login} onEnter={onLoginEnter} />
         <Route path="/signup" component={Signup} />
         <Route path="/cart" component={Cart} />
-        <Route path="/checkout" component={Checkout} />
         <Route path="/reviews/:id" component={SingleReview} />
       </Route>
       <Route path='*' component={NotFound} />
