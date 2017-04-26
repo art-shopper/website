@@ -32,7 +32,7 @@ class Cart extends React.Component {
         email: this.props.auth.email ? null : evt.target.email.value
       })
       browserHistory.push('/')
-      toastr.success(`Success! Your product(s) will arrive within 5-7 business days. 
+      toastr.success(`Success! Your product(s) will arrive within 5-7 business days.
         Your email confirmation has been sent to ${this.props.auth.email || evt.target.email.value}.`)
     }
   }
@@ -86,14 +86,14 @@ class Cart extends React.Component {
         {cart.length ? (
         <form
           onSubmit={this.onSubmitClick.bind(this) }>
-          { !this.props.auth && 
+          { !this.props.auth &&
             <Input name="email" label="Email" s={12} validate type="email" required />
           }
           <button style={{marginTop: 20}} className="btn waves-effect waves-light" type="submit" name="action" value="Checkout">Finish Checkout
           <i className="material-icons right">shopping_cart</i>
           </button>
         </form> ) :
-        <div>Add items to checkout!</div>
+        <div>Add items in order to check out!</div>
       }
 
         </div>
