@@ -12,7 +12,7 @@ const SingleOrder = (props) => {
     {props.order && (
       <div>
        <h4><b> Order #{props.order.id} </b></h4>
-       <p className="ordercaption"> <b>Order Date:</b> {props.order.date_fulfilled} </p>
+       <p className="ordercaption"> <b>Order Date:</b> {props.order.date_fulfilled.split('T')[0]} </p>
        <p className="ordercaption"> <b>Order Status:</b> {props.order.status} </p>
       </div>
      )}
@@ -38,9 +38,9 @@ const SingleOrder = (props) => {
         </tbody>
       </table>
 
-      <p className="caption"> Total price: 
-        { props.orderItems && 
-          " " + intToUSD(props.orderItems.reduce((acc, ele) => {return acc + ele.current_price * ele.quantity}, 0)) } 
+      <p className="caption"> Total price:
+        { props.orderItems &&
+          " " + intToUSD(props.orderItems.reduce((acc, ele) => {return acc + ele.current_price * ele.quantity}, 0)) }
       </p>
 
     </div>
