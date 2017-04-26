@@ -78,7 +78,7 @@ const products = seed(Product, {
   },
   painting4: {
     title: 'After a Winter Storm',
-    description: 'The great blizzard of 1986 inpsired Bob to make this iconic painting of a wintry expanse.',
+    description: 'The great blizzard of 1986 inspired Bob to make this iconic painting of a wintry expanse.',
     year: 1986,
     image: 'http://d3rde5ck80dcsn.cloudfront.net/wp-content/uploads/2015/12/4.jpg',
     price: 1500000,
@@ -111,7 +111,7 @@ const reviews = seed(Review,
   // function does this wiring for us).
   ({users, products}) => ({
     review1: {
-      title: 'Wow, Awesome Painting',
+      title: 'Wow, awesome painting',
       text: 'This is a great painting, and it is definitely worth the price!! I love how peaceful this is.',
       rating: 5,
       product_id: products.painting1.id,
@@ -125,7 +125,7 @@ const reviews = seed(Review,
       user_id: users.yoonahbrow.id
     },
     review3: {
-      title: 'Why did I do this...',
+      title: 'Why did I buy this...',
       text: 'What is this painting? I do not know why I purchased it.',
       rating: 2,
       product_id: products.painting6.id,
@@ -160,31 +160,31 @@ const orders = seed(Order,
     order1: {
       id: 13401591,
       email: 'omri@omri.omri',
-      status: 'shipped',
+      status: 'Shipped',
       user_id: users.omri.id
     },
     order2: {
       id: 13401592,
       email: 'omri@omri.omri',
-      status: 'ordered',
+      status: 'Ordered',
       user_id: users.omri.id
     },
     order3: {
       id: 13401593,
       email: 'yuna@luna.luna',
-      status: 'delivered',
+      status: 'Delivered',
       user_id: users.omri.id
     },
     order4: {
       id: 13401594,
       email: 'yuna@luna.luna',
-      status: 'lost in delivery',
+      status: 'Lost in delivery',
       user_id: users.yoonahbrow.id
     },
     order5: {
       id: 13401595,
       email: 'guest@guest.com',
-      status: 'ordered',
+      status: 'Ordered',
     },
   })
 )
