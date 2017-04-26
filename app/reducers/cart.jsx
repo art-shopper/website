@@ -10,8 +10,8 @@ export const addProduct = product => ({
   type: ADD_ORDER_ITEM, product
 })
 
-export const deleteItem = product => ({
-  type: DELETE_ITEM, product
+export const deleteItem = index => ({
+  type: DELETE_ITEM, index
 })
 
 export const clearCart = order => ({
@@ -30,10 +30,10 @@ const reducer = (state = initialState, action) => {
         list: [action.product, ... state.list]
       })
     case DELETE_ITEM:
+      const newList = state.list.slice(0);
+      newList.splice(action.index, 1);
       return {
-        list: state.list.filter(function(elm) {
-          return elm.product_id !== action.product.product_id
-        })
+        list: newList
       }
     case CLEAR_CART:
       return {
@@ -52,7 +52,7 @@ export const addToCart = product => dispatch => {
 };
 
 // Remove an item from the state
-export const removeItem = product => dispatch(deleteItem(product));
+export const removeItem = index => dispatch => dispatch(deleteItem(index));
 
 //Submit an order which should clear the state
 export const placeOrder = order => dispatch => {

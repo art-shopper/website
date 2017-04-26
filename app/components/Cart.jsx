@@ -9,6 +9,7 @@ class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    // this.onDeleteClick = this.onDeleteClick.bind(this);
   }
 
   onDeleteClick(product_id) {
@@ -16,7 +17,6 @@ class Cart extends React.Component {
   }
 
   onSubmitClick(evt) {
-    // console.log('props on props', this.props.cart.list)
     const cart = this.props.cart.list;
 
     this.props.placeOrder({
@@ -30,14 +30,14 @@ class Cart extends React.Component {
     })
     evt.preventDefault()
     browserHistory.push('/')
-    toastr.success(`Success! Your product(s) will arrive within 5-7 business days. Y
-      our email confirmation has been sent to ${this.props.auth.email || evt.target.email.value}.`)
+    toastr.success(`Success! Your product(s) will arrive within 5-7 business days. 
+      Your email confirmation has been sent to ${this.props.auth.email || evt.target.email.value}.`)
   }
 
   render() {
     // console.log('props', this.props)
     const cart = this.props.cart.list;
-    const eachProduct = cart.map((item) => {
+    const eachProduct = cart.map((item, index) => {
       return (
         <tr key={item.id}>
           <td className="mobile-hide"> <img className="thumb" src={item.product.image} /></td>
@@ -46,7 +46,7 @@ class Cart extends React.Component {
           <td>{item.quantity} </td>
           <td>{intToUSD(item.quantity * item.product.price)}</td>
           <td><Button floating icon='mode_edit' className='green' /></td>
-          <td><Button onClick={this.onDeleteClick.bind(this, this.props.id)} floating icon='delete' className='red' /></td>
+          <td><Button onClick={() => this.onDeleteClick(index)} floating icon='delete' className='red' /></td>
         </tr>
       )
     })
