@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 
 const AUTHENTICATED = 'AUTHENTICATED';
 const SET = 'SET_CURRENT_USER';
+import {CLEAR_CART} from './cart';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -22,6 +23,10 @@ const reducer = (state = null, action) => {
       return action.user;
     case SET:
       return action.user;
+    case CLEAR_CART:
+      const usr = Object.assign({}, state);
+      usr.orders.push(action.order);
+      return usr;
   }
   return state;
 };

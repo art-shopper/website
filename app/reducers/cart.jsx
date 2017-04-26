@@ -1,7 +1,7 @@
 /* -------------------<   ACTIONS   >--------------------- */
 
 const ADD_ORDER_ITEM ='ADD_ORDER_ITEM';
-const CLEAR_CART = 'CLEAR_CART';
+export const CLEAR_CART = 'CLEAR_CART';
 const DELETE_ITEM = 'DELETE_ITEM';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
@@ -14,8 +14,8 @@ export const deleteItem = product => ({
   type: DELETE_ITEM, product
 })
 
-export const clearCart = () => ({
-  type: CLEAR_CART
+export const clearCart = order => ({
+  type: CLEAR_CART, order
 })
 /* -------------------<   REDUCERS   >--------------------- */
 
@@ -59,7 +59,7 @@ export const placeOrder = order => dispatch => {
   console.log('order in cart', order)
   axios.post(`/api/orders`, order)
   .then(res => res.data)
-  .then(() => dispatch(clearCart()))
+  .then(order => dispatch(clearCart(order)))
 }
 
 export default reducer;

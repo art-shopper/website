@@ -15,7 +15,6 @@ export default function reducer(users = [], action) {
   switch (action.type) {
     case CREATE:
       return [action.user, ...users];
-
     default:
       return users;
   }
