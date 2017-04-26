@@ -4,4 +4,4 @@ This website was built by a team of Fullstack Academy students using React-Redux
 
 Also, we like Bob Ross.
 
-
+http://artshopper.herokuapp.com/home
