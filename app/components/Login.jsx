@@ -29,21 +29,21 @@ export const Login = ({ login }) => (
         <p>
           <a href="/api/auth/login/google">
             <Button className="auth-color" style={{margin: 5}}>
-              <span>Sign Up with Google</span>
+              <span>Log in with Google</span>
             </Button>
           </a>
         </p>
         <p>
           <a href="/api/auth/login/github">
             <Button className="auth-color" style={{margin: 5}}>
-              <span>Sign up with GitHub</span>
+              <span>Log in with GitHub</span>
             </Button>
           </a>
         </p>
         <p>
           <a href="/api/auth/login/facebook">
             <Button className="auth-color" style={{margin: 5}}>
-              <span>Sign up with Facebook</span>
+              <span>Log in with Facebook</span>
             </Button>
           </a>
         </p>

@@ -22,7 +22,7 @@ export const Header = ({ user, logout }) => (
     </NavItem>
     {
       user ?
-        <NavItem onClick={logout}><Link to="/" className="nostyle">Logout {user && user.first_name + " " + user.last_name}</Link></NavItem> :
+        <NavItem onClick={logout}><Link to="/" className="nostyle">Logout {user && user.first_name ? user.first_name + " " + user.last_name : 'OAuth User'}</Link></NavItem> :
       <NavItem><Link to="/login" className="nostyle">Login</Link></NavItem>
     }
     {
