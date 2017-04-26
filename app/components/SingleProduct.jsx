@@ -19,11 +19,21 @@ class SingleProduct extends React.Component {
   constructor() {
     super();
     this.state = {
-        rating: 0
+        rating: 0,
+        title: '',
+        text: ''
     };
+    this.onTextKeyUp = this.onTextKeyUp.bind(this);
+    this.onTitleKeyUp = this.onTitleKeyUp.bind(this);
   }
   onStarClick(nextValue, prevValue, name) {
     this.setState({rating: nextValue});
+  }
+  onTitleKeyUp(evt){
+    this.setState({title: evt.target.value})
+  }
+  onTextKeyUp(evt){
+    this.setState({text: evt.target.value})
   }
   addToCartClick(product) {
     this.props.addToCart(product)
@@ -40,9 +50,7 @@ class SingleProduct extends React.Component {
       'product_id': this.props.products.selected.id,
       'user_id': userId
     };
-    event.target.title.value = '';
-    event.target.text.value = '';
-    this.setState({rating: 0});
+    this.setState({rating: 0, title: '', text: ''});
     this.props.postReview(userId, review)
   }
 
@@ -96,13 +104,13 @@ render () {
             <form className="col s12" onSubmit={this.submitReview.bind(this)}>
               <div className="row">
                 <div className="input-field col s12 m6 l6">
-                  <input name="title" id="input_text" type="text" data-length="10" />
+                  <input name="title" id="input_text" type="text" value={this.state.title} onChange={this.onTitleKeyUp} />
                   <label htmlFor="input_text">Give your review a title!</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input name="text" id="input_text2" type="text" data-length="10" />
+                  <input name="text" id="input_text2" type="text" value={this.state.text} onChange={this.onTextKeyUp} />
                   <label htmlFor="input_text2">What did you think of the product? (20 chars min)</label>
                 </div>
               </div>
@@ -117,9 +125,10 @@ render () {
                 />
               </div>
               <br />
-              <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+              <button disabled={!(this.state.rating && this.state.title.length > 0 && this.state.text.length >= 20)} className="btn waves-effect waves-light" type="submit" name="action">Submit
                 <i className="material-icons right">send</i>
               </button>
+
             </form>
           </CollectionItem>) :
           (<CollectionItem>
