@@ -14,8 +14,8 @@ export const Login = ({ login }) => (
           browserHistory.push('/');
         }}
       >
-        <Input name="username" label="Email" s={12} />
-        <Input name="password" label="Password" type="password" s={12} />
+        <Input name="username" label="Email" required validate type='email' s={12} />
+        <Input name="password" label="Password" required type="password" s={12} />
         <button style={{margin: 10}} className="btn waves-effect waves-light" type="submit" name="action" value="Login">Log in
         <i className="material-icons right">vpn_key</i>
         </button>

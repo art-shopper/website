@@ -36,6 +36,7 @@ class Signup extends React.Component {
               type="email"
               s={12}
               required
+              validate
             />
             <Input
               label="Password"
