@@ -19,7 +19,7 @@ export const TheFooter = (props) => (
       className='example'
     >
         <h5 className="white-text">about art shopper</h5>
-        <p className="grey-text text-lighten-4">This website was built by a team of Fullstack Academy students using React-Redux, Express, PostgreSQL, and Materialize CSS. </p>
+        <p className="grey-text text-lighten-4">This website dedicated to Bob Ross was built by a team of Fullstack Academy students using React-Redux, Express, PostgreSQL, and Materialize CSS. </p>
     </Footer>
 )
 
