@@ -17,25 +17,27 @@ class Cart extends React.Component {
   }
 
   onSubmitClick(evt) {
+    evt.preventDefault();
     const cart = this.props.cart.list;
-
-    this.props.placeOrder({
-      orderItems: cart.map(item => (
-        {
-          product_id: item.product.id,
-          quantity: item.quantity,
-          current_price: item.product.price,
-        })),
-      email: this.props.auth.email ? null : evt.target.email.value
-    })
-    evt.preventDefault()
-    browserHistory.push('/')
-    toastr.success(`Success! Your product(s) will arrive within 5-7 business days. 
-      Your email confirmation has been sent to ${this.props.auth.email || evt.target.email.value}.`)
+    if(cart.length < 1){
+      toastr.warning('Cart is empty!');
+    } else {
+      this.props.placeOrder({
+        orderItems: cart.map(item => (
+          {
+            product_id: item.product.id,
+            quantity: item.quantity,
+            current_price: item.product.price,
+          })),
+        email: this.props.auth.email ? null : evt.target.email.value
+      })
+      browserHistory.push('/')
+      toastr.success(`Success! Your product(s) will arrive within 5-7 business days. 
+        Your email confirmation has been sent to ${this.props.auth.email || evt.target.email.value}.`)
+    }
   }
 
   render() {
-    // console.log('props', this.props)
     const cart = this.props.cart.list;
     const eachProduct = cart.map((item, index) => {
       return (
@@ -74,7 +76,6 @@ class Cart extends React.Component {
           </p>
         </table>
 
-      {/*<Button><Link to="/checkout" style={{ color: 'white' }}>Checkout</Link></Button>*/}
       <br /><hr />
       <div className="checkoutForm">
       <br />
@@ -82,6 +83,7 @@ class Cart extends React.Component {
           <h5> Checkout Information </h5>
          </div>
 
+        {cart.length ? (
         <form
           onSubmit={this.onSubmitClick.bind(this) }>
           { !this.props.auth && 
@@ -90,7 +92,10 @@ class Cart extends React.Component {
           <button style={{marginTop: 20}} className="btn waves-effect waves-light" type="submit" name="action" value="Checkout">Finish Checkout
           <i className="material-icons right">shopping_cart</i>
           </button>
-        </form>
+        </form> ) :
+        <div>Add items to checkout!</div>
+      }
+
         </div>
       </div>
     )
