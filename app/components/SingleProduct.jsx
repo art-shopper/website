@@ -30,8 +30,8 @@ class SingleProduct extends React.Component {
     toastr.info('Added item to Cart!')
   }
   submitReview(event) {
-    // we want page to refresh after post, so no prevent default
 
+    event.preventDefault();
     let userId = this.props.user.id
     let review = {
       title: event.target.title.value,
@@ -40,6 +40,9 @@ class SingleProduct extends React.Component {
       'product_id': this.props.products.selected.id,
       'user_id': userId
     };
+    event.target.title.value = '';
+    event.target.text.value = '';
+    this.setState({rating: 0});
     this.props.postReview(userId, review)
   }
 

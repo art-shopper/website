@@ -8,7 +8,7 @@
 
 const SET_REVIEWS_LIST = 'SET_REVIEWS_LIST';
 const SET_CURRENT_REVIEW = 'SET_CURRENT_REVIEW';
-const ADD_REVIEW = 'ADD_REVIEW';
+export const ADD_REVIEW = 'ADD_REVIEW';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
       });
     case ADD_REVIEW:
       return Object.assign({}, state, {
-        list: [action.review, ... state.list]
+        list: [... state.list, action.review]
       });
   }
   return state;
@@ -87,8 +87,7 @@ export const fetchReview = (reviewId) => dispatch => {
 export const postReview = (userId, review) => dispatch => {
   axios.post(`/api/users/${userId}/reviews`, review)
   .then(res => res.data)
-  .then(data => res.sendStatus(201))
-  // .then(postedReview => dispatch(addReview(postedReview))) // no need to dispatch
+  .then(postedReview => dispatch(addReview(postedReview)))
   .catch(err => console.log(err));
 }
 

@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 const AUTHENTICATED = 'AUTHENTICATED';
 const SET = 'SET_CURRENT_USER';
 import {CLEAR_CART} from './cart';
+import {ADD_REVIEW} from './reviews';
 
 /* ---------------<   ACTION CREATORS   >------------------- */
 
@@ -28,6 +29,10 @@ const reducer = (state = null, action) => {
       const usr = Object.assign({}, state);
       usr.orders.push(action.order);
       return usr;
+    case ADD_REVIEW:
+      const newUsr = Object.assign({}, state);
+      newUsr.reviews.push(action.review);
+      return newUsr;
   }
   return state;
 };
