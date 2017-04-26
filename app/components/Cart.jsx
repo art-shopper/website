@@ -83,10 +83,9 @@ class Cart extends React.Component {
 
         <form
           onSubmit={this.onSubmitClick.bind(this) }>
-
-          <Input name="name" label="Name" s={12}  />
-          <Input name="email" label="Email" s={12}  />
-          <Input name="address" label="Shipping Address" s={12} />
+          { !this.props.auth && 
+            <Input name="email" label="Email" s={12} validate type="email" required />
+          }
           <button style={{marginTop: 20}} className="btn waves-effect waves-light" type="submit" name="action" value="Checkout">Finish Checkout
           <i className="material-icons right">shopping_cart</i>
           </button>
@@ -104,7 +103,6 @@ import { connect } from 'react-redux'
 import { removeItem, placeOrder } from '../reducers/cart'
 
 const mapToState = (state) => {
-  console.log('state in connect', state)
   return {
     cart: state.cart,
     products: state.products,
