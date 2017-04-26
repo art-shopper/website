@@ -21,20 +21,18 @@ module.exports = require('express').Router()
   // we collect emails from both guests and authenticated users
   // after a order is created, we create all of the individual items in the OrderItem database
   .post('/',
-    (req, res, next) =>{
-      console.log('user',req.body)
-      return(
-        Order.create({
+    (req, res, next) =>
+      Order.create({
         date_fulfilled: Date.now(),
         email: req.body.email ? req.body.email : req.user.email,
-        user_id: req.body.email ? null : req.user.id,
+        user_id: req.body.email ? null : req.user.id
       })
-       .then(createdOrder => Promise.all(req.body.orderItems.map(item => createdOrder.createOrderItem(item)))) // fix the name of the model
+      .then(createdOrder => Promise.all(req.body.orderItems.map(item => createdOrder.createOrderItem(item))))
       .then(() => res.sendStatus(201))
       .catch(next))
-    })
+  // get one order - only admins can do this. normal users are blocked
   .get('/:id',
-    selfOnly('Unauthorize access.'),
+    forbidden('Unauthorize access.'),
     (req, res, next) =>
       OrderItem.findAll({
         where: {

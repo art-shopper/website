@@ -16,7 +16,7 @@ export const allOrders = orders => ({
 
 const initialState = {
   list: [],
-  selected: []
+  selected: {}
 };
 
 const reducer = (state = initialState, action) => {

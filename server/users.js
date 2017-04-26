@@ -69,7 +69,7 @@ module.exports = require('express').Router()
   .get('/:id/orders/:orderId', 
     (req, res, next) => 
       req.foundUser.getOrders({where: {id: req.params.orderId}})
-      .then(order => order[0].getOrderItems())
-      .then(orderItems => res.json(orderItems))
+      .then(order => [order, order[0].getOrderItems()])
+      .spread((order, orderItems) => res.json({order:order[0], orderItems}))
       .catch(next))
 

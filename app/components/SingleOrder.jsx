@@ -6,11 +6,16 @@ import { intToUSD } from '../utils'
 /* -------------------<   COMPONENT   >-------------------- */
 
 const SingleOrder = (props) => {
+  console.log(props.order);
  return  (
     <div className="container">
-     <h4><b> Order #13401591 </b></h4>
-     <p className="ordercaption"> <b>Order Date:</b> 04/10/2017, 7:40pm </p>
-     <p className="ordercaption"> <b>Order Status:</b> Shipped </p>
+    {props.order && (
+      <div>
+       <h4><b> Order #{props.order.id} </b></h4>
+       <p className="ordercaption"> <b>Order Date:</b> {props.order.date_fulfilled} </p>
+       <p className="ordercaption"> <b>Order Status:</b> {props.order.status} </p>
+      </div>
+     )}
       <table>
         <thead>
           <tr>
@@ -33,7 +38,10 @@ const SingleOrder = (props) => {
         </tbody>
       </table>
 
-      <p className="caption"> Total price: $10.67 </p>
+      <p className="caption"> Total price: 
+        { props.orderItems && 
+          " " + intToUSD(props.orderItems.reduce((acc, ele) => {return acc + ele.current_price * ele.quantity}, 0)) } 
+      </p>
 
     </div>
 )
@@ -43,5 +51,5 @@ const SingleOrder = (props) => {
 import {connect} from 'react-redux'
 
 export default connect(
-  ({orders}) => {console.log(orders);return{orderItems: orders.selected}}
+  ({orders}) => ({orderItems: orders.selected.orderItems, order: orders.selected.order})
 )(SingleOrder)
