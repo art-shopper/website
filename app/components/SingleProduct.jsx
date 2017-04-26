@@ -87,7 +87,8 @@ render () {
               }
             </Collection>
           </CollectionItem>
-          {/*<Button>Add a review</Button>*/}
+
+          {this.props.user ? (
           <CollectionItem> <p className="caption"> New Review </p>
             <form className="col s12" onSubmit={this.submitReview.bind(this)}>
               <div className="row">
@@ -117,7 +118,11 @@ render () {
                 <i className="material-icons right">send</i>
               </button>
             </form>
-          </CollectionItem>
+          </CollectionItem>) :
+          (<CollectionItem>
+            Must be logged in to review!
+          </CollectionItem>)}
+
         </Collection>
       </Col>
     </Row>
