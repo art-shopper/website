@@ -1198,6 +1198,10 @@ circular-json@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
 
+classnames@^2.2.0, classnames@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+
 cli-cursor@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"
@@ -1831,6 +1835,10 @@ escope@^3.6.0:
     es6-weak-map "^2.0.1"
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
+
+eslint-config-fullstack@^2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-fullstack/-/eslint-config-fullstack-2.8.1.tgz#5777594ca80d147559f8096e5148aa3760524b75"
 
 eslint-config-standard@^10.2.1:
   version "10.2.1"
@@ -3865,7 +3873,7 @@ rc@^1.0.1, rc@~1.1.6:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-dom@^15.3.2:
+react-dom@^15.3.2, react-dom@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
   dependencies:
@@ -3884,6 +3892,14 @@ react-element-to-jsx-string@^3.0.0:
     sortobject "^1.0.0"
     stringify-object "^2.3.1"
     traverse "^0.6.6"
+
+react-materialize@^0.18.1:
+  version "0.18.4"
+  resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-0.18.4.tgz#f6b4a0b9658a78cb40bfeca6249af87dc7724a13"
+  dependencies:
+    classnames "^2.2.5"
+    react "^15.4.2"
+    react-dom "^15.4.2"
 
 react-redux@^4.4.5:
   version "4.4.6"
@@ -3904,7 +3920,14 @@ react-router@^3.0.0:
     loose-envify "^1.2.0"
     warning "^3.0.0"
 
-react@^15.3.2:
+react-star-rating-component@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-star-rating-component/-/react-star-rating-component-1.2.4.tgz#c6513bc55315c1681c46a311ae70c7c3ddd183b0"
+  dependencies:
+    classnames "^2.2.0"
+    react "^15.4.2"
+
+react@^15.3.2, react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
   dependencies:
@@ -4622,6 +4645,10 @@ to-arraybuffer@^1.0.0:
 to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
+
+toastr@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/toastr/-/toastr-2.1.2.tgz#fd69066ae7578a5b3357725fc9c7c335e9b681df"
 
 toposort-class@^1.0.1:
   version "1.0.1"
