@@ -1,6 +1,7 @@
 'use strict'
 
 const LiveReloadPlugin = require('webpack-livereload-plugin')
+    , webpack = require('webpack')
     , devMode = require('.').isDevelopment
 
 /**
@@ -39,5 +40,9 @@ module.exports = {
   },
   plugins: devMode
     ? [new LiveReloadPlugin({appendScriptTag: true})]
-    : []
+    : [new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    })]
 }
